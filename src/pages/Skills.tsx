@@ -6,7 +6,8 @@ const Skills = () => {
   return (
     <div className="min-h-dvh flex flex-col md:flex-row items-center md:px-8 lg:px-10 2xl:px-24 gap-20 md:gap-10">
       <div className="w-full md:w-1/2 flex items-center justify-center order-2 md:order-none">
-        <Tilt glareEnable={true} tiltMaxAngleX={10} tiltMaxAngleY={10} perspective={800} glareColor="transparent" className="w-auto z-20 mx-12">
+        <Tilt glareEnable={true} tiltMaxAngleX={10} tiltMaxAngleY={10} perspective={800} glareColor="transparent"
+              className="w-auto z-20 mx-12">
           <img src="/freelancer.png" alt="Freelancer pic" className="w-full h-full hover:scale-105 transition-all"/>
         </Tilt>
       </div>

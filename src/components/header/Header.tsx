@@ -6,7 +6,7 @@ import Mail from '../icons/Mail.tsx';
 const Header = () => {
 
   return (
-    <header className="h-20">
+    <div className="h-20">
       <div className="w-full h-full flex justify-between items-center py-4 px-4 md:px-8 lg:px-16">
         <motion.span
           className="text-blue-300 text-xl md:text-2xl font-medium tracking-wide uppercase"
@@ -36,7 +36,7 @@ const Header = () => {
           </motion.a>
           <motion.a
             className="p-2 w-9 h-9 text-teal-900 bg-teal-200 group rounded-full ring-2 ring-teal-300/30 outline-none"
-            href="mailto:nhenchoz122@icloud.com"
+            href="mailto:henchoznoe@gmail.com"
             initial={{ x: 500 }}
             animate={{ x: 0, transition: { type: 'spring', stiffness: 30, delay: 0.7 } }}
           >
@@ -44,7 +44,7 @@ const Header = () => {
           </motion.a>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 

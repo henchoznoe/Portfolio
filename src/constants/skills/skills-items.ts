@@ -8,19 +8,6 @@ export type SkillsItemsType = {
 
 export const skillsItems: SkillsItemsType[] = [
   {
-    label: 'Design',
-    skills: [
-      {
-        tooltip: 'Figma',
-        icon: 'figma'
-      },
-      {
-        tooltip: 'Tailwind',
-        icon: 'tailwind'
-      }
-    ]
-  },
-  {
     label: 'Frontend',
     skills: [
       {
@@ -32,8 +19,8 @@ export const skillsItems: SkillsItemsType[] = [
         icon: 'react'
       },
       {
-        tooltip: 'NextJS',
-        icon: 'next'
+        tooltip: 'Tailwind',
+        icon: 'tailwind'
       }
     ]
   },
@@ -45,33 +32,46 @@ export const skillsItems: SkillsItemsType[] = [
         icon: 'nodejs'
       },
       {
-        tooltip: 'ExpressJS',
-        icon: 'expressjs'
+        tooltip: 'Express',
+        icon: 'express'
       },
       {
         tooltip: 'PHP',
         icon: 'php'
-      },
-      {
-        tooltip: 'MySQL',
-        icon: 'mysql'
       }
     ]
   },
   {
-    label: 'Other',
+    label: 'Tools & Platforms',
     skills: [
       {
         tooltip: 'Git',
         icon: 'git'
       },
       {
-        tooltip: 'Github',
-        icon: 'github'
+        tooltip: 'Figma',
+        icon: 'figma'
       },
       {
         tooltip: 'Vercel',
         icon: 'vercel'
+      }
+    ]
+  },
+  {
+    label: '<languages/>',
+    skills: [
+      {
+        tooltip: 'TypeScript',
+        icon: 'ts'
+      },
+      {
+        tooltip: 'PHP',
+        icon: 'php'
+      },
+      {
+        tooltip: 'Java',
+        icon: 'java'
       }
     ]
   }

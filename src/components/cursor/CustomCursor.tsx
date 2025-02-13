@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { cn } from '../../utils/classNames.ts';
+import { cn } from '@/utils/classNames.ts';
 
 interface PositionRef {
   mouseX: number;
@@ -23,7 +23,7 @@ const CustomCursor = () => {
     distanceY: 0,
     key: -1
   });
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -41,14 +41,10 @@ const CustomCursor = () => {
   }, []);
 
   useEffect(() => {
-    const links = document.querySelectorAll('a,button,.cursor-pointer');
+    const links = document.querySelectorAll('a, button, .cursor-pointer');
     links.forEach((link) => {
-      link.addEventListener('mouseenter', () => {
-        setIsHovering(true);
-      });
-      link.addEventListener('mouseleave', () => {
-        setIsHovering(false);
-      });
+      link.addEventListener('mouseenter', () => setIsHovering(true));
+      link.addEventListener('mouseleave', () => setIsHovering(false));
     });
   });
 
@@ -87,7 +83,10 @@ const CustomCursor = () => {
   return (
     <div className="hidden lg:block">
       <div className="z-20 fixed pointer-events-none w-12 h-12" ref={cursorRef}>
-        <div className={cn('relative border-2 border-zinc-200 rounded-full w-full h-full transition-all duration-300', isHovering ? 'scale-150 opacity-40' : '')}></div>
+        <div className={cn(
+          'relative border-2 border-zinc-200 rounded-full w-full h-full transition-all duration-300',
+          isHovering ? 'scale-150 opacity-40' : '')}
+        />
       </div>
     </div>
   );

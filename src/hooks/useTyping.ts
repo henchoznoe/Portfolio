@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 
 const useTyping = (tabSentences: string[], initialDelay: number = 0) => {
+
   const [dynamicSentences, setDynamicSentences] = useState<string>('');
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [sentenceIndex, setSentenceIndex] = useState<number>(0);
   const [letterIndex, setLetterIndex] = useState<number>(0);
-  const [isPaused, setIsPaused] = useState<boolean>(
-    initialDelay > 0 && initialDelay !== 0
-  );
+  const [isPaused, setIsPaused] = useState<boolean>(initialDelay > 0 && initialDelay !== 0);
   const [delayCompleted, setDelayCompleted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -18,15 +17,15 @@ const useTyping = (tabSentences: string[], initialDelay: number = 0) => {
         () => {
           const currentSentence = tabSentences[sentenceIndex];
 
-          if (isPaused) {
-            if (!delayCompleted) {
+          if ( isPaused ) {
+            if ( !delayCompleted ) {
               setDelayCompleted(true);
             }
             return;
           }
 
-          if (isDeleting) {
-            if (letterIndex > 0) {
+          if ( isDeleting ) {
+            if ( letterIndex > 0 ) {
               setLetterIndex((prevIndex: number) => prevIndex - 1);
               setDynamicSentences((prevText: string) => prevText.slice(0, -1));
             } else {
@@ -36,7 +35,7 @@ const useTyping = (tabSentences: string[], initialDelay: number = 0) => {
               );
             }
           } else {
-            if (letterIndex < currentSentence.length) {
+            if ( letterIndex < currentSentence.length ) {
               setLetterIndex((prevIndex: number) => prevIndex + 1);
               setDynamicSentences(
                 (prevText: string) => prevText + currentSentence[letterIndex]
@@ -54,7 +53,7 @@ const useTyping = (tabSentences: string[], initialDelay: number = 0) => {
       );
     };
 
-    if (initialDelay > 0 && !delayCompleted) {
+    if ( initialDelay > 0 && !delayCompleted ) {
       setTimeout(() => {
         setDelayCompleted(true);
         setIsPaused(false);

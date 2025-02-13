@@ -1,4 +1,4 @@
-import { projectsList, ProjectType } from '../constants/projects/project-items.ts';
+import { projectsList, ProjectType } from '../constants/projects/projects-items.ts';
 import ProjectItem from '../components/projects/ProjectItem.tsx';
 
 const Projects = () => {
