@@ -7,9 +7,9 @@ const Footer = () => {
         </span>
         <span>
           <a
-            href="https://henchoz.org/"
+            href="https://henchoznoe.ch/"
             className="hover:underline">
-            henchoz.org</a> &copy; {new Date().getFullYear()} - All Rights Reserved.
+            henchoznoe.ch</a> &copy; {new Date().getFullYear()} - All Rights Reserved.
         </span>
       </div>
     </div>

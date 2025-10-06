@@ -1,6 +1,6 @@
 export const dynamicText: string[] = [
+  'who I am',
   'my skills.',
-  'what I\'ve built.',
   'my projects.',
   'my work.'
 ];

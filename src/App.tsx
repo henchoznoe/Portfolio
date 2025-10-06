@@ -4,7 +4,6 @@ import Footer from '@components/footer/Footer.tsx';
 import Header from '@components/header/Header.tsx';
 import Contact from '@pages/Contact.tsx';
 import Home from '@pages/Home.tsx';
-import Projects from '@pages/Projects.tsx';
 import Skills from '@pages/Skills.tsx';
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
       <main>
         <Home/>
         <Skills/>
-        <Projects/>
         <Contact/>
       </main>
       <footer>

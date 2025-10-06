@@ -16,8 +16,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-parallax-tilt": "^1.7.177",
-    "react-tooltip": "^5.28.0",
-    "tailwind-merge": "^2.5.5"
+    "react-tooltip": "^5.29.1",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
