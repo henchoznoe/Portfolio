@@ -5,7 +5,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}", // add ts/tsx if you use TypeScript
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
