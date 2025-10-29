@@ -6,7 +6,7 @@ import { StaticBackground } from '../App'; // We will export StaticBackground fr
 
 const Layout = ({ children, theme, toggleTheme, sideNavOpen, setSideNavOpen }) => {
   return (
-    <div className="relative min-h-screen flex flex-col text-foreground overflow-x-hidden">
+    <div className="relative min-h-[calc(100dvh)] flex flex-col text-foreground overflow-x-hidden">
       <StaticBackground theme={theme} />
       <Header
         toggleTheme={toggleTheme}
