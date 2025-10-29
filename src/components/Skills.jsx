@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useMemo, memo } from "react";
-import { Code, Layers, Terminal, Sparkles, Settings2 } from "lucide-react";
+import {Code, Layers, Terminal, Sparkles, Settings2, Database} from "lucide-react";
 import { motion } from "framer-motion";
 
 // --- Animation Variants (The "Staggered Entrance" Pattern) ---
@@ -86,10 +86,10 @@ SkillSection.displayName = "SkillSection";
 
 // --- Static Data (No changes needed) ---
 const SKILLS_SECTIONS = [
-    { icon: <Code className="w-6 h-6" />, title: "Programming Languages", tags: ["C", "C++", "Java", "JavaScript", "Python", "HTML", "CSS"] },
-    { icon: <Layers className="w-6 h-6" />, title: "Frameworks & Libraries", tags: ["React", "Tailwind CSS", "SFML", "NumPy", "Pandas"] },
-    { icon: <Terminal className="w-6 h-6" />, title: "Tools & Platforms", tags: ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Sublime Text"] },
-    { icon: <Sparkles className="w-6 h-6" />, title: "Interests", tags: ["Competitive Programming", "DSA", "Machine Learning", "Web Development"] },
+    { icon: <Code className="w-6 h-6" />, title: "Programming Languages", tags: ["HTML/CSS", "TypeScript", "Java", "PHP"] },
+    { icon: <Layers className="w-6 h-6" />, title: "Frameworks & Libraries", tags: ["React", "Next", "Tailwind CSS", "Express"] },
+    { icon: <Terminal className="w-6 h-6" />, title: "Tools & Platforms", tags: ["Git", "Github", "Gitlab", "JetBrains", "VS Code"] },
+    { icon: <Database className="w-6 h-6" />, title: "Databases & ORM", tags: ["MySQL", "PostgreSQL", "Supabase", "Prisma"] },
 ];
 
 
