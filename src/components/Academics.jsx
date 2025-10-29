@@ -64,9 +64,6 @@ const EducationCard = memo(({ education }) => {
           <p>
             <span className="font-medium text-foreground/80">Year:</span> {year}
           </p>
-          <p>
-            <span className="font-medium text-foreground/80">{scoreLabel}:</span> {score}
-          </p>
         </div>
       </div>
     </motion.div>
@@ -78,24 +75,24 @@ EducationCard.displayName = "EducationCard";
 // --- Static Data (No changes needed) ---
 const ACADEMICS_DATA = [
   {
-    logo: "/assets/logos/iit_bhu.png",
-    alt: "IIT BHU Logo",
-    title: "Indian Institute of Technology (BHU) Varanasi",
-    link: "https://iitbhu.ac.in/dept/civ",
-    program: "B.Tech in Civil Engineering",
-    year: "2023 – 2027",
-    scoreLabel: "CGPA",
-    score: "8.14 / 10",
+    logo: "/assets/logos/heia-logo.jpeg",
+    alt: "HEIA Logo",
+    title: "School of Engineering and Architecture of Fribourg (HEIA-FR)",
+    link: "https://heia-fr.ch",
+    program: "Bachelor of Science - BS / Software Engineering",
+    year: "2024 – now",
+    scoreLabel: "",
+    score: "",
   },
   {
-    logo: "/assets/logos/sps_rohini.jpg",
-    alt: "SPS Rohini Logo",
-    title: "Sachdeva Public School, Rohini",
-    link: "https://www.spsrohini.com/",
-    program: "CBSE (Class XII - 2022, Class X - 2020)",
-    year: "2022",
-    scoreLabel: "Percentage",
-    score: "Class XII - 92.80%, Class X - 97.00%",
+    logo: "/assets/logos/emf-logo.jpg",
+    alt: "EMF Logo",
+    title: "EMF - Ecole des métiers de Fribourg, Switzerland",
+    link: "https://www.emf.ch/",
+    program: "Swiss Federal Diploma in IT with Technical Professional Maturity",
+    year: "2020 - 2024",
+    scoreLabel: "",
+    score: "",
   },
 ];
 
