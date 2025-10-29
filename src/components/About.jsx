@@ -46,7 +46,8 @@ const SOCIAL_LINKS = [
 const TAGS = [
     "Student",
     "Web Development",
-    "Git"
+    "Software Engineering",
+    "Sports"
 ];
 
 const RESUME_URL =
