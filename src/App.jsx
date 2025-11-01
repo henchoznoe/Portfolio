@@ -1,13 +1,13 @@
+import Layout from '@components/Layout'
+import ScrollToTop from '@components/ScrollToTop'
+import About from '@pages/About.jsx'
+import Academics from '@pages/Academics.jsx'
+import Contact from '@pages/Contact.jsx'
+import Projects from '@pages/Projects.jsx'
+import Skills from '@pages/Skills.jsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom'
-import About from './components/About'
-import Academics from './components/Academics'
-import Contact from './components/Contact'
-import Layout from './components/Layout'
-import Projects from './components/Projects'
-import ScrollToTop from './components/ScrollToTop'
-import Skills from './components/Skills'
 
 export const StaticBackground = memo(({ theme }) => {
     const lightStyles = {

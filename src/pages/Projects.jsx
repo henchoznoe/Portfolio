@@ -38,7 +38,7 @@ const ProjectCard = memo(({ project }) => {
                         className="px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-300 dark:border-neutral-600"
                         key={tag.id}
                     >
-                        {tag}
+                        {tag.name}
                     </span>
                 ))}
             </div>

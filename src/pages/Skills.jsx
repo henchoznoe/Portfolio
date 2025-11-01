@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Code, Database, Layers, Settings2, Terminal } from 'lucide-react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import { cn } from '@/lib/classNames.js'
+import { cn } from '@/utils/classNames.js'
 
 const containerVariants = {
     hidden: { opacity: 0 },

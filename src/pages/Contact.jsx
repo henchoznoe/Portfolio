@@ -1,9 +1,9 @@
+import { Button } from '@components/ui/button.jsx'
+import { Input } from '@components/ui/input.jsx'
+import { Textarea } from '@components/ui/textarea.jsx'
 import { AnimatePresence, motion } from 'framer-motion'
 import { AlertCircle, CheckCircle2, Loader2, Mail, Send } from 'lucide-react'
 import { memo, useState } from 'react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Textarea } from './ui/textarea'
 
 const sectionContainerVariants = {
     hidden: { opacity: 0 },

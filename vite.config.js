@@ -6,8 +6,12 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     plugins: [react(), tailwindcss()],
     resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'src'),
-        },
+        alias: [
+            { find: '@', replacement: path.resolve(__dirname, 'src') },
+            { find: '@pages', replacement: path.resolve(__dirname, 'src/pages') },
+            { find: '@components', replacement: path.resolve(__dirname, 'src/components') },
+            { find: '@assets', replacement: path.resolve(__dirname, 'src/assets') },
+            { find: '@utils', replacement: path.resolve(__dirname, 'src/utils') },
+        ],
     },
 })

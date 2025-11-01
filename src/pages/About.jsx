@@ -76,7 +76,7 @@ export default memo(function About() {
                         className="object-cover w-full h-full"
                         decoding="async"
                         loading="lazy"
-                        src="/assets/AvatarAI-min.png"
+                        src="/assets/logos/noe-logo.png"
                         style={{ aspectRatio: '1/1' }}
                     />
                 </motion.div>

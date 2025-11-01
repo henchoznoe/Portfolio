@@ -1,8 +1,8 @@
-import React from 'react'
-import { StaticBackground } from '../App'
-import Footer from './Footer'
-import Header from './Header'
-import SideNav from './SideNav'
+import Footer from '@components/Footer'
+import Header from '@components/Header'
+import SideNav from '@components/SideNav'
+import { memo } from 'react'
+import { StaticBackground } from '@/App'
 
 const Layout = ({ children, theme, toggleTheme, sideNavOpen, setSideNavOpen }) => {
     return (
@@ -18,4 +18,4 @@ const Layout = ({ children, theme, toggleTheme, sideNavOpen, setSideNavOpen }) =
     )
 }
 
-export default React.memo(Layout)
+export default memo(Layout)

@@ -1,4 +1,4 @@
-import { cn } from '@/lib/classNames.js'
+import { cn } from '@/utils/classNames.js'
 
 function Input({ className, type, ...props }) {
     return (
