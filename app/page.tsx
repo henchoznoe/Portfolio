@@ -1,3 +1,4 @@
+import { ContactPage } from '@/components/contact/contact-page'
 import { HeroSection } from '@/components/hero-section'
 import { ProjectsSection } from '@/components/projects-section'
 import { Terminal } from '@/components/terminal/terminal'
@@ -7,7 +8,8 @@ export default function Home() {
         <main className="min-h-screen bg-black text-white selection:bg-white/20">
             <HeroSection />
             <ProjectsSection />
-            <Terminal />
+            <Terminal/>
+            <ContactPage />
         </main>
     )
 }
