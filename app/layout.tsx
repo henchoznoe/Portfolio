@@ -1,34 +1,34 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+    subsets: ['latin'],
+    variable: '--font-geist-sans',
+})
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+    subsets: ['latin'],
+    variable: '--font-geist-mono',
+})
 
 export const metadata: Metadata = {
-  title: "Portfolio - Under Construction",
-  description: "My portfolio is currently being developed. Check back soon!",
-};
+    description: 'My portfolio is currently being developed. Check back soon!',
+    title: 'Portfolio - Under Construction',
+}
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                {children}
+            </body>
+        </html>
+    )
 }
