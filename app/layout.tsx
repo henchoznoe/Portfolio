@@ -1,3 +1,4 @@
+import { SmoothScroll } from '@/components/smooth-scroll'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
@@ -27,6 +28,7 @@ export default function RootLayout({
             <body
                 className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
             >
+                <SmoothScroll />
                 {children}
             </body>
         </html>
