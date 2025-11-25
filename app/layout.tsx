@@ -1,4 +1,5 @@
 import { SmoothScroll } from '@/components/smooth-scroll'
+import { CustomCursor } from '@/components/ui/custom-cursor'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
@@ -29,6 +30,7 @@ export default function RootLayout({
                 className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
             >
                 <SmoothScroll />
+                <CustomCursor />
                 {children}
             </body>
         </html>

@@ -131,3 +131,9 @@
         @apply bg-background text-foreground;
     }
 }
+
+@media (hover: hover) and (pointer: fine) {
+    html, body, a, button, input, [role="button"], .cursor-none {
+        cursor: none !important;
+    }
+}
