@@ -1,4 +1,3 @@
-import { ContactPage } from '@/components/contact/contact-page'
 import { HeroSection } from '@/components/hero-section'
 import { ProjectsSection } from '@/components/projects-section'
 import { Terminal } from '@/components/terminal/terminal'
@@ -9,7 +8,6 @@ export default function Home() {
             <HeroSection />
             <ProjectsSection />
             <Terminal/>
-            <ContactPage />
         </main>
     )
 }
