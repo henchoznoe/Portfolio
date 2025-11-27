@@ -36,7 +36,8 @@ const projects = [
     }
 ]
 
-export function ProjectsSection() {
+export const ProjectsSection = () => {
+
     const sectionRef = useRef<HTMLDivElement>(null)
     const trackRef = useRef<HTMLDivElement>(null)
 
@@ -49,8 +50,6 @@ export function ProjectsSection() {
 
             const totalWidth = track.scrollWidth
             const viewportWidth = window.innerWidth
-            // Calculate the distance to scroll: (total width of track) - (one viewport width)
-            // We want to stop when the last card is fully visible.
             const xMovement = -(totalWidth - viewportWidth)
 
             gsap.to(track, {
@@ -72,12 +71,10 @@ export function ProjectsSection() {
 
     return (
         <section ref={sectionRef} className="relative bg-black overflow-hidden">
-            {/* Mobile: Vertical Stack | Desktop: Horizontal Track */}
             <div
                 ref={trackRef}
                 className="flex flex-col md:flex-row md:w-max md:h-screen items-center"
             >
-                {/* Intro / Title Card (Optional, or just part of the flow) */}
                 <div className="w-full md:w-[40vw] h-[50vh] md:h-screen flex flex-col justify-center px-8 md:pl-20 shrink-0">
                     <h2 className="text-6xl md:text-9xl font-bold text-white mb-8">
                         <span className="text-white/20">My</span>
@@ -89,7 +86,6 @@ export function ProjectsSection() {
                     </p>
                 </div>
 
-                {/* Project Cards */}
                 {projects.map((project) => (
                     <div
                         key={project.id}

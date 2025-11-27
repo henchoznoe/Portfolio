@@ -5,13 +5,12 @@ import { MotionValue, motion, useMotionValue, useSpring, useTransform } from 'fr
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-export function DockFooter() {
+export const DockFooter = () => {
     const mouseX = useMotionValue(Infinity)
 
     return (
         <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex h-24 items-end justify-center pb-8">
 
-            {/* Dock Container */}
             <motion.div
                 onMouseMove={(e) => mouseX.set(e.pageX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
@@ -26,7 +25,7 @@ export function DockFooter() {
     )
 }
 
-function DockIcon({
+const DockIcon = ({
     mouseX,
     icon: Icon,
     label,
@@ -36,7 +35,7 @@ function DockIcon({
     icon: any
     label: string
     href: string
-}) {
+}) => {
     const ref = useRef<HTMLDivElement>(null)
     const [isHovered, setIsHovered] = useState(false)
 
@@ -50,7 +49,6 @@ function DockIcon({
 
     return (
         <div className="relative flex flex-col items-center justify-end">
-            {/* Tooltip */}
             <div
                 className={cn(
                     'absolute -top-10 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-black/80 px-2 py-1 text-[10px] text-white backdrop-blur-md transition-all duration-200',
