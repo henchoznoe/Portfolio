@@ -1,7 +1,8 @@
-import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { DockFooter } from '@/components/dock-footer'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
+import type { Metadata } from 'next'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({
                 <SmoothScroll />
                 <CustomCursor />
                 {children}
+                <DockFooter />
             </body>
         </html>
     )
