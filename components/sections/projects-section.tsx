@@ -16,7 +16,7 @@ const projects = [
         title: 'Portfolio',
         description: 'The portfolio you are currently viewing built with Next.js, Tailwind CSS, Framer Motion and more.',
         stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-        color: 'from-purple-500/20 to-pink-500/20',
+        color: 'from-purple-500/30 to-pink-500/30',
         github: 'https://github.com/henchoznoe/Portfolio',
         external: 'https://henchoznoe.com/'
     },
@@ -26,7 +26,7 @@ const projects = [
         title: 'Express Template',
         description: 'Production-ready Express template tailored with TypeScript, Prisma, InversifyJS, Zod & Docker.',
         stack: ['TypeScript', 'Prisma', 'Docker', 'InversifyJS'],
-        color: 'from-blue-500/20 to-cyan-500/20',
+        color: 'from-blue-500/30 to-cyan-500/30',
         github: 'https://github.com/henchoznoe/ExpressTemplate'
     },
     {
@@ -35,7 +35,7 @@ const projects = [
         title: 'Git Multi Account Setup',
         description: 'Automate Git & SSH setup for multiple accounts (GitHub + GitLab) with smart email switching hooks.',
         stack: ['Bash', 'Git', 'SSH'],
-        color: 'from-emerald-500/20 to-teal-500/20',
+        color: 'from-emerald-500/30 to-teal-500/30',
         github: 'https://github.com/henchoznoe/GitMultiAccountSetup'   
     }
 ]
@@ -79,7 +79,7 @@ export const ProjectsSection = () => {
                 ref={trackRef}
                 className="flex flex-col md:flex-row md:w-max md:h-screen items-center"
             >
-                <div className="w-full md:w-[40vw] h-[50vh] md:h-screen flex flex-col justify-center px-8 md:pl-20 shrink-0">
+                <div className="w-full md:w-[40vw] h-[40vh] md:h-screen flex flex-col justify-center px-8 md:pl-20 shrink-0">
                     <h2 className="text-6xl md:text-9xl font-bold text-white mb-8">
                         <span className="text-white/20">My</span>
                         <br/>
@@ -93,13 +93,13 @@ export const ProjectsSection = () => {
                 {projects.map((project) => (
                     <div
                         key={project.id}
-                        className="w-full md:w-[60vw] h-[80vh] md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
+                        className="w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
                     >
-                        <div className="relative w-full h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
+                        <div className="relative w-full h-auto md:h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
                             <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             
-                            <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
+                            <div className="relative md:absolute inset-0 flex flex-col justify-end p-8 md:p-16">
                                 <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl max-w-3xl overflow-hidden">
                                     <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -107,21 +107,21 @@ export const ProjectsSection = () => {
                                         <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent select-none">
                                             {project.year}
                                         </div>
-                                        <div className="flex gap-4">
+                                        <div className="flex gap-2 md:gap-4">
                                             {project.github && (
-                                                <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.github, '_blank')}>
+                                                <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.github, '_blank')}>
                                                     <Github size={20} />
                                                 </Button>
                                             )}
                                             {project.external && (
-                                                <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.external, '_blank')}>
+                                                <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.external, '_blank')}>
                                                     <ExternalLink size={20} />
                                                 </Button>
                                             )}
                                         </div>
                                     </div>
 
-                                    <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                                    <h3 className="text-2xl md:text-5xl font-bold text-white mb-4">
                                         {project.title}
                                     </h3>
                                     
@@ -129,9 +129,9 @@ export const ProjectsSection = () => {
                                         {project.description}
                                     </p>
 
-                                    <div className="flex flex-wrap gap-3">
+                                    <div className="flex flex-wrap gap-2 md:gap-3">
                                         {project.stack.map((tech) => (
-                                            <div key={tech} className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/80">
+                                            <div key={tech} className="flex items-center gap-1 md:gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/80">
                                                 <Code2 size={14} />
                                                 {tech}
                                             </div>
