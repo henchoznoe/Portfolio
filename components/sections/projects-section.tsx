@@ -16,7 +16,7 @@ const projects = [
         title: 'Portfolio',
         description: 'The portfolio you are currently viewing built with Next.js, Tailwind CSS, Framer Motion and more.',
         stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-        color: 'from-purple-500/30 to-pink-500/30',
+        color: 'from-emerald-500/30 to-teal-500/30',
         github: 'https://github.com/henchoznoe/Portfolio',
         external: 'https://henchoznoe.com/'
     },
@@ -35,7 +35,7 @@ const projects = [
         title: 'Git Multi Account Setup',
         description: 'Automate Git & SSH setup for multiple accounts (GitHub + GitLab) with smart email switching hooks.',
         stack: ['Bash', 'Git', 'SSH'],
-        color: 'from-emerald-500/30 to-teal-500/30',
+        color: 'from-purple-500/30 to-pink-500/30',
         github: 'https://github.com/henchoznoe/GitMultiAccountSetup'   
     }
 ]
