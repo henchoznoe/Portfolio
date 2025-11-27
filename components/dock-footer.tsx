@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { MotionValue, motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import { useRef, useState } from 'react'
 
 export const DockFooter = () => {
@@ -16,10 +16,9 @@ export const DockFooter = () => {
                 onMouseLeave={() => mouseX.set(Infinity)}
                 className="pointer-events-auto mx-auto flex h-16 items-end gap-4 rounded-full border border-white/10 bg-black/40 px-4 pb-3 backdrop-blur-2xl shadow-2xl"
             >
-                <DockIcon mouseX={mouseX} icon={Github} label="GitHub" href="https://github.com" />
-                <DockIcon mouseX={mouseX} icon={Linkedin} label="LinkedIn" href="https://linkedin.com" />
-                <DockIcon mouseX={mouseX} icon={Twitter} label="Twitter" href="https://twitter.com" />
-                <DockIcon mouseX={mouseX} icon={Mail} label="Email" href="mailto:contact@example.com" />
+                <DockIcon mouseX={mouseX} icon={Github} label="GitHub" href="https://github.com/henchoznoe" />
+                <DockIcon mouseX={mouseX} icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/henchoznoe" />
+                <DockIcon mouseX={mouseX} icon={Mail} label="Email" href="mailto:henchoznoe@gmail.com" />
             </motion.div>
         </div>
     )
