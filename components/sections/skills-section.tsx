@@ -8,14 +8,14 @@ import { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = [
-    { name: 'React', category: 'Library', id: 'react' },
-    { name: 'TypeScript', category: 'Language', id: 'ts' },
-    { name: 'Java', category: 'Language', id: 'java' },
-    { name: 'TailwindCSS', category: 'Library', id: 'tailwind' },
-    { name: 'Express.js', category: 'Framework', id: 'express' },
-    { name: 'PostgreSQL', category: 'Database', id: 'postgres' },
-    { name: 'Docker', category: 'DevOps', id: 'docker' },
-    { name: 'Git', category: 'VCS', id: 'git' },
+    { name: 'TypeScript', id: 'ts' },
+    { name: 'Java', id: 'java' },
+    { name: 'React', id: 'react' },
+    { name: 'TailwindCSS', id: 'tailwind' },
+    { name: 'Express.js', id: 'express' },
+    { name: 'PostgreSQL', id: 'postgres' },
+    { name: 'Docker', id: 'docker' },
+    { name: 'Git', id: 'git' },
 ]
 
 export const SkillsSection = () => {
@@ -81,7 +81,7 @@ export const SkillsSection = () => {
     )
 }
 
-const SkillCard = ({ skill }: { skill: { name: string; category: string; id: string } }) => {
+const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
     const cardRef = useRef<HTMLDivElement>(null)
     const iconRef = useRef<HTMLDivElement>(null)
     const textRef = useRef<HTMLDivElement>(null)
@@ -180,9 +180,6 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
                     <h3 className="text-sm md:text-lg font-medium text-white/90">
                         {skill.name}
                     </h3>
-                    <p className="text-[10px] md:text-xs text-white/40 mt-1 font-mono uppercase tracking-wider">
-                        {skill.category}
-                    </p>
                 </div>
             </div>
             

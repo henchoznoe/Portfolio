@@ -7,7 +7,8 @@ import { useEffect, useRef, useState } from 'react'
 
 export const Footer = () => {
 
-  const [time, setTime] = useState<string>('')
+    const [time, setTime] = useState<string>('')
+    const [timezone, setTimezone] = useState<string>('')
     const containerRef = useRef<HTMLElement>(null)
     const titleRef = useRef<HTMLHeadingElement>(null)
 
@@ -22,6 +23,11 @@ export const Footer = () => {
                 hour12: false,
             }
             setTime(now.toLocaleTimeString('en-US', options))
+            
+            // getTimezoneOffset returns minutes BEHIND UTC, so we negate it
+            const offset = -now.getTimezoneOffset() / 60
+            const sign = offset >= 0 ? '+' : ''
+            setTimezone(`${sign}${offset}`)
         }
 
         updateTime()
@@ -64,12 +70,11 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 border-t border-white/10 pt-12">
                     
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Services</h3>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Interests</h3>
                         <ul className="flex flex-col gap-2">
                             <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Web Development</li>
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">UI Engineering</li>
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Creative Coding</li>
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Motion Design</li>
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Software Engineering</li>
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Application Development</li>
                         </ul> 
                     </div>
 
@@ -92,18 +97,19 @@ export const Footer = () => {
                     <div className="flex flex-col gap-4 md:items-end">
                         <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Local time</h3>
                         <div className="flex items-center gap-3 font-mono text-xl text-white/90">
+                            {time || '--:--:--'}
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                             </span>
-                            {time || '--:--:--'} <span className="text-white/30 text-sm ml-1">UTC+1</span>
+                            <span className="text-white/30 text-sm">UTC {timezone}</span>
                         </div>
-                        <p className="text-white/40 text-xs font-mono text-right">
+                        <p className="text-white/40 text-xs font-mono text-left md:text-right italic">
                             Fribourg, Switzerland
                         </p>
 
                         <p className="text-white/20 text-xs font-mono mt-auto pt-8">
-                            © {new Date().getFullYear()} Noé Henchoz. <br/>
+                            © {new Date().getFullYear()} <a href="https://henchoznoe.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Noé Henchoz</a>. <br/>
                             Built with Next.js & Tailwind.
                         </p>
                     </div>
