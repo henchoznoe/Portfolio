@@ -2,7 +2,10 @@
 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useRef } from 'react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const skills = [
     { name: 'React', category: 'Library', id: 'react' },
@@ -17,6 +20,31 @@ const skills = [
 
 export const SkillsSection = () => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const titleRef = useRef<HTMLHeadingElement>(null)
+
+    useGSAP(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 80%', // Animation starts when top of section hits 80% of viewport
+                toggleActions: 'play none none reverse',
+            }
+        })
+
+        tl.from(titleRef.current, {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        })
+        .from('.skill-card', {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out'
+        }, '-=0.4') // Overlap with title animation
+    }, { scope: containerRef })
 
     const handleGlobalMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!containerRef.current || window.innerWidth < 768) return
@@ -32,16 +60,15 @@ export const SkillsSection = () => {
     }
 
     return (
-        <section className="py-32 px-4 bg-black relative overflow-hidden">
+        <section ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-24">
-                    <h2 className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 tracking-tight">
+                    <h2 ref={titleRef} className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 tracking-tight">
                         Skills
                     </h2>
                 </div>
 
                 <div 
-                    ref={containerRef}
                     onMouseMove={handleGlobalMouseMove}
                     className="group relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
