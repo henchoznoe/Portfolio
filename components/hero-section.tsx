@@ -45,28 +45,7 @@ export function HeroSection() {
             })
         }
 
-        // 3. Mouse Parallax (Name Only)
-        const xTo = gsap.quickTo(nameRef.current, "x", { duration: 0.5, ease: "power3" })
-        const yTo = gsap.quickTo(nameRef.current, "y", { duration: 0.5, ease: "power3" })
 
-        const handleMouseMove = (e: MouseEvent) => {
-            const { clientX, clientY } = e
-            const { innerWidth, innerHeight } = window
-            
-            // Normalize mouse position (-1 to 1)
-            const x = (clientX / innerWidth - 0.5) * 2
-            const y = (clientY / innerHeight - 0.5) * 2
-            
-            // Move name in opposition (Max 30px)
-            xTo(x * -30)
-            yTo(y * -30)
-        }
-
-        window.addEventListener('mousemove', handleMouseMove)
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove)
-        }
 
     }, { scope: containerRef })
 
