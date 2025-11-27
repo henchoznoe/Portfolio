@@ -1,17 +1,136 @@
 'use client'
 
-import { techStack } from '@/lib/data'
+
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
 import { Box, Cloud, Layout, Server, Terminal as TerminalIcon } from 'lucide-react'
 import { useState } from 'react'
 import { FileTree } from './file-tree'
+import { TechItem } from './types'
 
 const tabs = [
     { id: 'all', label: 'All', icon: TerminalIcon },
-    { id: 'frontend', label: 'Frontend', icon: Layout },
-    { id: 'backend', label: 'Backend', icon: Server },
-    { id: 'devops', label: 'DevOps', icon: Cloud },
+    { id: 'lang', label: 'Languages', icon: Layout },
+    { id: 'framework', label: 'Frameworks & Libraries', icon: Server },
+    { id: 'db', label: 'Databases', icon: Cloud },
+    { id: 'tool', label: 'Tools', icon: Cloud },
+]
+
+
+
+export const techStack: TechItem[] = [
+    {
+        id: 'lang',
+        name: 'Languages',
+        type: 'folder',
+        children: [
+            {
+                id: 'typescript',
+                name: 'TypeScript',
+                type: 'file',
+                icon: Layout,
+                category: 'lang',
+            },
+            {
+                id: 'python',
+                name: 'Python',
+                type: 'file',
+                icon: Layout,
+                category: 'lang',
+            },
+            {
+                id: 'rust',
+                name: 'Rust',
+                type: 'file',
+                icon: Layout,
+                category: 'lang',
+            }
+        ]
+    },
+    {
+        id: 'framework',
+        name: 'Frameworks & Libraries',
+        type: 'folder',
+        children: [
+            {
+                id: 'react',
+                name: 'React',
+                type: 'file',
+                icon: Layout,
+                category: 'framework',
+            },
+            {
+                id: 'nextjs',
+                name: 'Next.js',
+                type: 'file',
+                icon: Layout,
+                category: 'framework',
+            },
+            {
+                id: 'tailwindcss',
+                name: 'TailwindCSS',
+                type: 'file',
+                icon: Layout,
+                category: 'framework',
+            }
+        ]
+    },
+    {
+        id: 'db',
+        name: 'Databases',
+        type: 'folder',
+        children: [
+            {
+                id: 'postgres',
+                name: 'PostgreSQL',
+                type: 'file',
+                icon: Cloud,
+                category: 'db',
+            },
+            {
+                id: 'mongodb',
+                name: 'MongoDB',
+                type: 'file',
+                icon: Cloud,
+                category: 'db',
+            },
+            {
+                id: 'redis',
+                name: 'Redis',
+                type: 'file',
+                icon: Cloud,
+                category: 'db',
+            }
+        ]
+    },
+    {
+        id: 'tool',
+        name: 'Tools',
+        type: 'folder',
+        children: [
+            {
+                id: 'git',
+                name: 'Git',
+                type: 'file',
+                icon: TerminalIcon,
+                category: 'tool',
+            },
+            {
+                id: 'docker',
+                name: 'Docker',
+                type: 'file',
+                icon: Box,
+                category: 'tool',
+            },
+            {
+                id: 'vscode',
+                name: 'VS Code',
+                type: 'file',
+                icon: Layout,
+                category: 'tool',
+            }
+        ]
+    }
 ]
 
 export function Terminal() {
@@ -63,21 +182,23 @@ export function Terminal() {
                     </div>
 
                     {/* Terminal Content */}
-                    <div className="p-6 min-h-[400px] font-mono text-sm relative">
-                        {/* Command Line Prompt */}
-                        <div className="flex items-center gap-2 mb-4 text-white/60">
-                            <span className="text-yellow-400">user@portfolio</span>
-                            <span>:</span>
-                            <span className="text-blue-400">~/tech-stack</span>
-                            <span>$</span>
-                            <span className="text-white">ls -la</span>
+                    <div className="h-[500px] relative bg-[#0A0A0A] font-mono text-sm">
+                        <div className="absolute inset-0 overflow-y-auto p-6 pb-12 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                            {/* Command Line Prompt */}
+                            <div className="flex items-center gap-2 mb-4 text-white/60">
+                                <span className="text-yellow-400">user@portfolio</span>
+                                <span>:</span>
+                                <span className="text-blue-400">~/tech-stack</span>
+                                <span>$</span>
+                                <span className="text-white">ls -la</span>
+                            </div>
+
+                            {/* File Tree */}
+                            <FileTree data={techStack} filter={activeTab} />
                         </div>
 
-                        {/* File Tree */}
-                        <FileTree data={techStack} filter={activeTab} />
-
                         {/* Status Bar */}
-                        <div className="absolute bottom-0 left-0 right-0 p-2 bg-[#0F0F0F] border-t border-white/5 flex justify-between text-xs text-white/40">
+                        <div className="absolute bottom-0 left-0 right-0 p-2 bg-[#0F0F0F] border-t border-white/5 flex justify-between text-xs text-white/40 z-10">
                             <div className="flex gap-4">
                                 <span><Box size={12} className="inline mr-1" /> 23 technologies</span>
                                 <span>4 categories</span>

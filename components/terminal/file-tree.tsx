@@ -1,10 +1,10 @@
 'use client'
 
-import { TechItem } from '@/lib/data'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, ChevronRight, File, Folder, FolderOpen } from 'lucide-react'
 import { useState } from 'react'
+import { TechItem } from './types'
 
 interface FileTreeProps {
     data: TechItem[]
@@ -78,17 +78,6 @@ function FileTreeNode({ item, filter }: { item: TechItem; filter: string }) {
                 <span className={cn('text-white/80', isHovered && 'text-white font-medium')}>
                     {item.name}
                 </span>
-
-                {/* Details (Only for files on hover) */}
-                {item.type === 'file' && isHovered && (
-                    <motion.span
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="ml-auto text-xs text-white/40"
-                    >
-                        {item.level} • {item.description}
-                    </motion.span>
-                )}
             </div>
 
             {/* Children (Recursive) */}
