@@ -27,7 +27,7 @@ export const HeroSection = () => {
         if (gridRef.current) {
             gsap.to(gridRef.current, {
                 backgroundPosition: "50px 50px", 
-                duration: 4,                   
+                duration: 5,                   
                 repeat: -1,                      
                 ease: "none",                
             })
@@ -43,13 +43,15 @@ export const HeroSection = () => {
             <div className="absolute inset-0 z-0 overflow-hidden">
                 <div 
                     ref={gridRef}
-                    className="absolute inset-[-50%] w-[200%] h-[200%] opacity-10"
+                    className="absolute inset-[-50%] w-[200%] h-[200%]"
                     style={{
                         backgroundImage: `
-                            linear-gradient(to right, #ffffff 1px, transparent 1px),
-                            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+                            linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
                         `,
                         backgroundSize: '50px 50px', 
+                        maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
+                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)'
                     }}
                 />
                 
@@ -68,7 +70,7 @@ export const HeroSection = () => {
                 </h1>
                 <p 
                     ref={subtitleRef}
-                    className="text-white/50 text-sm md:text-base font-mono uppercase tracking-[0.2em] opacity-0"
+                    className="text-white/50 text-sm md:text-base font-mono uppercase select-none tracking-[0.2em] opacity-0"
                 >
                     Software Engineering Student
                 </p>
