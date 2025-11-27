@@ -1,7 +1,7 @@
-import { SmoothScroll } from '@/components/smooth-scroll'
-import { CustomCursor } from '@/components/ui/custom-cursor'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { SmoothScroll } from '@/components/smooth-scroll'
+import { CustomCursor } from '@/components/ui/custom-cursor'
 import './globals.css'
 
 const inter = Inter({
@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-    title: 'Developer Portfolio',
     description: 'High-end developer portfolio.',
+    title: 'Developer Portfolio',
 }
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en" className="dark">
+        <html className="dark" lang="en">
             <body
                 className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
             >

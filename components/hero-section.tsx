@@ -50,7 +50,8 @@ export function HeroSection() {
         const yTo = gsap.quickTo(nameRef.current, "y", { duration: 0.5, ease: "power3" })
 
         const handleMouseMove = (e: MouseEvent) => {
-            const { clientX, clientY, innerWidth, innerHeight } = window
+            const { clientX, clientY } = e
+            const { innerWidth, innerHeight } = window
             
             // Normalize mouse position (-1 to 1)
             const x = (clientX / innerWidth - 0.5) * 2
