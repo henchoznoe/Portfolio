@@ -10,16 +10,20 @@ export const DockFooter = () => {
 
     return (
         <div className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 flex h-24 items-end justify-center pb-8">
-
-            <motion.div
+            {/* Hit-area wrapper */}
+            <div
                 onMouseMove={(e) => mouseX.set(e.pageX)}
                 onMouseLeave={() => mouseX.set(Infinity)}
-                className="pointer-events-auto mx-auto flex h-16 items-end gap-4 rounded-full border border-white/10 bg-black/40 px-4 pb-3 backdrop-blur-2xl shadow-2xl"
+                className="pointer-events-auto flex h-24 items-end pb-3 px-4"
             >
-                <DockIcon mouseX={mouseX} icon={Github} label="GitHub" href="https://github.com/henchoznoe" />
-                <DockIcon mouseX={mouseX} icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/henchoznoe" />
-                <DockIcon mouseX={mouseX} icon={Mail} label="Email" href="mailto:henchoznoe@gmail.com" />
-            </motion.div>
+                <motion.div
+                    className="mx-auto flex h-16 items-end gap-4 rounded-full border border-white/10 bg-black/40 px-4 pb-3 backdrop-blur-2xl shadow-2xl"
+                >
+                    <DockIcon mouseX={mouseX} icon={Github} label="GitHub" href="https://github.com/henchoznoe" />
+                    <DockIcon mouseX={mouseX} icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/henchoznoe" />
+                    <DockIcon mouseX={mouseX} icon={Mail} label="Email" href="mailto:henchoznoe@gmail.com" />
+                </motion.div>
+            </div>
         </div>
     )
 }
