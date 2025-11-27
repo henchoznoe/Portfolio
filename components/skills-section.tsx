@@ -1,6 +1,5 @@
 'use client'
 
-import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { useRef } from 'react'
 
@@ -45,21 +44,9 @@ export function SkillsSection() {
 function SkillCard({ skill }: { skill: { name: string; category: string } }) {
     const cardRef = useRef<HTMLDivElement>(null)
     const iconRef = useRef<HTMLDivElement>(null)
-    
-    // Pour l'effet magnétique
-    const xTo = useRef<gsap.QuickToFunc | null>(null)
-    const yTo = useRef<gsap.QuickToFunc | null>(null)
-
-    // Initialisation GSAP
-    useGSAP(() => {
-        if (!iconRef.current) return
-        // Elasticité pour l'effet magnétique
-        xTo.current = gsap.quickTo(iconRef.current, "x", { duration: 0.4, ease: "power3.out" })
-        yTo.current = gsap.quickTo(iconRef.current, "y", { duration: 0.4, ease: "power3.out" })
-    }, { scope: cardRef })
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current || !xTo.current || !yTo.current) return
+        if (!cardRef.current || !iconRef.current) return
 
         const rect = cardRef.current.getBoundingClientRect()
         
@@ -80,19 +67,28 @@ function SkillCard({ skill }: { skill: { name: string; category: string } }) {
         const moveY = (y - centerY) * 0.25
         
         const limit = 15
-        xTo.current(Math.max(Math.min(moveX, limit), -limit))
-        yTo.current(Math.max(Math.min(moveY, limit), -limit))
+        const clampedX = Math.max(Math.min(moveX, limit), -limit)
+        const clampedY = Math.max(Math.min(moveY, limit), -limit)
+
+        gsap.to(iconRef.current, {
+            x: clampedX,
+            y: clampedY,
+            duration: 0.4,
+            ease: "power3.out",
+            overwrite: true
+        })
     }
 
     const handleMouseLeave = () => {
-        if (!xTo.current || !yTo.current) return
+        if (!iconRef.current) return
         
         // Retour élastique quand la souris quitte la carte
         gsap.to(iconRef.current, {
             x: 0,
             y: 0,
             duration: 0.8,
-            ease: "elastic.out(1, 0.3)"
+            ease: "elastic.out(1, 0.3)",
+            overwrite: true
         })
     }
 
