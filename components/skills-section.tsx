@@ -4,18 +4,14 @@ import gsap from 'gsap'
 import { useRef } from 'react'
 
 const skills = [
-    { name: 'React', category: 'Frontend', id: 'react' },
-    { name: 'Next.js', category: 'Frontend', id: 'nextjs' },
+    { name: 'React', category: 'Library', id: 'react' },
     { name: 'TypeScript', category: 'Language', id: 'ts' },
-    { name: 'TailwindCSS', category: 'Frontend', id: 'tailwind' },
-    { name: 'Node.js', category: 'Backend', id: 'nodejs' },
+    { name: 'Java', category: 'Language', id: 'java' },
+    { name: 'TailwindCSS', category: 'Library', id: 'tailwind' },
+    { name: 'Express.js', category: 'Framework', id: 'express' },
     { name: 'PostgreSQL', category: 'Database', id: 'postgres' },
     { name: 'Docker', category: 'DevOps', id: 'docker' },
-    { name: 'Git', category: 'Tool', id: 'git' },
-    { name: 'Framer Motion', category: 'Animation', id: 'workers' },
-    { name: 'Rust', category: 'Language', id: 'rust' },
-    { name: 'Python', category: 'Language', id: 'py' },
-    { name: 'AWS', category: 'Cloud', id: 'aws' },
+    { name: 'Git', category: 'VCS', id: 'git' },
 ]
 
 export function SkillsSection() {
@@ -113,7 +109,7 @@ function SkillCard({ skill }: { skill: { name: string; category: string; id: str
                     <img 
                         src={`https://skillicons.dev/icons?i=${skill.id}`} 
                         alt={skill.name} 
-                        className="size-6" 
+                        className="size-full" 
                         loading="lazy"
                     />
                 </div>
