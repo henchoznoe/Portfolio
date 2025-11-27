@@ -30,7 +30,7 @@ export function CustomCursor() {
         const onMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement
             if (target.closest('a, button, input, [role="button"]')) {
-                gsap.to(cursor, { scale: 2.5, duration: 0.3, ease: 'power2.out' })
+                gsap.to(cursor, { scale: 2, duration: 0.3, ease: 'power2.out' })
             }
         }
 
@@ -55,7 +55,7 @@ export function CustomCursor() {
     return (
         <div
             ref={cursorRef}
-            className="fixed top-0 left-0 size-6 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
+            className="fixed top-0 left-0 size-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
         />
     )
 }
