@@ -70,6 +70,24 @@ export const ProjectsSection = () => {
             })
         })
 
+        mm.add('(max-width: 767px)', () => {
+            const cards = gsap.utils.toArray('.project-card')
+            
+            cards.forEach((card: any) => {
+                gsap.from(card, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse',
+                    }
+                })
+            })
+        })
+
         return () => mm.revert()
     }, { scope: sectionRef })
 
@@ -93,7 +111,7 @@ export const ProjectsSection = () => {
                 {projects.map((project) => (
                     <div
                         key={project.id}
-                        className="w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
+                        className="project-card w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
                     >
                         <div className="relative w-full h-auto md:h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
                             <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
