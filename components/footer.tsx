@@ -64,18 +64,19 @@ export const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 border-t border-white/10 pt-12">
                     
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Navigation</h3>
-                        <nav className="flex flex-col gap-2">
-                            <FooterLink href="/">Home</FooterLink>
-                            <FooterLink href="#projects">Projects</FooterLink>
-                            <FooterLink href="#about">About</FooterLink>
-                        </nav>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Services</h3>
+                        <ul className="flex flex-col gap-2">
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Web Development</li>
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">UI Engineering</li>
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Creative Coding</li>
+                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Motion Design</li>
+                        </ul> 
                     </div>
 
                     <div className="flex flex-col gap-4">
                         <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Contact</h3>
                         <div className="flex flex-col gap-2">
-                            <FooterLink href="mailto:henchoznoe@gmail.com">henchoznoe@gmail.com</FooterLink>
+                            <FooterLink href="mailto:henchoznoe@gmail.com" external>henchoznoe@gmail.com</FooterLink>
                             <p className="text-white/80 font-mono text-sm">Fribourg, Switzerland</p>
                         </div>
                     </div>

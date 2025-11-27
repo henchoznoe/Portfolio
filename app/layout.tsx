@@ -5,7 +5,7 @@ import { CustomCursor } from '@/components/ui/custom-cursor'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
-import { PropsWithChildren } from 'react'
+import type { PropsWithChildren } from 'react'
 import './globals.css'
 
 const inter = Inter({
@@ -26,7 +26,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
     return (
         <html className="dark" lang="en">
-            <body className={cn(inter.variable, jetbrainsMono.variable, 'antialiased bg-background text-foreground')}>
+            <body
+                className={cn(
+                    inter.variable,
+                    jetbrainsMono.variable,
+                    'antialiased bg-background text-foreground',
+                )}
+            >
                 <SmoothScroll />
                 <CustomCursor />
                 {children}
