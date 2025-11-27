@@ -1,4 +1,4 @@
-import { DockFooter } from '@/components/dock-footer'
+import { DockMenu } from '@/components/dock-menu'
 import { Footer } from '@/components/footer'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 <CustomCursor />
                 {children}
                 <Footer />
-                <DockFooter />
+                <DockMenu />
             </body>
         </html>
     )
