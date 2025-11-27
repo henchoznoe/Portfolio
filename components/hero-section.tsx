@@ -80,7 +80,7 @@ export function HeroSection() {
                 {/* Name (Hero) */}
                 <h1 
                     ref={nameRef}
-                    className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 select-none mb-6"
+                    className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 select-none mb-6"
                 >
                     Noé Henchoz
                 </h1>

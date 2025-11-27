@@ -11,37 +11,29 @@ gsap.registerPlugin(ScrollTrigger)
 
 const projects = [
     {
-        id: '01',
-        year: '2024',
-        title: 'E-Commerce Platform',
-        description: 'A high-performance headless e-commerce solution built with Next.js and Shopify. Features real-time inventory, AI-powered recommendations, and a seamless checkout experience.',
-        stack: ['Next.js', 'Shopify', 'Tailwind', 'Redis'],
+        id: 1,
+        year: '20xx',
+        title: 'Project Title',
+        description: 'Here is a description of the project. It can be a bit long, but not too long.',
+        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
         color: 'from-blue-500/20 to-cyan-500/20',
     },
     {
-        id: '02',
-        year: '2023',
-        title: 'SaaS Dashboard',
-        description: 'Comprehensive analytics dashboard for a fintech startup. Handles millions of data points with D3.js visualizations and real-time WebSocket updates.',
-        stack: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
+        id: 2,
+        year: '20xx',
+        title: 'Project Title',
+        description: 'Here is a description of the project. It can be a bit long, but not too long.',
+        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
         color: 'from-purple-500/20 to-pink-500/20',
     },
     {
-        id: '03',
-        year: '2023',
-        title: 'AI Content Generator',
-        description: 'Generative AI application for marketing copy. Integrates OpenAI API with a custom fine-tuned model and a collaborative editor interface.',
-        stack: ['OpenAI', 'Python', 'FastAPI', 'React'],
+        id: 3,
+        year: '20xx',
+        title: 'Project Title',
+        description: 'Here is a description of the project. It can be a bit long, but not too long.',
+        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
         color: 'from-emerald-500/20 to-teal-500/20',
-    },
-    {
-        id: '04',
-        year: '2022',
-        title: 'Social Network',
-        description: 'Decentralized social networking protocol. Focuses on privacy and user data ownership with end-to-end encryption.',
-        stack: ['Web3', 'Solidity', 'IPFS', 'Next.js'],
-        color: 'from-orange-500/20 to-red-500/20',
-    },
+    }
 ]
 
 export function ProjectsSection() {
@@ -88,12 +80,12 @@ export function ProjectsSection() {
                 {/* Intro / Title Card (Optional, or just part of the flow) */}
                 <div className="w-full md:w-[40vw] h-[50vh] md:h-screen flex flex-col justify-center px-8 md:pl-20 shrink-0">
                     <h2 className="text-6xl md:text-9xl font-bold text-white mb-8">
-                        Selected
-                        <br />
-                        <span className="text-white/20">Works</span>
+                        <span className="text-white/20">My</span>
+                        <br/>
+                        Projects
                     </h2>
                     <p className="text-white/60 max-w-md text-lg">
-                        A collection of digital products crafted with precision and passion.
+                        Here are some of the projects I've worked on. Check them out!
                     </p>
                 </div>
 
@@ -101,7 +93,7 @@ export function ProjectsSection() {
                 {projects.map((project) => (
                     <div
                         key={project.id}
-                        className="w-full md:w-[85vw] h-[80vh] md:h-screen flex items-center justify-center p-4 md:p-10 shrink-0"
+                        className="w-full md:w-[60vw] h-[80vh] md:h-screen flex items-center justify-center p-4 md:p-10 shrink-0"
                     >
                         <div className="relative w-full h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
                             {/* Background Image Placeholder */}
