@@ -74,13 +74,6 @@ export function HeroSection() {
                 </p>
             </div>
 
-            {/* Bottom Scroll Indicator */}
-            <div 
-                ref={scrollRef}
-                className="absolute bottom-10 flex flex-col items-center gap-2 opacity-0"
-            >
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 select-none text-[10px] uppercase tracking-[0.2em]">Scroll Down</span>
-            </div>
         </section>
     )
 }
