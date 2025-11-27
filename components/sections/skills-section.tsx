@@ -36,11 +36,8 @@ export const SkillsSection = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="mb-24">
                     <h2 className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 tracking-tight">
-                        Expertise
+                        Skills
                     </h2>
-                    <p className="text-white/40 text-xl font-light max-w-2xl">
-                        The technologies I work with.
-                    </p>
                 </div>
 
                 <div 
@@ -74,7 +71,7 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
         const y = e.clientY - rect.top
 
         // Magnetic effect: tight follow
-        const moveX = (x - centerX) * 0.25 // Increased from 0.3 for tighter follow
+        const moveX = (x - centerX) * 0.25
         const moveY = (y - centerY) * 0.25
 
         // Parallax effect: text moves slower and "behind"

@@ -12,27 +12,31 @@ gsap.registerPlugin(ScrollTrigger)
 const projects = [
     {
         id: 1,
-        year: '20xx',
-        title: 'Project Title',
-        description: 'Here is a description of the project. It can be a bit long, but not too long.',
-        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
-        color: 'from-blue-500/20 to-cyan-500/20',
+        year: '2025',
+        title: 'Portfolio',
+        description: 'The portfolio you are currently viewing built with Next.js, Tailwind CSS, Framer Motion and more.',
+        stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
+        color: 'from-purple-500/20 to-pink-500/20',
+        github: 'https://github.com/henchoznoe/Portfolio',
+        external: 'https://henchoznoe.com/'
     },
     {
         id: 2,
-        year: '20xx',
-        title: 'Project Title',
-        description: 'Here is a description of the project. It can be a bit long, but not too long.',
-        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
-        color: 'from-purple-500/20 to-pink-500/20',
+        year: '2025',
+        title: 'Express Template',
+        description: 'Production-ready Express template tailored with TypeScript, Prisma, InversifyJS, Zod & Docker.',
+        stack: ['TypeScript', 'Prisma', 'Docker', 'InversifyJS'],
+        color: 'from-blue-500/20 to-cyan-500/20',
+        github: 'https://github.com/henchoznoe/ExpressTemplate'
     },
     {
         id: 3,
-        year: '20xx',
-        title: 'Project Title',
-        description: 'Here is a description of the project. It can be a bit long, but not too long.',
-        stack: ['Stack 1', 'Stack 2', 'Stack 3'],
+        year: '2025',
+        title: 'Git Multi Account Setup',
+        description: 'Automate Git & SSH setup for multiple accounts (GitHub + GitLab) with smart email switching hooks.',
+        stack: ['Bash', 'Git', 'SSH'],
         color: 'from-emerald-500/20 to-teal-500/20',
+        github: 'https://github.com/henchoznoe/GitMultiAccountSetup'   
     }
 ]
 
@@ -60,7 +64,7 @@ export const ProjectsSection = () => {
                     pin: true,
                     scrub: 1,
                     start: 'top top',
-                    end: () => `+=${totalWidth}`, // Scroll distance proportional to track width
+                    end: () => `+=${totalWidth}`,
                     invalidateOnRefresh: true,
                 },
             })
@@ -92,15 +96,11 @@ export const ProjectsSection = () => {
                         className="w-full md:w-[60vw] h-[80vh] md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
                     >
                         <div className="relative w-full h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
-                            {/* Background Image Placeholder */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             
-                            {/* Content Overlay */}
                             <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-                                {/* Glass Panel */}
                                 <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl max-w-3xl overflow-hidden">
-                                    {/* Glow effect inside card */}
                                     <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
                                     <div className="flex items-start justify-between mb-6">
@@ -108,12 +108,16 @@ export const ProjectsSection = () => {
                                             {project.year}
                                         </div>
                                         <div className="flex gap-4">
-                                            <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors">
-                                                <Github size={20} />
-                                            </Button>
-                                            <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors">
-                                                <ExternalLink size={20} />
-                                            </Button>
+                                            {project.github && (
+                                                <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.github, '_blank')}>
+                                                    <Github size={20} />
+                                                </Button>
+                                            )}
+                                            {project.external && (
+                                                <Button size="icon" variant="outline" className="rounded-full w-12 h-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.external, '_blank')}>
+                                                    <ExternalLink size={20} />
+                                                </Button>
+                                            )}
                                         </div>
                                     </div>
 
