@@ -93,7 +93,7 @@ export function ProjectsSection() {
                 {projects.map((project) => (
                     <div
                         key={project.id}
-                        className="w-full md:w-[60vw] h-[80vh] md:h-screen flex items-center justify-center p-4 md:p-10 shrink-0"
+                        className="w-full md:w-[60vw] h-[80vh] md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
                     >
                         <div className="relative w-full h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
                             {/* Background Image Placeholder */}

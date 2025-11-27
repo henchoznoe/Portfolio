@@ -63,7 +63,7 @@ function DockIcon({
             <motion.div
                 ref={ref}
                 style={{ width }}
-                className="aspect-square flex items-center justify-center rounded-full bg-white/5 border border-white/5 hover:bg-white/10 cursor-pointer"
+                className="aspect-square flex items-center justify-center rounded-full bg-white/5 border border-white/5 hover:bg-white/10 cursor-none"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 onClick={() => window.open(href, '_blank')}
