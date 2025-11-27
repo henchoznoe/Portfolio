@@ -19,7 +19,7 @@ export const SkillsSection = () => {
     const containerRef = useRef<HTMLDivElement>(null)
 
     const handleGlobalMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!containerRef.current) return
+        if (!containerRef.current || window.innerWidth < 768) return
         const cards = containerRef.current.getElementsByClassName('skill-card')
 
         for (const card of cards) {
@@ -43,7 +43,7 @@ export const SkillsSection = () => {
                 <div 
                     ref={containerRef}
                     onMouseMove={handleGlobalMouseMove}
-                    className="group relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    className="group relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
                     {skills.map((skill, index) => (
                         <SkillCard key={index} skill={skill} />
@@ -61,7 +61,7 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
     const { contextSafe } = useGSAP({ scope: cardRef })
 
     const handleLocalMouseMove = contextSafe((e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current || !iconRef.current || !textRef.current) return
+        if (!cardRef.current || !iconRef.current || !textRef.current || window.innerWidth < 768) return
 
         const rect = cardRef.current.getBoundingClientRect()
         const centerX = rect.width / 2
@@ -118,11 +118,11 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
             ref={cardRef}
             onMouseMove={handleLocalMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="skill-card group relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/[0.01] border border-white/5 overflow-hidden transition-colors duration-300 hover:bg-white/[0.03]"
+            className="skill-card group relative flex flex-col items-center justify-center p-4 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 overflow-hidden transition-colors duration-300 md:hover:bg-white/[0.03]"
         >
             {/* Global Spotlight (reveals borders) */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="pointer-events-none absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                     background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%)`,
                 }}
@@ -130,7 +130,7 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
 
             {/* Inset Glow / Spotlight for active state */}
             <div 
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="pointer-events-none absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                     background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%)`,
                 }}
@@ -139,21 +139,21 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
             <div className="relative z-10 flex flex-col items-center gap-4 pointer-events-none">
                 <div 
                     ref={iconRef} 
-                    className="size-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 shadow-sm will-change-transform"
+                    className="size-12 md:size-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 shadow-sm will-change-transform"
                 >
                     <img 
                         src={`https://skillicons.dev/icons?i=${skill.id}`} 
                         alt={skill.name} 
-                        className="size-9"
+                        className="size-7 md:size-9"
                         loading="lazy"
                     />
                 </div>
                 
                 <div ref={textRef} className="text-center will-change-transform">
-                    <h3 className="text-lg font-medium text-white/90">
+                    <h3 className="text-sm md:text-lg font-medium text-white/90">
                         {skill.name}
                     </h3>
-                    <p className="text-xs text-white/40 mt-1 font-mono uppercase tracking-wider">
+                    <p className="text-[10px] md:text-xs text-white/40 mt-1 font-mono uppercase tracking-wider">
                         {skill.category}
                     </p>
                 </div>
@@ -161,7 +161,7 @@ const SkillCard = ({ skill }: { skill: { name: string; category: string; id: str
             
             {/* Border Mask */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="pointer-events-none absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                     background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.1), transparent 40%)`,
                     maskImage: 'linear-gradient(black, black) content-box, linear-gradient(black, black)',
