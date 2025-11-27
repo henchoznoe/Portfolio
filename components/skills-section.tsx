@@ -4,18 +4,18 @@ import gsap from 'gsap'
 import { useRef } from 'react'
 
 const skills = [
-    { name: 'React', category: 'Frontend' },
-    { name: 'Next.js', category: 'Frontend' },
-    { name: 'TypeScript', category: 'Language' },
-    { name: 'TailwindCSS', category: 'Frontend' },
-    { name: 'Node.js', category: 'Backend' },
-    { name: 'PostgreSQL', category: 'Database' },
-    { name: 'Docker', category: 'DevOps' },
-    { name: 'Git', category: 'Tool' },
-    { name: 'Framer Motion', category: 'Animation' },
-    { name: 'Rust', category: 'Language' },
-    { name: 'Python', category: 'Language' },
-    { name: 'AWS', category: 'Cloud' },
+    { name: 'React', category: 'Frontend', id: 'react' },
+    { name: 'Next.js', category: 'Frontend', id: 'nextjs' },
+    { name: 'TypeScript', category: 'Language', id: 'ts' },
+    { name: 'TailwindCSS', category: 'Frontend', id: 'tailwind' },
+    { name: 'Node.js', category: 'Backend', id: 'nodejs' },
+    { name: 'PostgreSQL', category: 'Database', id: 'postgres' },
+    { name: 'Docker', category: 'DevOps', id: 'docker' },
+    { name: 'Git', category: 'Tool', id: 'git' },
+    { name: 'Framer Motion', category: 'Animation', id: 'workers' },
+    { name: 'Rust', category: 'Language', id: 'rust' },
+    { name: 'Python', category: 'Language', id: 'py' },
+    { name: 'AWS', category: 'Cloud', id: 'aws' },
 ]
 
 export function SkillsSection() {
@@ -41,7 +41,7 @@ export function SkillsSection() {
     )
 }
 
-function SkillCard({ skill }: { skill: { name: string; category: string } }) {
+function SkillCard({ skill }: { skill: { name: string; category: string; id: string } }) {
     const cardRef = useRef<HTMLDivElement>(null)
     const iconRef = useRef<HTMLDivElement>(null)
 
@@ -110,8 +110,12 @@ function SkillCard({ skill }: { skill: { name: string; category: string } }) {
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center gap-4 pointer-events-none">
                 <div ref={iconRef} className="size-12 rounded-xl bg-white/10 flex items-center justify-center shadow-inner border border-white/5">
-                    {/* Placeholder for Icon */}
-                    <div className="size-6 rounded-full bg-white/20" />
+                    <img 
+                        src={`https://skillicons.dev/icons?i=${skill.id}`} 
+                        alt={skill.name} 
+                        className="size-6" 
+                        loading="lazy"
+                    />
                 </div>
                 <div className="text-center">
                     <h3 className="text-sm font-mono font-medium text-white/90 min-h-[20px]">
