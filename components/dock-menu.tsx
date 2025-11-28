@@ -1,22 +1,29 @@
 'use client'
 
+import { useLanguage } from '@/lib/context/language-context'
 import { cn } from '@/lib/utils'
 import { Github, Globe, Linkedin, Mail } from 'lucide-react'
 import { useState } from 'react'
 
 export const DockMenu = () => {
+    const { t, setLanguage, language } = useLanguage()
+
+    const toggleLanguage = () => {
+        setLanguage(language === 'en' ? 'fr' : 'en')
+    }
+
     return (
         <div className="pointer-events-none fixed top-4 right-4 md:top-8 md:right-8 z-50 flex items-start justify-end">
             <div className="pointer-events-auto flex items-start px-2 md:px-4">
                 <div className="mx-auto flex items-center gap-2 md:gap-3 rounded-full border border-white/10 bg-black/40 p-1.5 md:p-2 backdrop-blur-2xl shadow-2xl">
-                    <DockIcon icon={Github} label="GitHub" href="https://github.com/henchoznoe" />
-                    <DockIcon icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/henchoznoe" />
-                    <DockIcon icon={Mail} label="Email" href="mailto:henchoznoe@gmail.com" />
+                    <DockIcon icon={Github} label={t.dock.github} href="https://github.com/henchoznoe" />
+                    <DockIcon icon={Linkedin} label={t.dock.linkedin} href="https://linkedin.com/in/henchoznoe" />
+                    <DockIcon icon={Mail} label={t.dock.email} href="mailto:henchoznoe@gmail.com" />
 
                     {/* Separator */}
                     <div className="h-4 w-px bg-white/10 mx-0.5 md:mx-1" />
 
-                    <DockIcon icon={Globe} label="Translate" onClick={() => console.log('Translate clicked')} />
+                    <DockIcon icon={Globe} label={t.dock.translate} onClick={toggleLanguage} />
                 </div>
             </div>
         </div>

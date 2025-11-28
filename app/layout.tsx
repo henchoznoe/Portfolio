@@ -2,6 +2,7 @@ import { DockMenu } from '@/components/dock-menu'
 import { Footer } from '@/components/footer'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
+import { LanguageProvider } from '@/lib/context/language-context'
 import { cn } from '@/lib/utils'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
@@ -34,12 +35,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
                     'antialiased bg-background text-foreground',
                 )}
             >
-                <SmoothScroll />
-                <CustomCursor />
-                {children}
-                <Footer />
-                <DockMenu />
-                <SpeedInsights />
+                <LanguageProvider>
+                    <SmoothScroll />
+                    <CustomCursor />
+                    {children}
+                    <Footer />
+                    <DockMenu />
+                    <SpeedInsights />
+                </LanguageProvider>
             </body>
         </html>
     )

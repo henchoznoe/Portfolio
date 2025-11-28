@@ -1,11 +1,13 @@
 'use client'
 
+import { useLanguage } from '@/lib/context/language-context'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 export const Footer = () => {
+    const { t } = useLanguage()
 
     const [time, setTime] = useState<string>('')
     const [timezone, setTimezone] = useState<string>('')
@@ -63,39 +65,39 @@ export const Footer = () => {
                         ref={titleRef}
                         className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-white/40 select-none"
                     >
-                        LET'S TALK
+                        {t.footer.title}
                     </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 border-t border-white/10 pt-12">
 
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Interests</h3>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">{t.footer.interests.title}</h3>
                         <ul className="flex flex-col gap-2">
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Web Development</li>
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Software Engineering</li>
-                            <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Application Development</li>
+                            {t.footer.interests.items.map((item, index) => (
+                                <li key={index} className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">{item}</li>
+                            ))}
                         </ul>
                     </div>
 
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Contact</h3>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">{t.footer.contact.title}</h3>
                         <div className="flex flex-col gap-2">
                             <FooterLink href="mailto:henchoznoe@gmail.com" external>henchoznoe@gmail.com</FooterLink>
-                            <p className="text-white/80 font-mono text-sm">Fribourg, Switzerland</p>
+                            <p className="text-white/80 font-mono text-sm">{t.footer.contact.location}</p>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-4">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Socials</h3>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">{t.footer.socials.title}</h3>
                         <div className="flex flex-col gap-2">
-                            <FooterLink href="https://github.com/henchoznoe" external>GitHub</FooterLink>
-                            <FooterLink href="https://linkedin.com/in/henchoznoe" external>LinkedIn</FooterLink>
+                            <FooterLink href="https://github.com/henchoznoe" external>{t.dock.github}</FooterLink>
+                            <FooterLink href="https://linkedin.com/in/henchoznoe" external>{t.dock.linkedin}</FooterLink>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-4 md:items-end">
-                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Local time</h3>
+                        <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">{t.footer.time.title}</h3>
                         <div className="flex items-center gap-3 font-mono text-xl text-white/90">
                             {time || '--:--:--'}
                             <span className="relative flex h-2 w-2">
@@ -105,12 +107,12 @@ export const Footer = () => {
                             <span className="text-white/30 text-sm">UTC {timezone}</span>
                         </div>
                         <p className="text-white/40 text-xs font-mono text-left md:text-right italic">
-                            Fribourg, Switzerland
+                            {t.footer.time.location}
                         </p>
 
                         <p className="text-white/20 text-xs font-mono mt-auto pt-8">
                             © {new Date().getFullYear()} <a href="https://henchoznoe.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Noé Henchoz</a>. <br/>
-                            Built with Next.js & Tailwind.
+                            {t.footer.time.built}
                         </p>
                     </div>
                 </div>

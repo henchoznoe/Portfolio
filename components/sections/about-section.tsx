@@ -1,5 +1,6 @@
 'use client'
 
+import { useLanguage } from '@/lib/context/language-context'
 import { cn } from '@/lib/utils'
 import { motion, Transition, type Variants } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
@@ -104,6 +105,7 @@ const BentoCard = ({
 
 export const AboutSection = () => {
     const [hoveredId, setHoveredId] = useState<string | null>(null)
+    const { t } = useLanguage()
 
     return (
         <section className="relative mx-auto w-full max-w-7xl px-6 py-32">
@@ -112,8 +114,8 @@ export const AboutSection = () => {
                     <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">
                         <BentoCard
                             id="tech"
-                            title="Modern Stack"
-                            description="Building scalable web apps with the React ecosystem, TypeScript, and TailwindCSS."
+                            title={t.about.tech.title}
+                            description={t.about.tech.description}
                             icon={Code2}
                             className="md:w-7/12"
                             hoveredId={hoveredId}
@@ -121,8 +123,8 @@ export const AboutSection = () => {
                         />
                         <BentoCard
                             id="responsive"
-                            title="Clean Code"
-                            description="I strictly follow SOLID principles and KISS. Code must be maintainable and readable."
+                            title={t.about.clean.title}
+                            description={t.about.clean.description}
                             icon={Sparkles}
                             className="md:w-5/12 bg-linear-to-br from-blue-500/10 to-purple-500/10"
                             hoveredId={hoveredId}
@@ -133,8 +135,8 @@ export const AboutSection = () => {
                     <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">
                         <BentoCard
                             id="performance"
-                            title="Swiss Crafted"
-                            description="Based in Fribourg. Bringing precision and reliability to every project I touch."
+                            title={t.about.swiss.title}
+                            description={t.about.swiss.description}
                             icon={MapPin}
                             className="md:w-5/12 bg-linear-to-br from-emerald-500/10 to-teal-500/10"
                             hoveredId={hoveredId}
@@ -142,8 +144,8 @@ export const AboutSection = () => {
                         />
                         <BentoCard
                             id="ui"
-                            title="Engineering Student"
-                            description="Constantly learning and evolving. Bridging the gap between theory and practical application."
+                            title={t.about.student.title}
+                            description={t.about.student.description}
                             icon={GraduationCap}
                             className="md:w-7/12"
                             hoveredId={hoveredId}
@@ -154,8 +156,8 @@ export const AboutSection = () => {
 
                 <BentoCard
                     id="profile"
-                    title="Beyond the Code"
-                    description="Beyond the screen, I'm exploring emerging tech or maintaining a healthy lifestyle through sports.."
+                    title={t.about.profile.title}
+                    description={t.about.profile.description}
                     className="min-h-[400px] w-full lg:w-4/12 lg:min-h-full p-0"
                     hoveredId={hoveredId}
                     setHoveredId={setHoveredId}
