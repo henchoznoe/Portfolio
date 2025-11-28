@@ -156,28 +156,28 @@ export const AboutSection = () => {
                     id="profile"
                     title="Beyond the Code"
                     description="Beyond the screen, I'm exploring emerging tech or maintaining a healthy lifestyle through sports.."
-                    className="min-h-[400px] w-full lg:w-4/12 lg:min-h-full"
+                    className="min-h-[400px] w-full lg:w-4/12 lg:min-h-full p-0"
                     hoveredId={hoveredId}
                     setHoveredId={setHoveredId}
                 >
-                    <div className="flex h-full flex-col justify-end">
-                        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-transparent to-transparent" />
+                    <div className="absolute inset-2 md:inset-3 rounded-2xl overflow-hidden">
+                        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
                         <Image 
                             src="/assets/img/me.png" 
                             alt="Noé Henchoz"
                             fill
-                            className="object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-80"
+                            className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
                         /> 
                         
-                        <div className="relative z-20">
-                            <div className="mb-4 flex size-16 items-center justify-center rounded-2xl bg-white text-black">
-                                <User size={32} />
+                        <div className="relative z-20 h-full flex flex-col justify-end p-6">
+                            <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md text-white border border-white/20">
+                                <User size={24} />
                             </div>
-                            <h3 className="mb-2 text-3xl font-medium text-white">
+                            <h3 className="mb-2 text-2xl font-medium text-white">
                                 The Developer
                             </h3>
-                            <p className="text-white/70">
+                            <p className="text-white/70 text-sm leading-relaxed">
                                 Combining technical expertise with a creative approach to software engineering.
                             </p>
                         </div>
