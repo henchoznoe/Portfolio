@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { motion, type Variants } from 'framer-motion'
+import { motion, Transition, type Variants } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
 import { Code2, GraduationCap, MapPin, Sparkles, User } from 'lucide-react'
 import Image from 'next/image'
@@ -62,7 +62,7 @@ const BentoCard = ({
             variants={cardVariants}
             initial="idle"
             animate={isHovered ? 'hover' : isDimmed ? 'dimmed' : 'idle'}
-            transition={SPRING_CONFIG}
+            transition={SPRING_CONFIG as Transition}
             onMouseEnter={() => setHoveredId(id)}
             onMouseLeave={() => setHoveredId(null)}
             className={cn(
@@ -174,12 +174,8 @@ export const AboutSection = () => {
                             <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md text-white border border-white/20">
                                 <User size={24} />
                             </div>
-                            <h3 className="mb-2 text-2xl font-medium text-white">
-                                The Developer
-                            </h3>
-                            <p className="text-white/70 text-sm leading-relaxed">
-                                Combining technical expertise with a creative approach to software engineering.
-                            </p>
+                            
+                            
                         </div>
                     </div>
                 </BentoCard>
