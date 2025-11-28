@@ -3,6 +3,7 @@ import { Footer } from '@/components/footer'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { cn } from '@/lib/utils'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 {children}
                 <Footer />
                 <DockMenu />
+                <SpeedInsights />
             </body>
         </html>
     )
