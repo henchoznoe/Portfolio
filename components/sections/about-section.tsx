@@ -3,7 +3,8 @@
 import { cn } from '@/lib/utils'
 import { motion, type Variants } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
-import { Code2, Globe, Laptop, Palette, Zap } from 'lucide-react'
+import { Code2, GraduationCap, MapPin, Sparkles, User } from 'lucide-react'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const SPRING_CONFIG = {
@@ -112,7 +113,7 @@ export const AboutSection = () => {
                         <BentoCard
                             id="tech"
                             title="Modern Stack"
-                            description="Leveraging the latest features of Next.js 15, React 19, and Tailwind for scalable applications."
+                            description="Building scalable web apps with the React ecosystem, TypeScript, and TailwindCSS."
                             icon={Code2}
                             className="md:w-7/12"
                             hoveredId={hoveredId}
@@ -120,9 +121,9 @@ export const AboutSection = () => {
                         />
                         <BentoCard
                             id="responsive"
-                            title="Responsive"
-                            description="Flawless experiences across all devices, from 4K desktops to mobile screens."
-                            icon={Laptop}
+                            title="Clean Code"
+                            description="I strictly follow SOLID principles and KISS. Code must be maintainable and readable."
+                            icon={Sparkles}
                             className="md:w-5/12 bg-gradient-to-br from-blue-500/10 to-purple-500/10"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
@@ -132,18 +133,18 @@ export const AboutSection = () => {
                     <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">
                         <BentoCard
                             id="performance"
-                            title="Performance"
-                            description="Optimized for Core Web Vitals. Fast loads, smooth animations, and efficient code."
-                            icon={Zap}
+                            title="Swiss Crafted"
+                            description="Based in Fribourg. Bringing precision and reliability to every project I touch."
+                            icon={MapPin}
                             className="md:w-5/12 bg-gradient-to-br from-emerald-500/10 to-teal-500/10"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
                         <BentoCard
                             id="ui"
-                            title="UI/UX Design"
-                            description="Crafting intuitive interfaces where aesthetics meet functionality."
-                            icon={Palette}
+                            title="Engineering Student"
+                            description="Constantly learning and evolving. Bridging the gap between theory and practical application."
+                            icon={GraduationCap}
                             className="md:w-7/12"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
@@ -153,8 +154,8 @@ export const AboutSection = () => {
 
                 <BentoCard
                     id="profile"
-                    title="The Developer"
-                    description="Based in Switzerland, I'm passionate about building digital products that solve real-world problems."
+                    title="Beyond the Code"
+                    description="Beyond the screen, I'm exploring emerging tech or maintaining a healthy lifestyle through sports.."
                     className="min-h-[400px] w-full lg:w-4/12 lg:min-h-full"
                     hoveredId={hoveredId}
                     setHoveredId={setHoveredId}
@@ -162,21 +163,19 @@ export const AboutSection = () => {
                     <div className="flex h-full flex-col justify-end">
                         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-transparent to-transparent" />
                         
-                        {/* Placeholder for your image - Un-comment and adjust when you have the file */}
-                        {/* <Image 
-                            src="/me.jpg" 
+                        <Image 
+                            src="/assets/img/me.png" 
                             alt="Noé Henchoz"
                             fill
                             className="object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-80"
                         /> 
-                        */}
                         
                         <div className="relative z-20">
                             <div className="mb-4 flex size-16 items-center justify-center rounded-2xl bg-white text-black">
-                                <Globe size={32} />
+                                <User size={32} />
                             </div>
                             <h3 className="mb-2 text-3xl font-medium text-white">
-                                Global Mindset
+                                The Developer
                             </h3>
                             <p className="text-white/70">
                                 Combining technical expertise with a creative approach to software engineering.
