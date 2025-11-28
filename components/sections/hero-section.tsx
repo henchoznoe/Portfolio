@@ -1,6 +1,7 @@
 'use client'
 
 import { useGSAP } from '@gsap/react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import gsap from 'gsap'
 import { useRef } from 'react'
 
@@ -10,6 +11,11 @@ export const HeroSection = () => {
     const nameRef = useRef<HTMLHeadingElement>(null)
     const subtitleRef = useRef<HTMLParagraphElement>(null)
     const gridRef = useRef<HTMLDivElement>(null)
+
+    const { scrollY } = useScroll()
+    const opacity = useTransform(scrollY, [0, 300], [1, 0])
+    const scale = useTransform(scrollY, [0, 300], [1, 0.8])
+    const filter = useTransform(scrollY, [0, 300], ['blur(0px)', 'blur(10px)'])
 
     useGSAP(() => {
         const tl = gsap.timeline()
@@ -61,7 +67,10 @@ export const HeroSection = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none" />
             </div>
 
-            <div className="relative z-10 flex flex-col items-center text-center">
+            <motion.div 
+                style={{ opacity, scale, filter }}
+                className="relative z-10 flex flex-col items-center text-center"
+            >
                 <h1 
                     ref={nameRef}
                     className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 select-none mb-6"
@@ -74,7 +83,7 @@ export const HeroSection = () => {
                 >
                     Software Engineering Student
                 </p>
-            </div>
+            </motion.div>
         </section>
     )
 }

@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils'
 import { motion, Transition, type Variants } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
-import { Code2, GraduationCap, MapPin, Sparkles, User } from 'lucide-react'
+import { Code2, GraduationCap, MapPin, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -170,13 +170,6 @@ export const AboutSection = () => {
                             className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
                         /> 
                         
-                        <div className="relative z-20 h-full flex flex-col justify-end p-6">
-                            <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md text-white border border-white/20">
-                                <User size={24} />
-                            </div>
-                            
-                            
-                        </div>
                     </div>
                 </BentoCard>
             </div>
