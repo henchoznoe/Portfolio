@@ -72,7 +72,7 @@ const BentoCard = ({
         >
             <div
                 className={cn(
-                    'absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-500',
+                    'absolute inset-0 bg-linear-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-500',
                     isHovered && 'opacity-100',
                 )}
             />
@@ -124,7 +124,7 @@ export const AboutSection = () => {
                             title="Clean Code"
                             description="I strictly follow SOLID principles and KISS. Code must be maintainable and readable."
                             icon={Sparkles}
-                            className="md:w-5/12 bg-gradient-to-br from-blue-500/10 to-purple-500/10"
+                            className="md:w-5/12 bg-linear-to-br from-blue-500/10 to-purple-500/10"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -136,7 +136,7 @@ export const AboutSection = () => {
                             title="Swiss Crafted"
                             description="Based in Fribourg. Bringing precision and reliability to every project I touch."
                             icon={MapPin}
-                            className="md:w-5/12 bg-gradient-to-br from-emerald-500/10 to-teal-500/10"
+                            className="md:w-5/12 bg-linear-to-br from-emerald-500/10 to-teal-500/10"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -161,15 +161,15 @@ export const AboutSection = () => {
                     setHoveredId={setHoveredId}
                 >
                     <div className="absolute inset-2 md:inset-3 rounded-2xl overflow-hidden">
-                        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        
-                        <Image 
-                            src="/assets/img/me-ia.png" 
+                        <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+
+                        <Image
+                            src="/assets/img/me-ia.png"
                             alt="Noé Henchoz"
                             fill
                             className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
-                        /> 
-                        
+                        />
+
                     </div>
                 </BentoCard>
             </div>

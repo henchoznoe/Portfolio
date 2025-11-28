@@ -5,7 +5,7 @@ import { SkillsSection } from '@/components/sections/skills-section'
 
 export default function Home() {
     return (
-        <main className="min-h-[100dvh] bg-black text-white selection:bg-white/20">
+        <main className="min-h-dvh bg-black text-white selection:bg-white/20">
             <HeroSection />
             <AboutSection />
             <ProjectsSection />

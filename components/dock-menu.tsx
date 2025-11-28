@@ -12,10 +12,10 @@ export const DockMenu = () => {
                     <DockIcon icon={Github} label="GitHub" href="https://github.com/henchoznoe" />
                     <DockIcon icon={Linkedin} label="LinkedIn" href="https://linkedin.com/in/henchoznoe" />
                     <DockIcon icon={Mail} label="Email" href="mailto:henchoznoe@gmail.com" />
-                    
+
                     {/* Separator */}
-                    <div className="h-4 w-[1px] bg-white/10 mx-0.5 md:mx-1" />
-                    
+                    <div className="h-4 w-px bg-white/10 mx-0.5 md:mx-1" />
+
                     <DockIcon icon={Globe} label="Translate" onClick={() => console.log('Translate clicked')} />
                 </div>
             </div>

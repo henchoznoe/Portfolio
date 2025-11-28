@@ -23,7 +23,7 @@ export const Footer = () => {
                 hour12: false,
             }
             setTime(now.toLocaleTimeString('en-US', options))
-            
+
             // getTimezoneOffset returns minutes BEHIND UTC, so we negate it
             const offset = -now.getTimezoneOffset() / 60
             const sign = offset >= 0 ? '+' : ''
@@ -53,29 +53,29 @@ export const Footer = () => {
     }, { scope: containerRef })
 
     return (
-        <footer 
+        <footer
             ref={containerRef}
             className="relative bg-black text-white pt-20 pb-40 px-6 overflow-hidden border-t border-white/10"
         >
             <div className="max-w-7xl mx-auto">
                 <div className="mb-24">
-                    <h2 
+                    <h2
                         ref={titleRef}
-                        className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40 select-none"
+                        className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-white/40 select-none"
                     >
                         LET'S TALK
                     </h2>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 border-t border-white/10 pt-12">
-                    
+
                     <div className="flex flex-col gap-4">
                         <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">Interests</h3>
                         <ul className="flex flex-col gap-2">
                             <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Web Development</li>
                             <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Software Engineering</li>
                             <li className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit">Application Development</li>
-                        </ul> 
+                        </ul>
                     </div>
 
                     <div className="flex flex-col gap-4">
@@ -121,7 +121,7 @@ export const Footer = () => {
 
 const FooterLink = ({ href, children, external }: { href: string, children: React.ReactNode, external?: boolean }) => {
     return (
-        <a 
+        <a
             href={href}
             target={external ? "_blank" : undefined}
             rel={external ? "noopener noreferrer" : undefined}

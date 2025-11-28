@@ -63,12 +63,12 @@ export const SkillsSection = () => {
         <section ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-24">
-                    <h2 ref={titleRef} className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white via-white/90 to-white/30 tracking-tight">
+                    <h2 ref={titleRef} className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-b from-white via-white/90 to-white/30 tracking-tight">
                         Skills
                     </h2>
                 </div>
 
-                <div 
+                <div
                     onMouseMove={handleGlobalMouseMove}
                     className="group relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
                 >
@@ -93,7 +93,7 @@ const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
         const rect = cardRef.current.getBoundingClientRect()
         const centerX = rect.width / 2
         const centerY = rect.height / 2
-        
+
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
 
@@ -145,7 +145,7 @@ const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
             ref={cardRef}
             onMouseMove={handleLocalMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="skill-card group relative flex flex-col items-center justify-center p-4 md:p-8 rounded-2xl bg-white/[0.01] border border-white/5 overflow-hidden transition-colors duration-300 md:hover:bg-white/[0.03]"
+            className="skill-card group relative flex flex-col items-center justify-center p-4 md:p-8 rounded-2xl bg-white/1 border border-white/5 overflow-hidden transition-colors duration-300 md:hover:bg-white/3"
         >
             {/* Global Spotlight (reveals borders) */}
             <div
@@ -156,7 +156,7 @@ const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
             />
 
             {/* Inset Glow / Spotlight for active state */}
-            <div 
+            <div
                 className="pointer-events-none absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
                 style={{
                     background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.05), transparent 40%)`,
@@ -164,25 +164,25 @@ const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
             />
 
             <div className="relative z-10 flex flex-col items-center gap-4 pointer-events-none">
-                <div 
-                    ref={iconRef} 
+                <div
+                    ref={iconRef}
                     className="size-12 md:size-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/5 shadow-sm will-change-transform"
                 >
-                    <img 
-                        src={`https://skillicons.dev/icons?i=${skill.id}`} 
-                        alt={skill.name} 
+                    <img
+                        src={`https://skillicons.dev/icons?i=${skill.id}`}
+                        alt={skill.name}
                         className="size-7 md:size-9"
                         loading="lazy"
                     />
                 </div>
-                
+
                 <div ref={textRef} className="text-center will-change-transform">
                     <h3 className="text-sm md:text-lg font-medium text-white/90">
                         {skill.name}
                     </h3>
                 </div>
             </div>
-            
+
             {/* Border Mask */}
             <div
                 className="pointer-events-none absolute inset-0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"

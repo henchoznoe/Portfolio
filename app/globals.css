@@ -91,7 +91,7 @@
     --sidebar-ring: #ffffff;
 }
 
-/* We can keep .dark selector but since we want strict dark mode, :root having these values is enough. 
+/* We can keep .dark selector but since we want strict dark mode, :root having these values is enough.
    However, to play nice with tailwind's dark mode strategy if it's class-based: */
 .dark {
     --background: #000000;
