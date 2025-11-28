@@ -32,7 +32,7 @@ export const HeroSection = () => {
 
         if (gridRef.current) {
             gsap.to(gridRef.current, {
-                backgroundPosition: "50px 50px", 
+                backgroundPosition: "40px 40px", 
                 duration: 5,                   
                 repeat: -1,                      
                 ease: "none",                
@@ -52,12 +52,12 @@ export const HeroSection = () => {
                     className="absolute inset-[-50%] w-[200%] h-[200%]"
                     style={{
                         backgroundImage: `
-                            linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
+                            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
                         `,
-                        backgroundSize: '50px 50px', 
-                        maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)',
-                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 70%)'
+                        backgroundSize: '40px 40px', 
+                        maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)',
+                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)'
                     }}
                 />
                 
