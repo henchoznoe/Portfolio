@@ -1,105 +1,122 @@
 export type Language = 'en' | 'fr'
 
 export const translations = {
-  en: {
-    dock: {
-      github: 'GitHub',
-      linkedin: 'LinkedIn',
-      email: 'Email',
-      translate: 'Français', // Label to switch TO French
+    en: {
+        about: {
+            clean: {
+                description:
+                    'I strictly follow SOLID principles and KISS. Code must be maintainable and readable.',
+                title: 'Clean Code',
+            },
+            profile: {
+                description:
+                    "Beyond the screen, I'm exploring emerging tech or maintaining a healthy lifestyle through sports..",
+                title: 'Beyond the Code',
+            },
+            student: {
+                description:
+                    'Constantly learning and evolving. Bridging the gap between theory and practical application.',
+                title: 'Engineering Student',
+            },
+            swiss: {
+                description:
+                    'Based in Fribourg. Bringing precision and reliability to every project I touch.',
+                title: 'Swiss Crafted',
+            },
+            tech: {
+                description:
+                    'Building scalable web apps with the React ecosystem, TypeScript, and TailwindCSS.',
+                title: 'Modern Stack',
+            },
+        },
+        dock: {
+            email: 'Email',
+            github: 'GitHub',
+            linkedin: 'LinkedIn',
+            translate: 'Français', // Label to switch TO French
+        },
+        footer: {
+            contact: {
+                location: 'Fribourg, Switzerland',
+                title: 'Contact',
+            },
+            interests: {
+                items: [
+                    'Web Development',
+                    'Software Engineering',
+                    'Application Development',
+                ],
+                title: 'Interests',
+            },
+            socials: {
+                title: 'Socials',
+            },
+            time: {
+                built: 'Built with Next.js & Tailwind.',
+                location: 'Fribourg, Switzerland',
+                title: 'Local time',
+            },
+            title: "LET'S TALK",
+        },
     },
-    about: {
-      tech: {
-        title: 'Modern Stack',
-        description: 'Building scalable web apps with the React ecosystem, TypeScript, and TailwindCSS.',
-      },
-      clean: {
-        title: 'Clean Code',
-        description: 'I strictly follow SOLID principles and KISS. Code must be maintainable and readable.',
-      },
-      swiss: {
-        title: 'Swiss Crafted',
-        description: 'Based in Fribourg. Bringing precision and reliability to every project I touch.',
-      },
-      student: {
-        title: 'Engineering Student',
-        description: 'Constantly learning and evolving. Bridging the gap between theory and practical application.',
-      },
-      profile: {
-        title: 'Beyond the Code',
-        description: "Beyond the screen, I'm exploring emerging tech or maintaining a healthy lifestyle through sports..",
-      },
+    fr: {
+        about: {
+            clean: {
+                description:
+                    'Je suis strictement les principes SOLID et KISS. Le code doit être maintenable et lisible.',
+                title: 'Code Propre',
+            },
+            profile: {
+                description:
+                    "Au-delà de l'écran, j'explore les technologies émergentes ou maintiens un mode de vie sain grâce au sport..",
+                title: 'Au-delà du Code',
+            },
+            student: {
+                description:
+                    "En apprentissage constant. Je comble le fossé entre la théorie et l'application pratique.",
+                title: 'Étudiant Ingénieur',
+            },
+            swiss: {
+                description:
+                    "Basé à Fribourg. J'apporte précision et fiabilité à chaque projet que je touche.",
+                title: 'Qualité Suisse',
+            },
+            tech: {
+                description:
+                    "Création d'applications web évolutives avec l'écosystème React, TypeScript et TailwindCSS.",
+                title: 'Stack Moderne',
+            },
+        },
+        dock: {
+            email: 'Email',
+            github: 'GitHub',
+            linkedin: 'LinkedIn',
+            translate: 'English', // Label to switch TO English
+        },
+        footer: {
+            contact: {
+                location: 'Fribourg, Suisse',
+                title: 'Contact',
+            },
+            interests: {
+                items: [
+                    'Développement Web',
+                    'Génie Logiciel',
+                    "Développement d'Applications",
+                ],
+                title: 'Intérêts',
+            },
+            socials: {
+                title: 'Réseaux',
+            },
+            time: {
+                built: 'Fait avec Next.js & Tailwind.',
+                location: 'Fribourg, Suisse',
+                title: 'Heure locale',
+            },
+            title: 'DISCUTONS',
+        },
     },
-    footer: {
-      title: "LET'S TALK",
-      interests: {
-        title: 'Interests',
-        items: ['Web Development', 'Software Engineering', 'Application Development'],
-      },
-      contact: {
-        title: 'Contact',
-        location: 'Fribourg, Switzerland',
-      },
-      socials: {
-        title: 'Socials',
-      },
-      time: {
-        title: 'Local time',
-        location: 'Fribourg, Switzerland',
-        built: 'Built with Next.js & Tailwind.',
-      },
-    },
-  },
-  fr: {
-    dock: {
-      github: 'GitHub',
-      linkedin: 'LinkedIn',
-      email: 'Email',
-      translate: 'English', // Label to switch TO English
-    },
-    about: {
-      tech: {
-        title: 'Stack Moderne',
-        description: 'Création d\'applications web évolutives avec l\'écosystème React, TypeScript et TailwindCSS.',
-      },
-      clean: {
-        title: 'Code Propre',
-        description: 'Je suis strictement les principes SOLID et KISS. Le code doit être maintenable et lisible.',
-      },
-      swiss: {
-        title: 'Qualité Suisse',
-        description: 'Basé à Fribourg. J\'apporte précision et fiabilité à chaque projet que je touche.',
-      },
-      student: {
-        title: 'Étudiant Ingénieur',
-        description: 'En apprentissage constant. Je comble le fossé entre la théorie et l\'application pratique.',
-      },
-      profile: {
-        title: 'Au-delà du Code',
-        description: "Au-delà de l'écran, j'explore les technologies émergentes ou maintiens un mode de vie sain grâce au sport..",
-      },
-    },
-    footer: {
-      title: "DISCUTONS",
-      interests: {
-        title: 'Intérêts',
-        items: ['Développement Web', 'Génie Logiciel', 'Développement d\'Applications'],
-      },
-      contact: {
-        title: 'Contact',
-        location: 'Fribourg, Suisse',
-      },
-      socials: {
-        title: 'Réseaux',
-      },
-      time: {
-        title: 'Heure locale',
-        location: 'Fribourg, Suisse',
-        built: 'Fait avec Next.js & Tailwind.',
-      },
-    },
-  },
 } as const
 
-export type TranslationType = typeof translations['en']
-
+export type TranslationType = (typeof translations)['en']

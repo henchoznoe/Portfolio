@@ -4,7 +4,7 @@ import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { LanguageProvider } from '@/lib/context/language-context'
 import { cn } from '@/lib/utils'
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
@@ -26,15 +26,16 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
+
+    const bodyClass = cn(
+        inter.variable,
+        jetbrainsMono.variable,
+        'antialiased bg-background text-foreground',
+    )
+
     return (
         <html className="dark" lang="en">
-            <body
-                className={cn(
-                    inter.variable,
-                    jetbrainsMono.variable,
-                    'antialiased bg-background text-foreground',
-                )}
-            >
+            <body className={bodyClass}>
                 <LanguageProvider>
                     <SmoothScroll />
                     <CustomCursor />
