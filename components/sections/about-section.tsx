@@ -164,7 +164,7 @@ export const AboutSection = () => {
                         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         
                         <Image 
-                            src="/assets/img/me.png" 
+                            src="/assets/img/me-ia.png" 
                             alt="Noé Henchoz"
                             fill
                             className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
