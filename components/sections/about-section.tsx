@@ -7,6 +7,7 @@ import type { LucideIcon } from 'lucide-react'
 import { Code2, GraduationCap, MapPin, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
+import { RevealTitle } from '../ui/reveal-title'
 
 const SPRING_CONFIG = {
     type: 'spring',
@@ -109,6 +110,17 @@ export const AboutSection = () => {
 
     return (
         <section id="about" className="relative mx-auto w-full max-w-7xl px-6 py-32">
+            <div className="mb-10 relative z-10">
+                <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
+                    01
+                </div>
+
+                <RevealTitle
+                    text="About Me"
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+                />
+            </div>
+
             <div className="flex min-h-[80vh] w-full flex-col gap-4 lg:flex-row">
                 <div className="flex w-full flex-col gap-4 lg:w-8/12">
                     <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">

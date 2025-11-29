@@ -3,10 +3,10 @@
 'use client'
 
 import { RevealTitle } from '@/components/ui/reveal-title'; // Import du nouveau composant
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useRef } from 'react'
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -62,7 +62,7 @@ export const SkillsSection = () => {
     return (
         <section id="skills" ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
-                <div className="mb-24">
+                <div className="mb-10">
                     {/* Background number décoratif (optionnel) */}
                      <div className="absolute top-20 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
                         03
@@ -73,10 +73,6 @@ export const SkillsSection = () => {
                         text="Core Capabilities"
                         className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
                     />
-
-                    <p className="mt-6 text-lg text-white/50 max-w-xl font-light">
-                        My technical weapon of choice. Built for scale, performance, and maintainability.
-                    </p>
                 </div>
 
                 <div
