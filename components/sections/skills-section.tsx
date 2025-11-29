@@ -1,5 +1,8 @@
+// components/sections/skills-section.tsx
+
 'use client'
 
+import { RevealTitle } from '@/components/ui/reveal-title'; // Import du nouveau composant
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -8,6 +11,7 @@ import { useRef } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = [
+    // ... tes skills (inchangés)
     { name: 'TypeScript', id: 'ts' },
     { name: 'Java', id: 'java' },
     { name: 'React', id: 'react' },
@@ -20,57 +24,64 @@ const skills = [
 
 export const SkillsSection = () => {
     const containerRef = useRef<HTMLDivElement>(null)
-    const titleRef = useRef<HTMLHeadingElement>(null)
+    // On enlève titleRef car géré par le composant Framer Motion
 
     useGSAP(() => {
+        // Animation des cartes uniquement via GSAP (le titre est géré par Framer Motion)
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
-                start: 'top 80%', // Animation starts when top of section hits 80% of viewport
+                start: 'top 70%', // On lance un peu plus tôt
                 toggleActions: 'play none none reverse',
             }
         })
 
-        tl.from(titleRef.current, {
+        tl.from('.skill-card', {
             y: 50,
             opacity: 0,
             duration: 0.8,
+            stagger: 0.05, // Un peu plus rapide
             ease: 'power3.out'
         })
-        .from('.skill-card', {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out'
-        }, '-=0.4') // Overlap with title animation
     }, { scope: containerRef })
 
     const handleGlobalMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!containerRef.current || window.innerWidth < 768) return
-        const cards = containerRef.current.getElementsByClassName('skill-card')
+       // ... (code existant inchangé pour l'effet souris)
+       if (!containerRef.current || window.innerWidth < 768) return
+       const cards = containerRef.current.getElementsByClassName('skill-card')
 
-        for (const card of cards) {
-            const rect = card.getBoundingClientRect()
-            const x = e.clientX - rect.left
-            const y = e.clientY - rect.top
-            ;(card as HTMLElement).style.setProperty('--mouse-x', `${x}px`)
-            ;(card as HTMLElement).style.setProperty('--mouse-y', `${y}px`)
-        }
+       for (const card of cards) {
+           const rect = card.getBoundingClientRect()
+           const x = e.clientX - rect.left
+           const y = e.clientY - rect.top
+           ;(card as HTMLElement).style.setProperty('--mouse-x', `${x}px`)
+           ;(card as HTMLElement).style.setProperty('--mouse-y', `${y}px`)
+       }
     }
 
     return (
         <section id="skills" ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-24">
-                    <h2 ref={titleRef} className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-b from-white via-white/90 to-white/30 tracking-tight">
-                        Skills
-                    </h2>
+                    {/* Background number décoratif (optionnel) */}
+                     <div className="absolute top-20 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
+                        03
+                    </div>
+
+                    {/* Nouveau Titre Animé */}
+                    <RevealTitle
+                        text="Core Capabilities"
+                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+                    />
+
+                    <p className="mt-6 text-lg text-white/50 max-w-xl font-light">
+                        My technical weapon of choice. Built for scale, performance, and maintainability.
+                    </p>
                 </div>
 
                 <div
                     onMouseMove={handleGlobalMouseMove}
-                    className="group relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    className="group relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 z-10"
                 >
                     {skills.map((skill, index) => (
                         <SkillCard key={index} skill={skill} />
@@ -81,7 +92,9 @@ export const SkillsSection = () => {
     )
 }
 
+// ... Le composant SkillCard reste inchangé en dessous
 const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
+    // ... (code existant inchangé)
     const cardRef = useRef<HTMLDivElement>(null)
     const iconRef = useRef<HTMLDivElement>(null)
     const textRef = useRef<HTMLDivElement>(null)
