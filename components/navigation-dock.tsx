@@ -1,6 +1,8 @@
 'use client'
 
 import { useLanguage } from '@/lib/context/language-context'
+import { useScrollContext } from '@/lib/context/scroll-context'
+import { useTransition } from '@/lib/context/transition-context'
 import { cn } from '@/lib/utils'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Code2, Folder, Home, User } from 'lucide-react'
@@ -10,6 +12,8 @@ export const NavigationDock = () => {
     const [activeSection, setActiveSection] = useState('home')
     const [hoveredId, setHoveredId] = useState<string | null>(null)
     const { t } = useLanguage()
+    const { lenis } = useScrollContext()
+    const { startTransition } = useTransition()
 
     const navItems = [
         { id: 'home', label: t.nav.home, icon: Home },
@@ -42,8 +46,10 @@ export const NavigationDock = () => {
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id)
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
+        if (element && lenis) {
+            startTransition(() => {
+                lenis.scrollTo(element, { immediate: true })
+            })
         }
     }
 

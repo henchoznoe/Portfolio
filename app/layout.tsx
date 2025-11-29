@@ -1,9 +1,10 @@
 import { DockMenu } from '@/components/dock-menu'
 import { Footer } from '@/components/footer'
 import { NavigationDock } from '@/components/navigation-dock'
-import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { LanguageProvider } from '@/lib/context/language-context'
+import { ScrollProvider } from '@/lib/context/scroll-context'
+import { TransitionProvider } from '@/lib/context/transition-context'
 import { cn } from '@/lib/utils'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
@@ -38,13 +39,16 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <html className="dark" lang="en">
             <body className={bodyClass}>
                 <LanguageProvider>
-                    <SmoothScroll />
-                    <CustomCursor />
-                    {children}
-                    <Footer />
-                    <DockMenu />
-                    <NavigationDock />
-                    <SpeedInsights />
+                    <ScrollProvider>
+                        <TransitionProvider>
+                            <CustomCursor />
+                            {children}
+                            <Footer />
+                            <DockMenu />
+                            <NavigationDock />
+                            <SpeedInsights />
+                        </TransitionProvider>
+                    </ScrollProvider>
                 </LanguageProvider>
             </body>
         </html>
