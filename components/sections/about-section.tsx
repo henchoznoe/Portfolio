@@ -108,7 +108,7 @@ export const AboutSection = () => {
     const { t } = useLanguage()
 
     return (
-        <section className="relative mx-auto w-full max-w-7xl px-6 py-32">
+        <section id="about" className="relative mx-auto w-full max-w-7xl px-6 py-32">
             <div className="flex min-h-[80vh] w-full flex-col gap-4 lg:flex-row">
                 <div className="flex w-full flex-col gap-4 lg:w-8/12">
                     <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">

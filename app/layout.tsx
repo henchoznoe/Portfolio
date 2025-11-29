@@ -1,5 +1,6 @@
 import { DockMenu } from '@/components/dock-menu'
 import { Footer } from '@/components/footer'
+import { NavigationDock } from '@/components/navigation-dock'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { CustomCursor } from '@/components/ui/custom-cursor'
 import { LanguageProvider } from '@/lib/context/language-context'
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                     {children}
                     <Footer />
                     <DockMenu />
+                    <NavigationDock />
                     <SpeedInsights />
                 </LanguageProvider>
             </body>

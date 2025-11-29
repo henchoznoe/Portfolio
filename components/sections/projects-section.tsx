@@ -92,7 +92,7 @@ export const ProjectsSection = () => {
     }, { scope: sectionRef })
 
     return (
-        <section ref={sectionRef} className="relative bg-black overflow-hidden">
+        <section id="projects" ref={sectionRef} className="relative bg-black overflow-hidden">
             <div
                 ref={trackRef}
                 className="flex flex-col md:flex-row md:w-max md:h-screen items-center"

@@ -35,6 +35,12 @@ export const translations = {
             linkedin: 'LinkedIn',
             translate: 'Français', // Label to switch TO French
         },
+        nav: {
+            home: 'Home',
+            about: 'About',
+            projects: 'Projects',
+            skills: 'Skills',
+        },
         footer: {
             contact: {
                 location: 'Fribourg, Switzerland',
@@ -92,6 +98,12 @@ export const translations = {
             github: 'GitHub',
             linkedin: 'LinkedIn',
             translate: 'English', // Label to switch TO English
+        },
+        nav: {
+            home: 'Accueil',
+            about: 'À propos',
+            projects: 'Projets',
+            skills: 'Compétences',
         },
         footer: {
             contact: {

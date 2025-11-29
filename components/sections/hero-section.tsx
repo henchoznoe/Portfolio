@@ -42,6 +42,7 @@ export const HeroSection = () => {
 
     return (
         <section
+            id="home"
             ref={containerRef}
             className="h-dvh w-full flex flex-col items-center justify-center bg-black relative overflow-hidden"
         >

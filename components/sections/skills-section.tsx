@@ -60,7 +60,7 @@ export const SkillsSection = () => {
     }
 
     return (
-        <section ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
+        <section id="skills" ref={containerRef} className="py-32 px-4 bg-black relative overflow-hidden">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-24">
                     <h2 ref={titleRef} className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-b from-white via-white/90 to-white/30 tracking-tight">
