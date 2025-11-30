@@ -32,6 +32,7 @@ export const NavigationDock = () => {
                 })
             },
             {
+                // Ajustement de la zone de détection pour mobile
                 rootMargin: '-50% 0px -50% 0px',
             }
         )
@@ -54,8 +55,10 @@ export const NavigationDock = () => {
     }
 
     return (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-center justify-center">
-            <div className="flex items-center gap-2 md:gap-3 rounded-full border border-white/10 bg-black/40 p-1.5 md:p-2 backdrop-blur-2xl shadow-2xl">
+        /* Changement ici : 'hidden md:flex' devient 'flex' pour l'afficher sur mobile */
+        /* bottom-6 sur mobile, bottom-8 sur desktop pour l'esthétique */
+        <div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center w-full px-4 pointer-events-none">
+            <div className="pointer-events-auto flex items-center gap-4 md:gap-3 rounded-full border border-white/10 bg-black/40 p-2 md:p-2 backdrop-blur-2xl shadow-2xl">
                 {navItems.map((item) => {
                     const isActive = activeSection === item.id
                     const Icon = item.icon
@@ -63,13 +66,14 @@ export const NavigationDock = () => {
 
                     return (
                         <div key={item.id} className="relative flex flex-col items-center">
+                            {/* Tooltip caché sur mobile (touch device) pour éviter qu'il reste bloqué */}
                             <AnimatePresence>
                                 {isHovered && (
                                     <motion.div
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 10 }}
-                                        className="absolute bottom-full mb-2 rounded-md border border-white/10 bg-black/80 px-2 py-1 text-[10px] text-white backdrop-blur-md whitespace-nowrap pointer-events-none"
+                                        className="hidden md:block absolute bottom-full mb-2 rounded-md border border-white/10 bg-black/80 px-2 py-1 text-[10px] text-white backdrop-blur-md whitespace-nowrap pointer-events-none"
                                     >
                                         {item.label}
                                     </motion.div>
@@ -81,7 +85,10 @@ export const NavigationDock = () => {
                                 onMouseEnter={() => setHoveredId(item.id)}
                                 onMouseLeave={() => setHoveredId(null)}
                                 className={cn(
-                                    'relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full transition-colors duration-200 cursor-pointer',
+                                    'relative flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer',
+                                    // Mobile : plus grand (w-10 h-10) pour le tactile
+                                    // Desktop : inchangé
+                                    'w-10 h-10 md:w-10 md:h-10',
                                     isActive ? 'text-white' : 'text-white/50 hover:text-white/80'
                                 )}
                             >
@@ -97,7 +104,7 @@ export const NavigationDock = () => {
                                     />
                                 )}
                                 <span className="relative z-10">
-                                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                                    <Icon className="w-5 h-5 md:w-5 md:h-5" />
                                 </span>
                             </button>
                         </div>
