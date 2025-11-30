@@ -10,8 +10,6 @@ export const HeroSection = () => {
     const containerRef = useRef<HTMLElement>(null)
     const nameRef = useRef<HTMLHeadingElement>(null)
     const subtitleRef = useRef<HTMLParagraphElement>(null)
-    const gridRef = useRef<HTMLDivElement>(null)
-
     const { scrollY } = useScroll()
     const opacity = useTransform(scrollY, [0, 300], [1, 0])
     const scale = useTransform(scrollY, [0, 300], [1, 0.8])
@@ -30,14 +28,7 @@ export const HeroSection = () => {
             '-=0.8'
         )
 
-        if (gridRef.current) {
-            gsap.to(gridRef.current, {
-                backgroundPosition: "40px 40px",
-                duration: 5,
-                repeat: -1,
-                ease: "none",
-            })
-        }
+
     }, { scope: containerRef })
 
     return (
@@ -48,24 +39,8 @@ export const HeroSection = () => {
         >
 
             <div className="absolute inset-0 z-0 overflow-hidden">
-                <div
-                    ref={gridRef}
-                    className="absolute inset-[-50%] w-[200%] h-[200%]"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
-                        `,
-                        backgroundSize: '40px 40px',
-                        maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)',
-                        WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 70%)'
-                    }}
-                />
-
-                <div className="absolute inset-0 bg-black mask-[radial-gradient(ellipse_at_center,transparent_20%,black_100%)] pointer-events-none" />
-
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-indigo-950 to-slate-950 animate-gradient-slow bg-[length:400%_400%]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none opacity-80" />
             </div>
 
             <motion.div

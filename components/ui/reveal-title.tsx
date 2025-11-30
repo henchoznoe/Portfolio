@@ -77,14 +77,6 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
                     </span>
                 ))}
             </motion.h2>
-
-            {/* Élément décoratif : Ligne subtile qui s'étend */}
-            <motion.div
-                initial={{ scaleX: 0, opacity: 0 }}
-                whileInView={{ scaleX: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1, ease: "circOut" }}
-                className="h-px w-full bg-linear-to-r from-transparent via-emerald-500/50 to-transparent mt-4 origin-left"
-            />
         </motion.div>
     )
 }

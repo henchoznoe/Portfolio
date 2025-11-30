@@ -59,6 +59,8 @@ export const Footer = () => {
             ref={containerRef}
             className="relative bg-black text-white pt-20 pb-40 px-6 overflow-hidden border-t border-white/10"
         >
+            {/* Rising Glow */}
+            <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-indigo-900/40 to-transparent pointer-events-none" />
             <div className="max-w-7xl mx-auto">
                 <div className="mb-24">
                     <h2
@@ -101,8 +103,8 @@ export const Footer = () => {
                         <div className="flex items-center gap-3 font-mono text-xl text-white/90">
                             {time || '--:--:--'}
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                             </span>
                             <span className="text-white/30 text-sm">UTC {timezone}</span>
                         </div>

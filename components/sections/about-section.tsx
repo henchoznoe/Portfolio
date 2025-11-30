@@ -110,6 +110,8 @@ export const AboutSection = () => {
 
     return (
         <section id="about" className="relative mx-auto w-full max-w-7xl px-6 py-32">
+            {/* Ambient Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
             <div className="mb-10 relative z-10">
                 <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
                     01
@@ -138,7 +140,7 @@ export const AboutSection = () => {
                             title={t.about.clean.title}
                             description={t.about.clean.description}
                             icon={Sparkles}
-                            className="md:w-5/12 bg-linear-to-br from-blue-500/10 to-purple-500/10"
+                            className="md:w-5/12"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -150,7 +152,7 @@ export const AboutSection = () => {
                             title={t.about.swiss.title}
                             description={t.about.swiss.description}
                             icon={MapPin}
-                            className="md:w-5/12 bg-linear-to-br from-emerald-500/10 to-teal-500/10"
+                            className="md:w-5/12"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />

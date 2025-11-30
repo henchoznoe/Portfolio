@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Code2, ExternalLink, Github } from 'lucide-react'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -16,7 +16,6 @@ const projects = [
         title: 'Portfolio',
         description: 'The portfolio you are currently viewing built with Next.js, Tailwind CSS, Framer Motion and more.',
         stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-        color: 'from-emerald-500/30 to-teal-500/30',
         github: 'https://github.com/henchoznoe/Portfolio',
         external: 'https://henchoznoe.com/'
     },
@@ -26,7 +25,6 @@ const projects = [
         title: 'Express Template',
         description: 'Production-ready Express template tailored with TypeScript, Prisma, InversifyJS, Zod & Docker.',
         stack: ['TypeScript', 'Prisma', 'Docker', 'InversifyJS'],
-        color: 'from-blue-500/30 to-cyan-500/30',
         github: 'https://github.com/henchoznoe/ExpressTemplate'
     },
     {
@@ -35,7 +33,6 @@ const projects = [
         title: 'Git Multi Account Setup',
         description: 'Automate Git & SSH setup for multiple accounts (GitHub + GitLab) with smart email switching hooks.',
         stack: ['Bash', 'Git', 'SSH'],
-        color: 'from-purple-500/30 to-pink-500/30',
         github: 'https://github.com/henchoznoe/GitMultiAccountSetup'
     }
 ]
@@ -109,61 +106,115 @@ export const ProjectsSection = () => {
                 </div>
 
                 {projects.map((project) => (
-                    <div
-                        key={project.id}
-                        className="project-card w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0"
-                    >
-                        <div className="relative w-full h-auto md:h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 group">
-                            <div className={`absolute inset-0 bg-linear-to-br ${project.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                            <div className="relative md:absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-                                <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl max-w-3xl overflow-hidden">
-                                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-
-                                    <div className="flex items-start justify-between mb-6">
-                                        <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none">
-                                            {project.year}
-                                        </div>
-                                        <div className="flex gap-2 md:gap-4">
-                                            {project.github && (
-                                                <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.github, '_blank')}>
-                                                    <Github size={20} />
-                                                </Button>
-                                            )}
-                                            {project.external && (
-                                                <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.external, '_blank')}>
-                                                    <ExternalLink size={20} />
-                                                </Button>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <h3 className="text-2xl md:text-5xl font-bold text-white mb-4">
-                                        {project.title}
-                                    </h3>
-
-                                    <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
-                                        {project.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-2 md:gap-3">
-                                        {project.stack.map((tech) => (
-                                            <div key={tech} className="flex items-center gap-1 md:gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/80">
-                                                <Code2 size={14} />
-                                                {tech}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <SpotlightCard key={project.id} project={project} />
                 ))}
 
                 {/* Spacer for end of scroll */}
                 <div className="w-full md:w-[20vw] shrink-0" />
             </div>
         </section>
+    )
+}
+
+const SpotlightCard = ({ project }: { project: any }) => {
+    const divRef = useRef<HTMLDivElement>(null)
+    const [isFocused, setIsFocused] = useState(false)
+    const [position, setPosition] = useState({ x: 0, y: 0 })
+    const [opacity, setOpacity] = useState(0)
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!divRef.current) return
+
+        const div = divRef.current
+        const rect = div.getBoundingClientRect()
+
+        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+    }
+
+    const handleFocus = () => {
+        setIsFocused(true)
+        setOpacity(1)
+    }
+
+    const handleBlur = () => {
+        setIsFocused(false)
+        setOpacity(0)
+    }
+
+    const handleMouseEnter = () => {
+        setOpacity(1)
+    }
+
+    const handleMouseLeave = () => {
+        setOpacity(0)
+    }
+
+    return (
+        <div
+            className="project-card w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0 relative"
+        >
+            <div
+                ref={divRef}
+                onMouseMove={handleMouseMove}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="relative w-full h-auto md:h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md group"
+            >
+                {/* Spotlight Gradient */}
+                <div
+                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
+                    style={{
+                        opacity,
+                        background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(99, 102, 241, 0.15), transparent 40%)`,
+                    }}
+                />
+
+                {/* Base Gradient */}
+                <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-100" />
+
+                <div className="relative md:absolute inset-0 flex flex-col justify-end p-8 md:p-16">
+                    <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl max-w-3xl overflow-hidden">
+                        <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+
+                        <div className="flex items-start justify-between mb-6">
+                            <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none">
+                                {project.year}
+                            </div>
+                            <div className="flex gap-2 md:gap-4">
+                                {project.github && (
+                                    <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.github, '_blank')}>
+                                        <Github size={20} />
+                                    </Button>
+                                )}
+                                {project.external && (
+                                    <Button size="icon" variant="outline" className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors" onClick={() => window.open(project.external, '_blank')}>
+                                        <ExternalLink size={20} />
+                                    </Button>
+                                )}
+                            </div>
+                        </div>
+
+                        <h3 className="text-2xl md:text-5xl font-bold text-white mb-4">
+                            {project.title}
+                        </h3>
+
+                        <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
+                            {project.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 md:gap-3">
+                            {project.stack.map((tech: string) => (
+                                <div key={tech} className="flex items-center gap-1 md:gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/80">
+                                    <Code2 size={14} />
+                                    {tech}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
