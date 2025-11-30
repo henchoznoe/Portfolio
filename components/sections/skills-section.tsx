@@ -64,13 +64,13 @@ export const SkillsSection = () => {
             <div className="max-w-6xl mx-auto">
                 <div className="mb-10">
                     {/* Background number décoratif (optionnel) */}
-                     <div className="absolute top-20 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
+                     <div className="absolute top-20 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
                         03
                     </div>
 
                     {/* Nouveau Titre Animé */}
                     <RevealTitle
-                        text="Core Capabilities"
+                        text="My Capabilities"
                         className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
                     />
                 </div>

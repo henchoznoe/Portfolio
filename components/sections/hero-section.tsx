@@ -37,12 +37,6 @@ export const HeroSection = () => {
             ref={containerRef}
             className="h-dvh w-full flex flex-col items-center justify-center bg-black relative overflow-hidden"
         >
-
-            <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute inset-0 bg-linear-to-br from-slate-950 via-indigo-950 to-slate-950 animate-gradient-slow bg-[length:400%_400%]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] pointer-events-none opacity-80" />
-            </div>
-
             <motion.div
                 style={{ opacity, scale, filter }}
                 className="relative z-10 flex flex-col items-center text-center"

@@ -26,7 +26,7 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
     // Découpage du texte en mots pour l'animation
     const words = text.split(" ")
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: {},
         visible: {
             transition: {
@@ -35,7 +35,7 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
         },
     }
 
-    const wordVariants = {
+    const wordVariants: Variants = {
         hidden: {
             y: "100%", // Caché en bas
             opacity: 0,
@@ -62,15 +62,15 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
             <motion.h2
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-10%" }} // Se lance quand l'élément est bien visible
+                viewport={{ once: true, margin: "-20%" }} // Se lance quand l'élément est bien visible
                 variants={containerVariants}
                 className="flex flex-wrap gap-x-[0.3em] overflow-hidden leading-none" // overflow-hidden est crucial pour le masque
             >
                 {words.map((word, i) => (
                     <span key={i} className="relative overflow-hidden inline-block pb-2"> {/* Padding bottom pour éviter de couper la descender */}
                         <motion.span
-                            variants={wordVariants as Variants}
-                            className="inline-block bg-clip-text text-transparent bg-linear-to-b from-white via-white/90 to-white/30"
+                            variants={wordVariants}
+                            className="inline-block bg-clip-text text-transparent uppercase bg-linear-to-b from-white via-white/90 to-white/30"
                         >
                             {word}
                         </motion.span>

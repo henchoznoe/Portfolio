@@ -68,13 +68,13 @@ const BentoCard = ({
             onMouseEnter={() => setHoveredId(id)}
             onMouseLeave={() => setHoveredId(null)}
             className={cn(
-                'relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-colors',
+                'relative flex flex-col justify-between overflow-hidden rounded-3xl border p-8 backdrop-blur-sm transition-colors',
                 className,
             )}
         >
             <div
                 className={cn(
-                    'absolute inset-0 bg-linear-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-500',
+                    'absolute inset-0 opacity-0 transition-opacity duration-500',
                     isHovered && 'opacity-100',
                 )}
             />
@@ -113,12 +113,12 @@ export const AboutSection = () => {
             {/* Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
             <div className="mb-10 relative z-10">
-                <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/[0.02] pointer-events-none select-none font-mono leading-none z-0">
+                <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
                     01
                 </div>
 
                 <RevealTitle
-                    text="About Me"
+                    text="About me"
                     className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
                 />
             </div>
@@ -131,7 +131,7 @@ export const AboutSection = () => {
                             title={t.about.tech.title}
                             description={t.about.tech.description}
                             icon={Code2}
-                            className="md:w-7/12"
+                            className="md:w-7/12 border-white/10 bg-white/5 "
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -140,7 +140,7 @@ export const AboutSection = () => {
                             title={t.about.clean.title}
                             description={t.about.clean.description}
                             icon={Sparkles}
-                            className="md:w-5/12"
+                            className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -152,7 +152,7 @@ export const AboutSection = () => {
                             title={t.about.swiss.title}
                             description={t.about.swiss.description}
                             icon={MapPin}
-                            className="md:w-5/12"
+                            className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
@@ -161,7 +161,7 @@ export const AboutSection = () => {
                             title={t.about.student.title}
                             description={t.about.student.description}
                             icon={GraduationCap}
-                            className="md:w-7/12"
+                            className="md:w-7/12 border-white/10 bg-white/5"
                             hoveredId={hoveredId}
                             setHoveredId={setHoveredId}
                         />
