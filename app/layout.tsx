@@ -25,10 +25,14 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
     description: 'High-end developer portfolio.',
     title: 'Developer Portfolio',
+    formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+    },
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
-
     const bodyClass = cn(
         inter.variable,
         jetbrainsMono.variable,
