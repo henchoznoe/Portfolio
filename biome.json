@@ -1,12 +1,9 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on",
-        "useSortedAttributes": "on",
-        "useSortedKeys": "on",
-        "useSortedProperties": "on"
+        "organizeImports": "on"
       }
     },
     "enabled": true
@@ -20,6 +17,7 @@
     "ignoreUnknown": false,
     "includes": [
       "app/**",
+      "components/**",
       "lib/**",
       "next.config.ts",
       "!**/package.json",

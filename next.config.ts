@@ -1,21 +1,20 @@
+import os from 'node:os'
 import type { NextConfig } from 'next'
 
-import os from 'os'
-
 const getLocalIp = () => {
-    const interfaces = os.networkInterfaces()
-    for (const name of Object.keys(interfaces)) {
-        for (const iface of interfaces[name]!) {
-            if (iface.family === 'IPv4' && !iface.internal) {
-                return iface.address
-            }
-        }
+  const interfaces = os.networkInterfaces()
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name] ?? []) {
+      if (iface.family === 'IPv4' && !iface.internal) {
+        return iface.address
+      }
     }
-    return '127.0.0.1'
+  }
+  return '127.0.0.1'
 }
 
 const nextConfig: NextConfig = {
-    allowedDevOrigins: [getLocalIp()],
+  allowedDevOrigins: [getLocalIp()],
 }
 
 export default nextConfig
