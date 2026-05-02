@@ -1,48 +1,38 @@
+/**
+ * File: components/dock-menu.tsx
+ * Description: Social links dock menu.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Globe, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
-import { useLanguage } from '@/lib/context/language-context'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
 
 export const DockMenu = () => {
-  const { t, setLanguage, language } = useLanguage()
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fr' : 'en')
-  }
-
   return (
     <div className="pointer-events-none fixed top-4 right-4 md:top-8 md:right-8 z-50 flex items-start justify-end">
       <div className="pointer-events-auto flex items-start px-2 md:px-4">
         <div className="mx-auto flex items-center gap-2 md:gap-3 rounded-full border border-white/10 bg-black/40 p-1.5 md:p-2 backdrop-blur-2xl shadow-2xl">
-          <DockIcon label={t.dock.github} href="https://github.com/henchoznoe">
+          <DockIcon label="GitHub" href="https://github.com/henchoznoe">
             <FontAwesomeIcon
               icon={faGithub}
               className="text-white/80 w-4 h-4 md:w-5 md:h-5"
             />
           </DockIcon>
-          <DockIcon
-            label={t.dock.linkedin}
-            href="https://linkedin.com/in/henchoznoe"
-          >
+          <DockIcon label="LinkedIn" href="https://linkedin.com/in/henchoznoe">
             <FontAwesomeIcon
               icon={faLinkedin}
               className="text-white/80 w-4 h-4 md:w-5 md:h-5"
             />
           </DockIcon>
-          <DockIcon label={t.dock.email} href="mailto:henchoznoe@gmail.com">
+          <DockIcon label="Email" href="mailto:henchoznoe@gmail.com">
             <Mail className="text-white/80 w-4 h-4 md:w-5 md:h-5" />
-          </DockIcon>
-
-          {/* Separator */}
-          <div className="h-4 w-px bg-white/10 mx-0.5 md:mx-1" />
-
-          <DockIcon label={t.dock.translate} onClick={toggleLanguage}>
-            <Globe className="text-white/80 w-4 h-4 md:w-5 md:h-5" />
           </DockIcon>
         </div>
       </div>

@@ -1,3 +1,10 @@
+/**
+ * File: components/sections/projects-section.tsx
+ * Description: Projects section with horizontal scroll.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons'

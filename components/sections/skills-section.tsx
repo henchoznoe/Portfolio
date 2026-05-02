@@ -1,4 +1,9 @@
-// components/sections/skills-section.tsx
+/**
+ * File: components/sections/skills-section.tsx
+ * Description: Skills section with interactive cards.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
 
 'use client'
 
@@ -12,7 +17,6 @@ import { RevealTitle } from '@/components/ui/reveal-title'
 gsap.registerPlugin(ScrollTrigger)
 
 const skills = [
-  // ... tes skills (inchangés)
   { name: 'TypeScript', id: 'ts' },
   { name: 'Java', id: 'java' },
   { name: 'React', id: 'react' },
@@ -25,15 +29,13 @@ const skills = [
 
 export const SkillsSection = () => {
   const containerRef = useRef<HTMLDivElement>(null)
-  // On enlève titleRef car géré par le composant Framer Motion
 
   useGSAP(
     () => {
-      // Animation des cartes uniquement via GSAP (le titre est géré par Framer Motion)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 70%', // On lance un peu plus tôt
+          start: 'top 70%',
           toggleActions: 'play none none reverse',
         },
       })
@@ -42,7 +44,7 @@ export const SkillsSection = () => {
         y: 50,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.05, // Un peu plus rapide
+        stagger: 0.05,
         ease: 'power3.out',
       })
     },
@@ -50,7 +52,6 @@ export const SkillsSection = () => {
   )
 
   const handleGlobalMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    // ... (code existant inchangé pour l'effet souris)
     if (!containerRef.current || window.innerWidth < 768) return
     const cards = containerRef.current.getElementsByClassName('skill-card')
 
@@ -71,12 +72,10 @@ export const SkillsSection = () => {
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
-          {/* Background number décoratif (optionnel) */}
           <div className="absolute top-20 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
             03
           </div>
 
-          {/* Nouveau Titre Animé */}
           <RevealTitle
             text="My Capabilities"
             className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
@@ -97,9 +96,7 @@ export const SkillsSection = () => {
   )
 }
 
-// ... Le composant SkillCard reste inchangé en dessous
 const SkillCard = ({ skill }: { skill: { name: string; id: string } }) => {
-  // ... (code existant inchangé)
   const cardRef = useRef<HTMLDivElement>(null)
   const iconRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)

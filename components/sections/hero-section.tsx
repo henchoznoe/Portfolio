@@ -1,3 +1,10 @@
+/**
+ * File: components/sections/hero-section.tsx
+ * Description: Hero section with animated name.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { useGSAP } from '@gsap/react'

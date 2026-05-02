@@ -1,26 +1,27 @@
+/**
+ * File: components/navigation-dock.tsx
+ * Description: Bottom navigation dock with section links.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
 import { Code2, Folder, Home, User } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { useLanguage } from '@/lib/context/language-context'
-import { useScrollContext } from '@/lib/context/scroll-context'
-import { useTransition } from '@/lib/context/transition-context'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
+
+const navItems = [
+  { id: 'home', label: 'Home', icon: Home },
+  { id: 'about', label: 'About', icon: User },
+  { id: 'projects', label: 'Projects', icon: Folder },
+  { id: 'skills', label: 'Skills', icon: Code2 },
+]
 
 export const NavigationDock = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const { t } = useLanguage()
-  const { lenis } = useScrollContext()
-  const { startTransition } = useTransition()
-
-  const navItems = [
-    { id: 'home' as const, label: t.nav.home, icon: Home },
-    { id: 'about' as const, label: t.nav.about, icon: User },
-    { id: 'projects' as const, label: t.nav.projects, icon: Folder },
-    { id: 'skills' as const, label: t.nav.skills, icon: Code2 },
-  ]
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -46,16 +47,12 @@ export const NavigationDock = () => {
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
-    if (element && lenis) {
-      startTransition(() => {
-        lenis.scrollTo(element, { immediate: true })
-      })
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   return (
-    /* Changement ici : 'hidden md:flex' devient 'flex' pour l'afficher sur mobile */
-    /* bottom-6 sur mobile, bottom-8 sur desktop pour l'esthétique */
     <div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center w-full px-4 pointer-events-none">
       <div className="pointer-events-auto flex items-center gap-4 md:gap-3 rounded-full border border-white/10 bg-black/40 p-2 md:p-2 backdrop-blur-2xl shadow-2xl">
         {navItems.map(item => {
@@ -65,7 +62,7 @@ export const NavigationDock = () => {
 
           return (
             <div key={item.id} className="relative flex flex-col items-center">
-              {/* Tooltip caché sur mobile (touch device) pour éviter qu'il reste bloqué */}
+              {/* Tooltip hidden on mobile to prevent sticky hover state */}
               <AnimatePresence>
                 {isHovered && (
                   <motion.div
@@ -86,9 +83,7 @@ export const NavigationDock = () => {
                 onMouseLeave={() => setHoveredId(null)}
                 className={cn(
                   'relative flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer',
-                  // Mobile : plus grand (w-10 h-10) pour le tactile
-                  // Desktop : inchangé
-                  'w-10 h-10 md:w-10 md:h-10',
+                  'w-10 h-10',
                   isActive ? 'text-white' : 'text-white/50 hover:text-white/80',
                 )}
               >
@@ -104,7 +99,7 @@ export const NavigationDock = () => {
                   />
                 )}
                 <span className="relative z-10">
-                  <Icon className="w-5 h-5 md:w-5 md:h-5" />
+                  <Icon className="w-5 h-5" />
                 </span>
               </button>
             </div>

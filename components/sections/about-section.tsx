@@ -1,3 +1,10 @@
+/**
+ * File: components/sections/about-section.tsx
+ * Description: About section with bento grid layout.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { motion, type Transition, type Variants } from 'framer-motion'
@@ -5,8 +12,7 @@ import type { LucideIcon } from 'lucide-react'
 import { Code2, GraduationCap, MapPin, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
-import { useLanguage } from '@/lib/context/language-context'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
 import { RevealTitle } from '../ui/reveal-title'
 
 const SPRING_CONFIG = {
@@ -106,7 +112,6 @@ const BentoCard = ({
 
 export const AboutSection = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
-  const { t } = useLanguage()
 
   return (
     <section
@@ -114,7 +119,7 @@ export const AboutSection = () => {
       className="relative mx-auto w-full max-w-7xl px-6 py-32"
     >
       {/* Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-250 h-250 bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
       <div className="mb-10 relative z-10">
         <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
           01
@@ -128,20 +133,20 @@ export const AboutSection = () => {
 
       <div className="flex min-h-[80vh] w-full flex-col gap-4 lg:flex-row">
         <div className="flex w-full flex-col gap-4 lg:w-8/12">
-          <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">
+          <div className="flex h-full min-h-75 flex-col gap-4 md:flex-row">
             <BentoCard
               id="tech"
-              title={t.about.tech.title}
-              description={t.about.tech.description}
+              title="Tech Stack"
+              description="TypeScript, React, Next.js, Node.js — building modern web apps with clean, type-safe code."
               icon={Code2}
-              className="md:w-7/12 border-white/10 bg-white/5 "
+              className="md:w-7/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
               setHoveredId={setHoveredId}
             />
             <BentoCard
               id="responsive"
-              title={t.about.clean.title}
-              description={t.about.clean.description}
+              title="Clean Code"
+              description="Readable, maintainable code following best practices and modern conventions."
               icon={Sparkles}
               className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
               hoveredId={hoveredId}
@@ -149,11 +154,11 @@ export const AboutSection = () => {
             />
           </div>
 
-          <div className="flex h-full min-h-[300px] flex-col gap-4 md:flex-row">
+          <div className="flex h-full min-h-75 flex-col gap-4 md:flex-row">
             <BentoCard
               id="performance"
-              title={t.about.swiss.title}
-              description={t.about.swiss.description}
+              title="Swiss Based"
+              description="Based in Fribourg, Switzerland. Open to remote opportunities and collaborations."
               icon={MapPin}
               className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
               hoveredId={hoveredId}
@@ -161,8 +166,8 @@ export const AboutSection = () => {
             />
             <BentoCard
               id="ui"
-              title={t.about.student.title}
-              description={t.about.student.description}
+              title="Student"
+              description="Studying Software Engineering. Passionate about building elegant solutions to complex problems."
               icon={GraduationCap}
               className="md:w-7/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
@@ -173,9 +178,9 @@ export const AboutSection = () => {
 
         <BentoCard
           id="profile"
-          title={t.about.profile.title}
-          description={t.about.profile.description}
-          className="min-h-[400px] w-full lg:w-4/12 lg:min-h-full p-0"
+          title=""
+          description=""
+          className="min-h-100 w-full lg:w-4/12 lg:min-h-full p-0"
           hoveredId={hoveredId}
           setHoveredId={setHoveredId}
         >
@@ -183,7 +188,7 @@ export const AboutSection = () => {
             <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
             <Image
-              src="/assets/img/me-ia.png"
+              src="/img/me-ia.png"
               alt="Noé Henchoz"
               fill
               className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
