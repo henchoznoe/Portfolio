@@ -1,6 +1,6 @@
 /**
  * File: components/sections/projects-section.tsx
- * Description: Projects section with horizontal scroll.
+ * Description: Projects section with featured card layout.
  * Author: Noé Henchoz
  * Copyright (c) 2026 Noé Henchoz
  */
@@ -12,9 +12,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Code2, ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 import { useRef } from 'react'
-import { Button } from '@/components/ui/button'
+import { RevealTitle } from '@/components/ui/reveal-title'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,82 +23,50 @@ const projects = [
   {
     id: 1,
     year: '2025',
-    title: 'Portfolio',
+    title: 'Belouga Tournament',
     description:
-      'The portfolio you are currently viewing built with Next.js, Tailwind CSS, Framer Motion and more.',
-    stack: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-    github: 'https://github.com/henchoznoe/Portfolio',
-    external: 'https://henchoznoe.com/',
+      'E-sports tournament management platform with Discord auth, Stripe payments, and an admin back office.',
+    stack: ['Next.js', 'TypeScript', 'Prisma', 'Stripe'],
+    github: 'https://github.com/henchoznoe/BelougaTournament',
+    external: 'https://belougatournament.ch',
+    logo: '/projects/belouga.png',
   },
   {
     id: 2,
     year: '2025',
-    title: 'Express Template',
+    title: 'GitSetup',
     description:
-      'Production-ready Express template tailored with TypeScript, Prisma, InversifyJS, Zod & Docker.',
-    stack: ['TypeScript', 'Prisma', 'Docker', 'InversifyJS'],
-    github: 'https://github.com/henchoznoe/ExpressTemplate',
-  },
-  {
-    id: 3,
-    year: '2025',
-    title: 'Git Multi Account Setup',
-    description:
-      'Automate Git & SSH setup for multiple accounts (GitHub + GitLab) with smart email switching hooks.',
-    stack: ['Bash', 'Git', 'SSH'],
-    github: 'https://github.com/henchoznoe/GitMultiAccountSetup',
+      'Automated & non-destructive Git environment setup. Manage multiple identities & SSH keys seamlessly on macOS.',
+    stack: ['CLI', 'Git', 'SSH', 'GPG', 'macOS'],
+    github: 'https://github.com/henchoznoe/GitSetup',
+    logo: '/projects/gitsetup.png',
   },
 ]
 
 export const ProjectsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
-
-      mm.add('(min-width: 768px)', () => {
-        const track = trackRef.current
-        if (!track) return
-
-        const totalWidth = track.scrollWidth
-        const viewportWidth = window.innerWidth
-        const xMovement = -(totalWidth - viewportWidth)
-
-        gsap.to(track, {
-          x: xMovement,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            pin: true,
-            scrub: 1,
-            start: 'top top',
-            end: () => `+=${totalWidth}`,
-            invalidateOnRefresh: true,
-          },
-        })
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
       })
 
-      mm.add('(max-width: 767px)', () => {
-        const cards = gsap.utils.toArray<HTMLElement>('.project-card')
-
-        cards.forEach(card => {
-          gsap.from(card, {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card as gsap.DOMTarget,
-              start: 'top 85%',
-              toggleActions: 'play none none reverse',
-            },
-          })
-        })
-      })
-
-      return () => mm.revert()
+      tl.fromTo(
+        '.project-card',
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
+        },
+      )
     },
     { scope: sectionRef },
   )
@@ -106,92 +75,116 @@ export const ProjectsSection = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="relative bg-black overflow-hidden"
+      className="relative py-32 px-6 bg-black overflow-hidden"
     >
-      <div
-        ref={trackRef}
-        className="flex flex-col md:flex-row md:w-max md:h-screen items-center"
-      >
-        <div className="w-full md:w-[40vw] h-[40vh] md:h-screen flex flex-col justify-center px-8 md:pl-20 shrink-0">
-          <h2 className="text-6xl md:text-9xl font-bold text-white mb-8">
-            <span className="text-white/20">My</span>
-            <br />
-            Projects
-          </h2>
-          <p className="text-white/60 max-w-md text-lg">
-            Here are some of the projects I've worked on. Check them out!
-          </p>
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16 relative">
+          <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
+            02
+          </div>
+          <RevealTitle
+            text="My Projects"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+          />
         </div>
 
-        {projects.map(project => (
-          <div
-            key={project.id}
-            className="project-card w-full md:w-[60vw] h-auto md:h-[80vh] flex items-center justify-center p-4 md:p-10 shrink-0 relative"
-          >
-            <div className="relative w-full h-auto md:h-full max-h-[800px] rounded-3xl overflow-hidden border border-white/20 backdrop-blur-md group transition-colors duration-500">
-              {/* Base Gradient */}
-              <div className="absolute inset-0 hover:bg-linear-to-br hover:from-blue-500/5 hover:to-transparent opacity-100" />
-
-              <div className="relative md:absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-                <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-2xl max-w-3xl overflow-hidden">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="text-6xl md:text-8xl font-bold text-transparent bg-clip-text bg-linear-to-b from-white/20 to-transparent select-none">
-                      {project.year}
-                    </div>
-                    <div className="flex gap-2 md:gap-4">
-                      {project.github && (
-                        <Button
-                          size="icon"
-                          variant="outline"
-                          className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors"
-                          onClick={() => window.open(project.github, '_blank')}
-                        >
-                          <FontAwesomeIcon icon={faGithub} className="size-5" />
-                        </Button>
-                      )}
-                      {project.external && (
-                        <Button
-                          size="icon"
-                          variant="outline"
-                          className="rounded-full size-8 md:size-12 border-white/20 hover:bg-white hover:text-black transition-colors"
-                          onClick={() =>
-                            window.open(project.external, '_blank')
-                          }
-                        >
-                          <ExternalLink size={20} />
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl md:text-5xl font-bold text-white mb-4">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-lg text-white/70 mb-8 leading-relaxed max-w-xl">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 md:gap-3">
-                    {project.stack.map((tech: string) => (
-                      <div
-                        key={tech}
-                        className="flex items-center gap-1 md:gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-sm text-blue-200"
-                      >
-                        <Code2 size={14} />
-                        {tech}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Spacer for end of scroll */}
-        <div className="w-full md:w-[20vw] shrink-0" />
+        <div className="flex flex-col gap-6">
+          {projects.map(project => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
     </section>
+  )
+}
+
+interface Project {
+  id: number
+  year: string
+  title: string
+  description: string
+  stack: string[]
+  github?: string
+  external?: string
+  logo: string
+}
+
+const ProjectCard = ({ project }: { project: Project }) => {
+  return (
+    <div className="project-card group relative rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-white/[0.04]">
+      <div className="flex flex-col md:flex-row">
+        {/* Logo */}
+        <div className="relative flex items-center justify-center p-8 md:p-12 md:w-72 shrink-0 bg-white/[0.02]">
+          <div className="relative size-28 md:size-40 transition-transform duration-500 group-hover:scale-105">
+            <Image
+              src={project.logo}
+              alt={`${project.title} logo`}
+              fill
+              className="object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.08)]"
+            />
+          </div>
+        </div>
+
+        {/* Separator */}
+        <div className="h-px md:h-auto md:w-px bg-white/10" />
+
+        {/* Content */}
+        <div className="flex-1 p-8 md:p-12 flex flex-col justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="font-mono text-xs text-white/30 tracking-wider">
+                {project.year}
+              </span>
+            </div>
+
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 tracking-tight">
+              {project.title}
+            </h3>
+
+            <p className="text-white/50 text-sm md:text-base leading-relaxed max-w-xl">
+              {project.description}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map(tech => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs text-white/50 font-mono"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-2 shrink-0">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 text-white/50 text-sm hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="size-4" />
+                  <span className="hidden sm:inline">Source</span>
+                </a>
+              )}
+              {project.external && (
+                <a
+                  href={project.external}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 text-white/50 text-sm hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                >
+                  <ArrowUpRight className="size-4" />
+                  <span className="hidden sm:inline">Live</span>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

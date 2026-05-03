@@ -9,9 +9,9 @@
 
 import { motion, type Transition, type Variants } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
-import { Code2, GraduationCap, MapPin, Sparkles } from 'lucide-react'
+import { Container, GraduationCap, Heart, MapPin } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { cn } from '@/lib/utils/cn'
 import { RevealTitle } from '../ui/reveal-title'
 
@@ -48,18 +48,15 @@ const BentoCard = ({
   const cardVariants: Variants = {
     idle: {
       scale: 1,
-      /*filter: 'brightness(1) blur(0px)',*/
       opacity: 1,
     },
     hover: {
       scale: 1.02,
-      /*filter: 'brightness(1.1) blur(0px)',*/
       opacity: 1,
       zIndex: 10,
     },
     dimmed: {
       scale: 0.98,
-      /*filter: 'brightness(0.5) blur(1px)',*/
       opacity: 0.6,
     },
   }
@@ -112,13 +109,25 @@ const BentoCard = ({
 
 export const AboutSection = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const handleHover = useCallback((id: string | null) => {
+    if (leaveTimeout.current) {
+      clearTimeout(leaveTimeout.current)
+      leaveTimeout.current = null
+    }
+    if (id) {
+      setHoveredId(id)
+    } else {
+      leaveTimeout.current = setTimeout(() => setHoveredId(null), 100)
+    }
+  }, [])
 
   return (
     <section
       id="about"
       className="relative mx-auto w-full max-w-7xl px-6 py-32"
     >
-      {/* Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-250 h-250 bg-purple-900/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
       <div className="mb-10 relative z-10">
         <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
@@ -131,47 +140,51 @@ export const AboutSection = () => {
         />
       </div>
 
-      <div className="flex min-h-[80vh] w-full flex-col gap-4 lg:flex-row">
+      {/* biome-ignore lint/a11y/noStaticElementInteractions: decorative hover effect on bento grid */}
+      <div
+        className="flex min-h-[80vh] w-full flex-col gap-4 lg:flex-row"
+        onMouseLeave={() => handleHover(null)}
+      >
         <div className="flex w-full flex-col gap-4 lg:w-8/12">
           <div className="flex h-full min-h-75 flex-col gap-4 md:flex-row">
             <BentoCard
-              id="tech"
-              title="Tech Stack"
-              description="TypeScript, React, Next.js, Node.js — building modern web apps with clean, type-safe code."
-              icon={Code2}
+              id="student"
+              title="Software Engineering Student"
+              description="Pursuing a degree in Software Engineering at HEIA-FR, Fribourg. Focused on building real-world applications with modern tools and solid engineering principles."
+              icon={GraduationCap}
               className="md:w-7/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
-              setHoveredId={setHoveredId}
+              setHoveredId={handleHover}
             />
             <BentoCard
-              id="responsive"
-              title="Clean Code"
-              description="Readable, maintainable code following best practices and modern conventions."
-              icon={Sparkles}
-              className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
+              id="location"
+              title="Swiss Based"
+              description="Based in Fribourg, Switzerland. Open to remote opportunities and collaborations across Europe."
+              icon={MapPin}
+              className="md:w-5/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
-              setHoveredId={setHoveredId}
+              setHoveredId={handleHover}
             />
           </div>
 
           <div className="flex h-full min-h-75 flex-col gap-4 md:flex-row">
             <BentoCard
-              id="performance"
-              title="Swiss Based"
-              description="Based in Fribourg, Switzerland. Open to remote opportunities and collaborations."
-              icon={MapPin}
-              className="md:w-5/12 border-blue-500/20 bg-blue-950/10 backdrop-blur-md bg-linear-to-br from-blue-500/5 to-transparent"
+              id="devops"
+              title="DevOps Enthusiast"
+              description="Passionate about CI/CD pipelines, containerization with Docker, and automating deployments. Infrastructure as code is where engineering meets craft."
+              icon={Container}
+              className="md:w-5/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
-              setHoveredId={setHoveredId}
+              setHoveredId={handleHover}
             />
             <BentoCard
-              id="ui"
-              title="Student"
-              description="Studying Software Engineering. Passionate about building elegant solutions to complex problems."
-              icon={GraduationCap}
+              id="opensource"
+              title="Open Source"
+              description="Active contributor and advocate. All my personal projects are open source — I believe in building in the open and learning from the community."
+              icon={Heart}
               className="md:w-7/12 border-white/10 bg-white/5"
               hoveredId={hoveredId}
-              setHoveredId={setHoveredId}
+              setHoveredId={handleHover}
             />
           </div>
         </div>
@@ -182,16 +195,15 @@ export const AboutSection = () => {
           description=""
           className="min-h-100 w-full lg:w-4/12 lg:min-h-full p-0"
           hoveredId={hoveredId}
-          setHoveredId={setHoveredId}
+          setHoveredId={handleHover}
         >
           <div className="absolute inset-2 md:inset-3 rounded-2xl overflow-hidden">
             <div className="absolute inset-0 z-10 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-
             <Image
               src="/img/me-ia.png"
               alt="Noé Henchoz"
               fill
-              className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
+              className="object-cover opacity-80"
             />
           </div>
         </BentoCard>

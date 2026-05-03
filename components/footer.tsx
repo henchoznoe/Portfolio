@@ -12,12 +12,7 @@ import gsap from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-const interests = [
-  'Web Development',
-  'Backend Architecture',
-  'DevOps',
-  'Open Source',
-]
+const interests = ['Web Development', 'DevOps', 'Open Source']
 
 export const Footer = () => {
   const [time, setTime] = useState<string>('')
@@ -72,9 +67,8 @@ export const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="relative bg-black text-white pt-20 pb-40 px-6 overflow-hidden border-t border-white/10"
+      className="relative bg-black text-white py-20 px-6 overflow-hidden border-t border-white/10"
     >
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-indigo-900/40 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto">
         <div className="mb-24">
           <h2
@@ -94,7 +88,7 @@ export const Footer = () => {
               {interests.map(item => (
                 <li
                   key={item}
-                  className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit"
+                  className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit cursor-default"
                 >
                   {item}
                 </li>
@@ -110,7 +104,6 @@ export const Footer = () => {
               <FooterLink href="mailto:henchoznoe@gmail.com" external>
                 henchoznoe@gmail.com
               </FooterLink>
-              <p className="text-white/80 font-mono text-sm">Switzerland</p>
             </div>
           </div>
 
@@ -145,17 +138,8 @@ export const Footer = () => {
             </p>
 
             <p className="text-white/20 text-xs font-mono mt-auto pt-8">
-              © {new Date().getFullYear()}{' '}
-              <a
-                href="https://henchoznoe.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Noé Henchoz
-              </a>
-              . <br />
-              Built with Next.js & Tailwind CSS.
+              © {new Date().getFullYear()} Noé Henchoz . <br />
+              Built with Next.js and hosted on Vercel
             </p>
           </div>
         </div>
