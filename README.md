@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="public/assets/img/me-ia-cartoon.png" alt="Logo" width="auto" height="200" style="border-radius: 50%; margin-bottom: 15px;">
+<img src="public/img/me-ia-cartoon.png" alt="Logo" width="auto" height="200">
 
 [![CI](https://github.com/henchoznoe/Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/henchoznoe/Portfolio/actions/workflows/ci.yml)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fhenchoznoe.ch&label=Website)](https://henchoznoe.ch)
@@ -10,13 +10,9 @@
 
 ## Portfolio
 
-Title here
+Personal developer portfolio built with Next.js, Tailwind CSS, GSAP, and Framer Motion.
 
 </div>
-
-## Overview
-
-Overview here
 
 ## Tech Stack
 
@@ -24,26 +20,25 @@ Overview here
 | --- | --- |
 | Framework | Next.js 16 |
 | UI | React 19, TailwindCSS v4, shadcn/ui |
+| Animation | GSAP, Framer Motion |
 | Language | TypeScript (strict) |
-| Quality | Biome, Vitest, knip, Codecov, Husky, lint-staged |
+| Quality | Biome, knip, Husky, lint-staged |
 | Hosting | Vercel |
 
 ## Project Structure
 
 ```bash
 .
-├── app/                  # Next.js routes, layouts, error pages, API routes
-├── components/           # UI split by public/admin/shared domains
+├── app/                  # Next.js App Router (layouts, pages, global styles)
+├── components/
+│   ├── sections/         # Page sections (hero, about, projects, skills)
+│   └── ui/               # Reusable UI components
 ├── lib/
-│   ├── actions/          # Server mutations
-│   ├── services/         # Cached read-side access
-│   ├── core/             # Auth, env, logger, Prisma, Stripe
-│   ├── config/           # Routes and constants
-│   ├── validations/      # Zod schemas
-│   ├── utils/            # Formatting, auth, refund, team, image helpers
-│   └── types/            # Shared TypeScript types
-├── public/               # Static assets and fonts
-└── .github/workflows/   # CI, release, dependency review, PR title validation
+│   └── utils/            # Utility functions (cn, app-version, commit-hash)
+├── public/
+│   ├── img/              # Profile images
+│   └── projects/         # Project logos
+└── .github/workflows/    # CI, release, dependency review, PR title validation
 ```
 
 ## Quick Start
@@ -69,10 +64,9 @@ The app runs on `http://localhost:3000`.
 | `pnpm dev` | Start the Next.js dev server |
 | `pnpm build` | Build Next.js |
 | `pnpm start` | Start the production server |
-| `pnpm exec tsc --noEmit` | Run TypeScript type-checking |
-| `pnpm exec biome check .` | Run formatter/linter check without writing |
 | `pnpm check` | Run Biome and write fixes |
-| `pnpm check:com` | Run all checks before commit |
+| `pnpm check:com` | Full validation (Biome + knip + tsc + build) |
+| `pnpm knip` | Dead code / unused dependency detection |
 
 ## Quality Workflow
 
@@ -90,11 +84,7 @@ Additional CI workflows:
 - [`dependency-review.yml`](.github/workflows/dependency-review.yml) — blocks PRs introducing high-severity vulnerable dependencies.
 - [`pr-title.yml`](.github/workflows/pr-title.yml) — enforces Conventional Commits format on PR titles (required for semantic-release).
 
-Pre-commit only runs Biome on staged `*.{ts,tsx,css}` files through `lint-staged`, so local type-checking and tests are still your responsibility before shipping changes.
-
-## Deployment Notes
-
-The project is designed for Vercel deployment.
+Pre-commit only runs Biome on staged `*.{ts,tsx,css}` files through `lint-staged`.
 
 ## License
 
