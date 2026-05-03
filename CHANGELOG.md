@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/henchoznoe/Portfolio/compare/v1.0.0...v1.1.0) (2026-05-03)
+
+
+### Features
+
+* enhance footer component with app version and commit hash display ([fbe564f](https://github.com/henchoznoe/Portfolio/commit/fbe564fc603cfcb2f7f833f4e629e4ed3f41905c))
+
 # 1.0.0 (2026-05-01)
 
 
