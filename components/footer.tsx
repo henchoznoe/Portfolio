@@ -11,10 +11,15 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { getAppVersion, getRepoUrl } from '@/lib/utils/app-version'
+import { getCommitHash } from '@/lib/utils/commit-hash'
 
 const interests = ['Web Development', 'DevOps', 'Open Source']
 
 export const Footer = () => {
+  const appVersion = getAppVersion()
+  const repoUrl = getRepoUrl()
+  const commitHash = getCommitHash()
   const [time, setTime] = useState<string>('')
   const [timezone, setTimezone] = useState<string>('')
   const containerRef = useRef<HTMLElement>(null)
@@ -67,7 +72,7 @@ export const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="relative bg-black text-white py-20 px-6 overflow-hidden border-t border-white/10"
+      className="relative bg-black text-white py-8 px-6 overflow-hidden border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-24">
@@ -139,7 +144,15 @@ export const Footer = () => {
 
             <p className="text-white/20 text-xs font-mono mt-auto pt-8">
               © {new Date().getFullYear()} Noé Henchoz . <br />
-              Built with Next.js and hosted on Vercel
+              Built with Next.js and hosted on Vercel <br />
+              <a
+                href={repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer transition-colors hover:text-zinc-400"
+              >
+                v{appVersion} &middot; build: {commitHash}
+              </a>
             </p>
           </div>
         </div>

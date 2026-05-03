@@ -9,7 +9,6 @@
 import os from 'node:os'
 import type { NextConfig } from 'next'
 
-// TODO: one line comment here
 const getLocalIp = () => {
   const interfaces = os.networkInterfaces()
   for (const name of Object.keys(interfaces))
@@ -19,8 +18,11 @@ const getLocalIp = () => {
 }
 
 const nextConfig: NextConfig = {
-  // TODO: one line comment here, why set allowedDevOrigins
   allowedDevOrigins: [getLocalIp()],
+  // Inline Vercel env vars at build time so client components can access them
+  env: {
+    NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA ?? '',
+  },
 }
 
 export default nextConfig
