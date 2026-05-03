@@ -11,21 +11,17 @@ import type { PropsWithChildren } from 'react'
 import { DockMenu } from '@/components/dock-menu'
 import { Footer } from '@/components/footer'
 import { NavigationDock } from '@/components/navigation-dock'
-import { CustomCursor } from '@/components/ui/custom-cursor'
-import { LanguageProvider } from '@/lib/context/language-context'
-import { ScrollProvider } from '@/lib/context/scroll-context'
-import { TransitionProvider } from '@/lib/context/transition-context'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-inter',
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-mono',
+  variable: '--font-jetbrains-mono',
 })
 
 export const metadata: Metadata = {
@@ -43,17 +39,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html className="dark" lang="en" suppressHydrationWarning>
       <body className={bodyClass} suppressHydrationWarning>
-        <LanguageProvider>
-          <ScrollProvider>
-            <TransitionProvider>
-              <CustomCursor />
-              {children}
-              <Footer />
-              <DockMenu />
-              <NavigationDock />
-            </TransitionProvider>
-          </ScrollProvider>
-        </LanguageProvider>
+        {children}
+        <Footer />
+        <DockMenu />
+        <NavigationDock />
       </body>
     </html>
   )

@@ -1,14 +1,25 @@
+/**
+ * File: components/footer.tsx
+ * Description: Footer with contact info and social links.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ArrowUpRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { useLanguage } from '@/lib/context/language-context'
+import { getAppVersion, getRepoUrl } from '@/lib/utils/app-version'
+import { getCommitHash } from '@/lib/utils/commit-hash'
+
+const interests = ['Web Development', 'DevOps', 'Open Source']
 
 export const Footer = () => {
-  const { t } = useLanguage()
-
+  const appVersion = getAppVersion()
+  const repoUrl = getRepoUrl()
+  const commitHash = getCommitHash()
   const [time, setTime] = useState<string>('')
   const [timezone, setTimezone] = useState<string>('')
   const containerRef = useRef<HTMLElement>(null)
@@ -61,30 +72,28 @@ export const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="relative bg-black text-white pt-20 pb-40 px-6 overflow-hidden border-t border-white/10"
+      className="relative bg-black text-white py-8 px-6 overflow-hidden border-t border-white/10"
     >
-      {/* Rising Glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-linear-to-t from-indigo-900/40 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto">
         <div className="mb-24">
           <h2
             ref={titleRef}
             className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white to-white/40 select-none"
           >
-            {t.footer.title}
+            Let&apos;s Connect
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 border-t border-white/10 pt-12">
           <div className="flex flex-col gap-4">
             <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">
-              {t.footer.interests.title}
+              Interests
             </h3>
             <ul className="flex flex-col gap-2">
-              {t.footer.interests.items.map(item => (
+              {interests.map(item => (
                 <li
                   key={item}
-                  className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit"
+                  className="text-white/60 hover:text-white transition-colors text-lg font-medium w-fit cursor-default"
                 >
                   {item}
                 </li>
@@ -94,60 +103,56 @@ export const Footer = () => {
 
           <div className="flex flex-col gap-4">
             <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">
-              {t.footer.contact.title}
+              Contact
             </h3>
             <div className="flex flex-col gap-2">
               <FooterLink href="mailto:henchoznoe@gmail.com" external>
                 henchoznoe@gmail.com
               </FooterLink>
-              <p className="text-white/80 font-mono text-sm">
-                {t.footer.contact.location}
-              </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-4">
             <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">
-              {t.footer.socials.title}
+              Socials
             </h3>
             <div className="flex flex-col gap-2">
               <FooterLink href="https://github.com/henchoznoe" external>
-                {t.dock.github}
+                GitHub
               </FooterLink>
               <FooterLink href="https://linkedin.com/in/henchoznoe" external>
-                {t.dock.linkedin}
+                LinkedIn
               </FooterLink>
             </div>
           </div>
 
           <div className="flex flex-col gap-4 md:items-end">
             <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider">
-              {t.footer.time.title}
+              Local Time
             </h3>
             <div className="flex items-center gap-3 font-mono text-xl text-white/90">
               {time || '--:--:--'}
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600" />
               </span>
               <span className="text-white/30 text-sm">UTC {timezone}</span>
             </div>
             <p className="text-white/40 text-xs font-mono text-left md:text-right italic">
-              {t.footer.time.location}
+              Fribourg, Switzerland
             </p>
 
             <p className="text-white/20 text-xs font-mono mt-auto pt-8">
-              © {new Date().getFullYear()}{' '}
+              © {new Date().getFullYear()} Noé Henchoz . <br />
+              Built with Next.js and hosted on Vercel <br />
               <a
-                href="https://henchoznoe.com"
+                href={repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className="cursor-pointer transition-colors hover:text-zinc-400"
               >
-                Noé Henchoz
+                v{appVersion} &middot; build: {commitHash}
               </a>
-              . <br />
-              {t.footer.time.built}
             </p>
           </div>
         </div>

@@ -1,14 +1,14 @@
+/**
+ * File: components/ui/reveal-title.tsx
+ * Description: Animated reveal title component.
+ * Author: Noé Henchoz
+ * Copyright (c) 2026 Noé Henchoz
+ */
+
 'use client'
 
-import {
-  type MotionStyle,
-  motion,
-  useScroll,
-  useTransform,
-  type Variants,
-} from 'framer-motion'
-import { useRef } from 'react'
-import { cn } from '@/lib/utils'
+import { motion, type Variants } from 'framer-motion'
+import { cn } from '@/lib/utils/cn'
 
 interface RevealTitleProps {
   text: string
@@ -16,36 +16,22 @@ interface RevealTitleProps {
 }
 
 export const RevealTitle = ({ text, className }: RevealTitleProps) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  // Gestion du scroll pour l'effet de disparition (Parallax + Blur)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  })
-
-  // Quand l'élément arrive vers le haut de l'écran (sortie), il floute et disparait
-  const opacity = useTransform(scrollYProgress, [0.5, 0.8], [1, 0])
-  const blur = useTransform(scrollYProgress, [0.5, 0.8], ['0px', '10px'])
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]) // Léger parallax
-
-  // Découpage du texte en mots pour l'animation
   const words = text.split(' ')
 
   const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.1, // Délai entre chaque mot
+        staggerChildren: 0.1,
       },
     },
   }
 
   const wordVariants: Variants = {
     hidden: {
-      y: '100%', // Caché en bas
+      y: '100%',
       opacity: 0,
-      rotate: 3, // Légère rotation pour le style
+      rotate: 3,
     },
     visible: {
       y: '0%',
@@ -60,17 +46,14 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
   }
 
   return (
-    <motion.div
-      ref={containerRef}
-      style={{ opacity, filter: `blur(${blur})`, y } as MotionStyle}
-      className={cn('relative z-10', className)}
-    >
+    <div className={cn('relative z-10', className)}>
       <motion.h2
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-20%' }} // Se lance quand l'élément est bien visible
+        viewport={{ once: true, margin: '-20%' }}
         variants={containerVariants}
-        className="flex flex-wrap gap-x-[0.3em] overflow-hidden leading-none" // overflow-hidden est crucial pour le masque
+        // Overflow hidden masks the slide-up animation
+        className="flex flex-wrap gap-x-[0.3em] overflow-hidden leading-none"
       >
         {words.map(word => (
           <span
@@ -87,6 +70,6 @@ export const RevealTitle = ({ text, className }: RevealTitleProps) => {
           </span>
         ))}
       </motion.h2>
-    </motion.div>
+    </div>
   )
 }
