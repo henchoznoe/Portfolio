@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/henchoznoe/Portfolio/compare/v1.1.0...v1.2.0) (2026-08-20)
+
+
+### Features
+
+* update UI ([df64e08](https://github.com/henchoznoe/Portfolio/commit/df64e08bee7b84ee9d512f8566c9e38f0873ed62))
+
 # [1.1.0](https://github.com/henchoznoe/Portfolio/compare/v1.0.0...v1.1.0) (2026-05-03)
 
 
