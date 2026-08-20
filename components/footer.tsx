@@ -11,7 +11,7 @@ const SocialLink = ({
   <a
     href={href}
     target="_blank"
-    rel="noreferrer"
+    rel="me noreferrer"
     aria-label={label}
     className="flex h-12 items-center justify-center rounded-full border border-white/20 px-5 font-mono text-[9px] uppercase tracking-[0.12em] transition-colors hover:border-signal hover:bg-signal"
   >

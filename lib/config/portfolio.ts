@@ -1,14 +1,31 @@
 export const siteConfig = {
   name: 'Noé Henchoz',
   shortName: 'Noé',
+  title: 'Noé Henchoz — Développeur full-stack à Fribourg',
   description:
-    'Portfolio de Noé Henchoz, étudiant en ingénierie logicielle à Fribourg. Produits web, systèmes full-stack et projets open source.',
+    'Portfolio de Noé Henchoz, développeur full-stack et étudiant en ingénierie logicielle à Fribourg : applications web, produits Next.js et projets open source.',
   url: 'https://henchoznoe.ch',
+  ogImage: '/og.png',
   locale: 'fr_CH',
   language: 'fr-CH',
   email: 'henchoznoe@gmail.com',
   github: 'https://github.com/henchoznoe',
   linkedin: 'https://linkedin.com/in/henchoznoe',
+  location: {
+    locality: 'Fribourg',
+    region: 'Fribourg',
+    country: 'CH',
+  },
+  knowsAbout: [
+    'Développement web full-stack',
+    'Design engineering',
+    'TypeScript',
+    'Next.js',
+    'PostgreSQL',
+    'Architecture logicielle',
+    'Expérience utilisateur',
+    'Open source',
+  ],
 } as const
 
 type ProjectVisual =

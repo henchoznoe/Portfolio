@@ -25,33 +25,44 @@ const openSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'Noé Henchoz — Design engineering & systèmes full-stack',
+    default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  alternates: { canonical: '/' },
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: 'technology',
+  classification: 'Portfolio de développement web et ingénierie logicielle',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'fr-CH': '/',
+      'x-default': '/',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: siteConfig.locale,
     url: '/',
     siteName: siteConfig.name,
-    title: 'Noé Henchoz — Design engineering & systèmes full-stack',
+    title: siteConfig.title,
     description: siteConfig.description,
     images: [
       {
-        url: '/og.png',
+        url: siteConfig.ogImage,
         width: 1731,
         height: 909,
-        alt: 'Portfolio de Noé Henchoz',
+        alt: 'Noé Henchoz — Portfolio de développement full-stack',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Noé Henchoz — Design engineering & systèmes full-stack',
+    title: siteConfig.title,
     description: siteConfig.description,
-    images: ['/og.png'],
+    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -64,6 +75,9 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 }
 
 export const viewport: Viewport = {
