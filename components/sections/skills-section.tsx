@@ -1,132 +1,69 @@
-/**
- * File: components/sections/skills-section.tsx
- * Description: Skills section with categorized grid.
- * Author: Noé Henchoz
- * Copyright (c) 2026 Noé Henchoz
- */
+import { capabilityGroups } from '@/lib/config/portfolio'
 
-'use client'
-
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Image from 'next/image'
-import { useRef } from 'react'
-import { RevealTitle } from '@/components/ui/reveal-title'
-
-gsap.registerPlugin(ScrollTrigger)
-
-const skillCategories = [
-  {
-    title: 'Languages',
-    skills: [
-      { name: 'Java', id: 'java' },
-      { name: 'TypeScript', id: 'ts' },
-      { name: 'Python', id: 'py' },
-      { name: 'C++', id: 'cpp' },
-    ],
-  },
-  {
-    title: 'Frameworks',
-    skills: [
-      { name: 'Next.js', id: 'next' },
-      { name: 'NestJS', id: 'nest' },
-      { name: 'TailwindCSS', id: 'tailwind' },
-    ],
-  },
-  {
-    title: 'Data',
-    skills: [
-      { name: 'PostgreSQL', id: 'postgres' },
-      { name: 'Supabase', id: 'supabase' },
-      { name: 'Prisma', id: 'prisma' },
-    ],
-  },
-  {
-    title: 'DevOps & Tools',
-    skills: [
-      { name: 'Docker', id: 'docker' },
-      { name: 'GitHub', id: 'github' },
-      { name: 'GitLab', id: 'gitlab' },
-      { name: 'Vercel', id: 'vercel' },
-    ],
-  },
-]
-
-export const SkillsSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
-      })
-
-      tl.from('.skill-category', {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
-      })
-    },
-    { scope: containerRef },
-  )
-
-  return (
-    <section
-      id="skills"
-      ref={containerRef}
-      className="py-32 px-6 bg-black relative overflow-hidden"
-    >
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16 relative">
-          <div className="absolute top-0 right-0 md:right-20 text-[12vw] font-bold text-white/2 pointer-events-none select-none font-mono leading-none z-0">
-            03
-          </div>
-          <RevealTitle
-            text="My Skills"
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-          />
+export const SkillsSection = () => (
+  <section
+    id="skills"
+    className="page-gutter bg-cream py-24 text-ink sm:py-36 lg:py-48"
+  >
+    <div className="mx-auto max-w-[1500px] border-x border-[#161612]/10">
+      <div className="grid grid-cols-6 border-y border-[#161612]/10 sm:grid-cols-12">
+        <div className="col-span-6 flex min-h-28 items-start justify-between border-b border-[#161612]/10 px-4 py-5 sm:col-span-3 sm:border-r sm:border-b-0 sm:px-6 lg:px-8">
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#161612]/50 sm:text-xs">
+            Manière de faire
+          </p>
+          <span className="font-mono text-[10px] text-signal sm:text-xs">
+            04
+          </span>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map(category => (
-            <div key={category.title} className="skill-category">
-              <h3 className="font-mono text-sm text-white/40 uppercase tracking-wider mb-6">
-                {category.title}
-              </h3>
-              <div className="flex flex-col gap-3">
-                {category.skills.map(skill => (
-                  <div
-                    key={skill.id}
-                    className="group flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/[0.02] transition-all duration-300 hover:border-white/15 hover:bg-white/[0.05]"
-                  >
-                    <div className="size-10 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 transition-transform duration-300 group-hover:scale-110">
-                      <Image
-                        src={`https://skillicons.dev/icons?i=${skill.id}`}
-                        alt={skill.name}
-                        width={28}
-                        height={28}
-                        className="size-6"
-                        loading="lazy"
-                        unoptimized
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-white/70 group-hover:text-white/90 transition-colors duration-300">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="col-span-6 px-4 py-8 sm:col-span-9 sm:px-8 lg:px-10">
+          <h2 className="max-w-5xl text-[clamp(2.75rem,7.5vw,8.5rem)] font-medium leading-[0.9] tracking-[-0.065em]">
+            DU PREMIER TRAIT AU DERNIER{' '}
+            <span className="font-serif italic text-signal">deploy.</span>
+          </h2>
         </div>
       </div>
-    </section>
-  )
-}
+
+      {capabilityGroups.map(group => (
+        <article
+          key={group.index}
+          className="group grid grid-cols-6 border-b border-[#161612]/10 transition-colors hover:bg-white/45 sm:grid-cols-12"
+        >
+          <div className="col-span-1 px-4 py-7 sm:px-6 lg:px-8">
+            <span className="font-mono text-[10px] text-signal sm:text-xs">
+              {group.index}
+            </span>
+          </div>
+          <div className="col-span-5 px-2 py-7 sm:col-span-3 sm:border-r sm:border-[#161612]/10">
+            <h3 className="text-2xl font-medium tracking-[-0.045em] sm:text-3xl lg:text-4xl">
+              {group.title}
+            </h3>
+          </div>
+          <div className="col-span-6 px-4 pb-7 sm:col-span-4 sm:px-7 sm:py-7 lg:px-9">
+            <p className="max-w-md text-sm leading-relaxed text-[#161612]/58">
+              {group.description}
+            </p>
+          </div>
+          <div className="col-span-6 flex flex-wrap content-start gap-x-4 gap-y-2 border-t border-[#161612]/10 px-4 py-5 font-mono text-[9px] uppercase tracking-[0.13em] text-[#161612]/45 sm:col-span-4 sm:border-t-0 sm:border-l sm:px-7 sm:py-7 sm:text-[10px]">
+            {group.items.map(item => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+
+      <div className="grid grid-cols-6 sm:grid-cols-12">
+        <div className="col-span-6 min-h-40 border-b border-[#161612]/10 px-4 py-7 sm:col-span-3 sm:border-r sm:border-b-0 sm:px-6 lg:px-8">
+          <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#161612]/45">
+            En continu
+          </p>
+        </div>
+        <div className="col-span-6 px-4 py-8 sm:col-span-9 sm:px-8 lg:px-10">
+          <p className="max-w-4xl text-2xl leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+            Apprendre, documenter, automatiser, remettre en question — puis
+            recommencer avec un meilleur système.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+)

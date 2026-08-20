@@ -1,2 +1,4 @@
 allowBuilds:
   sharp: true
+overrides:
+  '@actions/http-client>undici': 6.28.0
