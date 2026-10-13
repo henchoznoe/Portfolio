@@ -1,200 +1,72 @@
-/**
- * File: app/globals.css
- * Description: Global styles for the application.
- * Author: Noé Henchoz
- * License: MIT
- * Copyright (c) 2026 Noé Henchoz
- */
-
 @import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-cream: var(--cream);
-  --color-ink: var(--ink);
-  --color-signal: var(--signal);
-  --font-sans: var(--font-open-sans);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-serif: Georgia, "Times New Roman", serif;
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-}
-
-:root {
-  --radius: 0.625rem;
-  --cream: #f1efe8;
-  --ink: #161612;
-  --signal: #3157d5;
-  --background: var(--cream);
-  --foreground: var(--ink);
-  --card: #0a0a0a;
-  --card-foreground: #ffffff;
-
-  --popover: #0a0a0a;
-  --popover-foreground: #ffffff;
-
-  --primary: #ffffff;
-  --primary-foreground: #000000;
-
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffffff;
-
-  --muted: #1a1a1a;
-  --muted-foreground: #a1a1aa;
-
-  --accent: #1a1a1a;
-  --accent-foreground: #ffffff;
-
-  --destructive: #7f1d1d;
-  --destructive-foreground: #ffffff;
-
-  --border: #333333;
-  --input: #333333;
-  --ring: #ffffff;
-
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-
-  --sidebar: #0a0a0a;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ffffff;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #1a1a1a;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #333333;
-  --sidebar-ring: #ffffff;
-}
-
-.dark {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #0a0a0a;
-  --card-foreground: #ffffff;
-  --popover: #0a0a0a;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
-  --primary-foreground: #000000;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffffff;
-  --muted: #1a1a1a;
-  --muted-foreground: #a1a1aa;
-  --accent: #1a1a1a;
-  --accent-foreground: #ffffff;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #ffffff;
-  --border: #333333;
-  --input: #333333;
-  --ring: #ffffff;
-  --sidebar: #0a0a0a;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ffffff;
-  --sidebar-primary-foreground: #000000;
-  --sidebar-accent: #1a1a1a;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #333333;
-  --sidebar-ring: #ffffff;
+  --font-sans: var(--font-manrope), Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --color-paper: #f7f9fc;
+  --color-ink: #1e293b;
+  --color-accent: #275be8;
+  --color-muted: #5e6b80;
+  --color-line: #d9e1ed;
+  --color-soft: #edf2fa;
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  :root {
+    color-scheme: light;
+    --header-height: 89px;
   }
   html {
-    scroll-behavior: smooth;
+    @apply scroll-smooth scroll-pt-[110px] max-[600px]:scroll-pt-[90px];
   }
   body {
-    @apply bg-background text-foreground font-sans;
-    overflow-x: hidden;
+    @apply bg-paper font-sans leading-[normal] text-ink antialiased;
   }
   a,
   button {
+    @apply touch-manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-}
-
-::selection {
-  background: var(--signal);
-  color: var(--cream);
-}
-
-@layer components {
-  .page-gutter {
-    padding-inline: clamp(1rem, 3vw, 3rem);
+  button {
+    @apply cursor-pointer;
   }
-
-  .page-frame {
-    width: 100%;
-    max-width: 93.75rem;
-    margin-inline: auto;
+  svg {
+    @apply shrink-0;
   }
-
-  .editorial-grid {
-    background-image:
-      linear-gradient(to right, rgb(22 22 18 / 8%) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(22 22 18 / 8%) 1px, transparent 1px);
-    background-size:
-      calc(100% / 6) 100%,
-      100% 25%;
+  :focus-visible {
+    @apply rounded-[2px] outline-2 outline-offset-6 outline-accent;
   }
-
-  @media (min-width: 40rem) {
-    .editorial-grid {
-      background-size:
-        calc(100% / 12) 100%,
-        100% 25%;
-    }
+  ::selection {
+    @apply bg-[#dce7ff] text-ink;
   }
 }
 
+/* Shared height keeps the sticky header and the 100dvh introduction aligned. */
+@media (max-width: 820px) {
+  :root {
+    --header-height: 77px;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --header-height: 69px;
+  }
+}
+
+/* Also covers inline styles generated by the animation library. */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
-    scroll-behavior: auto;
-    animation-duration: 0.01ms;
-    animation-iteration-count: 1;
-    transition-duration: 0.01ms;
+    /* biome-ignore lint/complexity/noImportantStyles: Accessibility preference overrides animation styles. */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Accessibility preference overrides animation styles. */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Accessibility preference overrides animation styles. */
+    transition-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: Preserve immediate navigation when requested. */
+    scroll-behavior: auto !important;
   }
 }

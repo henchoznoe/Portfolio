@@ -8,8 +8,8 @@ const AppleIcon = () =>
     <div
       style={{
         alignItems: 'center',
-        background: '#f1efe8',
-        color: '#161612',
+        background: '#f7f9fc',
+        color: '#1e293b',
         display: 'flex',
         fontSize: 112,
         fontWeight: 700,
@@ -19,7 +19,7 @@ const AppleIcon = () =>
         width: '100%',
       }}
     >
-      N<span style={{ color: '#3157d5' }}>.</span>
+      N<span style={{ color: '#275be8' }}>.</span>
     </div>,
     size,
   )
