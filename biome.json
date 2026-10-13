@@ -19,10 +19,12 @@
       "app/**",
       "components/**",
       "lib/**",
-      "next.config.ts",
-      "!**/package.json",
-      "biome.json",
-      "tsconfig.json"
+      "scripts/**",
+      "*.ts",
+      "*.mjs",
+      "*.json",
+      "!.next",
+      "!node_modules"
     ]
   },
   "formatter": {
@@ -37,19 +39,21 @@
       "trailingCommas": "all"
     },
     "globals": [],
-    "parser": {
-      "unsafeParameterDecoratorsEnabled": true
-    }
+    "parser": {}
   },
   "linter": {
     "enabled": true,
     "rules": {
       "preset": "recommended",
       "style": {
-        "useNodejsImportProtocol": "error"
+        "useNodejsImportProtocol": "error",
+        "useImportType": "error"
       },
       "suspicious": {
         "noExplicitAny": "error"
+      },
+      "complexity": {
+        "useArrowFunction": "error"
       }
     }
   },

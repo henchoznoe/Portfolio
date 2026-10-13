@@ -1,0 +1,34 @@
+name: PR title
+
+# Only read PR metadata. Never check out or execute PR source in this workflow.
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened]
+    branches: [main, develop]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  validate:
+    name: Validate Conventional Commit title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check the PR title
+        uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            perf
+            refactor
+            chore
+            ci
+            build
+            test
+            revert
+            docs
+          requireScope: false

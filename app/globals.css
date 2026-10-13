@@ -19,7 +19,7 @@
     --header-height: 89px;
   }
   html {
-    @apply scroll-smooth scroll-pt-[110px] max-[600px]:scroll-pt-[90px];
+    @apply scroll-smooth scroll-pt-27.5 max-[600px]:scroll-pt-22.5;
   }
   body {
     @apply bg-paper font-sans leading-[normal] text-ink antialiased;
@@ -36,7 +36,7 @@
     @apply shrink-0;
   }
   :focus-visible {
-    @apply rounded-[2px] outline-2 outline-offset-6 outline-accent;
+    @apply rounded-xs outline-2 outline-offset-6 outline-accent;
   }
   ::selection {
     @apply bg-[#dce7ff] text-ink;

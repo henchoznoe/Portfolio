@@ -8,13 +8,12 @@ import type { copy, Locale } from '@/lib/config/portfolio'
 import { container, wordmark } from '@/lib/styles'
 import { cn } from '@/lib/utils/cn'
 
-export const Header = ({
-  locale,
-  labels,
-}: {
+interface HeaderProps {
   locale: Locale
   labels: (typeof copy)['fr']['nav']
-}) => {
+}
+
+export const Header = ({ locale, labels }: Readonly<HeaderProps>) => {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [section, setSection] = useState('')
@@ -88,7 +87,7 @@ export const Header = ({
           N<span>/</span>H
         </Link>
         <nav
-          className="ml-auto hidden gap-[26px] min-[600px]:flex min-[820px]:mr-5 min-[820px]:gap-[22px] min-[1100px]:mr-16 min-[1100px]:gap-8 [&>a]:text-[13px] [&>a]:transition-colors [&>a]:duration-200 [&>a:hover]:text-accent"
+          className="ml-auto hidden gap-6.5 min-[600px]:flex min-[820px]:mr-5 min-[820px]:gap-5.5 min-[1100px]:mr-16 min-[1100px]:gap-8 [&>a]:text-[13px] [&>a]:transition-colors [&>a]:duration-200 [&>a:hover]:text-accent"
           aria-label={labels.label}
         >
           {links.map(link => (
@@ -97,7 +96,7 @@ export const Header = ({
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-5 min-[600px]:gap-[22px] min-[1100px]:gap-8">
+        <div className="flex items-center gap-5 min-[600px]:gap-5.5 min-[1100px]:gap-8">
           <a
             className="inline-flex min-h-11 items-center gap-2 font-mono text-[11px] hover:text-accent"
             href={`${alternate}${pathname === `/${locale}` ? section : ''}`}
@@ -139,7 +138,7 @@ export const Header = ({
       </div>
       <nav
         id="mobile-menu"
-        className="absolute inset-x-0 top-full border-y border-line bg-paper px-6 pt-2.5 pb-6 shadow-[0_12px_20px_rgb(30_41_59/6%)] min-[600px]:hidden [&>a]:flex [&>a]:justify-between [&>a]:py-[15px]"
+        className="absolute inset-x-0 top-full border-y border-line bg-paper px-6 pt-2.5 pb-6 shadow-[0_12px_20px_rgb(30_41_59/6%)] min-[600px]:hidden [&>a]:flex [&>a]:justify-between [&>a]:py-3.75"
         aria-label={labels.label}
         hidden={!open}
       >

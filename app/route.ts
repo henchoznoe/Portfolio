@@ -3,7 +3,7 @@ import { isLocale } from '@/lib/config/portfolio'
 
 export const dynamic = 'force-dynamic'
 
-export function GET(request: NextRequest) {
+export const GET = (request: NextRequest) => {
   const savedLocale = request.cookies.get('portfolio-locale')?.value
   const preferred = (request.headers.get('accept-language') ?? '')
     .split(',')
