@@ -2,6 +2,7 @@ import { ArrowUp, ArrowUpRight } from 'lucide-react'
 import { copy, type Locale, siteConfig } from '@/lib/config/portfolio'
 import { container, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils/cn'
+import { Reveal } from './reveal'
 
 interface FooterProps {
   locale: Locale
@@ -14,7 +15,7 @@ export const Footer = ({ locale }: Readonly<FooterProps>) => {
       id="contact"
       className="border-t border-line bg-[#e8eef7] pt-13.5 text-ink min-[600px]:pt-19.5"
     >
-      <div className={container}>
+      <Reveal className={container}>
         <p className={cn(eyebrow, 'mb-8 text-[#45618e]')}>{t.label}</p>
         <div className="items-center pb-11 min-[600px]:grid min-[600px]:grid-cols-2 min-[600px]:gap-10 min-[600px]:pb-20 min-[820px]:gap-17.5">
           <div>
@@ -56,7 +57,7 @@ export const Footer = ({ locale }: Readonly<FooterProps>) => {
             <ArrowUp size={14} aria-hidden="true" />
           </a>
         </div>
-      </div>
+      </Reveal>
     </footer>
   )
 }

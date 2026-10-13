@@ -51,7 +51,7 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
           )}
         >
           <div className="grid flex-1 grid-cols-1 items-center gap-8.5 pb-8.75 min-[600px]:grid-cols-[minmax(0,1fr)_230px] min-[600px]:gap-7.5 min-[600px]:pb-15 min-[820px]:grid-cols-[minmax(0,1fr)_270px] min-[820px]:gap-10 min-[820px]:pb-19 min-[1100px]:grid-cols-[minmax(0,1fr)_310px] min-[1100px]:gap-16.25 min-[1600px]:pb-25">
-            <div className="border-l-2 border-accent pl-4.5 min-[600px]:pl-7.5">
+            <Reveal className="border-l-2 border-accent pl-4.5 min-[600px]:pl-7.5">
               <p
                 className={cn(
                   eyebrow,
@@ -90,8 +90,11 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </a>
               </div>
-            </div>
-            <div className="relative grid grid-cols-[96px_1fr] items-center gap-x-5 rounded-xl border border-[#d2dfff] bg-[#e8efff] p-4.5 min-[600px]:block min-[600px]:rounded-[18px] min-[600px]:p-6.75">
+            </Reveal>
+            <Reveal
+              delay={0.12}
+              className="relative grid grid-cols-[96px_1fr] items-center gap-x-5 rounded-xl border border-[#d2dfff] bg-[#e8efff] p-4.5 min-[600px]:block min-[600px]:rounded-[18px] min-[600px]:p-6.75"
+            >
               <div className="relative row-span-2 w-24 p-1.5 min-[600px]:w-auto min-[600px]:p-3 [&>img]:relative [&>img]:z-1 [&>img]:aspect-square [&>img]:rounded-full [&>img]:object-cover">
                 <Image
                   src="/img/noe-henchoz.jpeg"
@@ -118,7 +121,7 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
                 <MapPin size={14} aria-hidden="true" />
                 {t.hero.location}
               </p>
-            </div>
+            </Reveal>
           </div>
           <div className="flex shrink-0 items-center justify-between gap-6 border-t border-line py-5 min-[600px]:py-6.25">
             <div className="flex flex-col items-start gap-1.75 min-[600px]:flex-row min-[600px]:items-center min-[600px]:gap-3.75 min-[1100px]:gap-6.25">
@@ -156,8 +159,8 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
               />
             </Reveal>
             <div className="grid grid-cols-1 gap-9.5 min-[600px]:grid-cols-2 min-[600px]:gap-x-5.5 min-[600px]:gap-y-10.5 min-[820px]:gap-x-8 min-[820px]:gap-y-13">
-              {projects.map(project => (
-                <Reveal key={project.slug}>
+              {projects.map((project, index) => (
+                <Reveal key={project.slug} delay={(index % 2) * 0.14}>
                   <article className="group/project relative">
                     <div>
                       <div className="relative overflow-hidden rounded-[5px]">
@@ -275,9 +278,10 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
               {[
                 { title: t.about.experience, items: t.about.experiences },
                 { title: t.about.education, items: t.about.educationItems },
-              ].map(group => (
-                <div
+              ].map((group, index) => (
+                <Reveal
                   key={group.title}
+                  delay={index * 0.12}
                   className="[&+&]:mt-10 min-[600px]:[&+&]:mt-13"
                 >
                   <h3
@@ -308,7 +312,7 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
                       </p>
                     </article>
                   ))}
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -323,39 +327,42 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
               />
             </Reveal>
             <div className="grid grid-cols-1 gap-5 min-[820px]:grid-cols-3">
-              {t.skills.groups.map((group, i) => (
-                <article
+              {t.skills.groups.map((group, index) => (
+                <Reveal
                   key={group.title}
-                  className="flex flex-col rounded border border-line bg-soft p-6 min-[600px]:grid min-[600px]:grid-cols-[1fr_1.2fr] min-[600px]:gap-x-8.75 min-[600px]:p-5.75 min-[820px]:flex min-[1100px]:p-7"
+                  delay={index * 0.14}
+                  className="h-full"
                 >
-                  <div className="mb-6.25 flex items-center justify-between text-accent min-[600px]:col-span-full min-[600px]:mb-5 min-[820px]:mb-8.75">
-                    <span className={eyebrow}>0{i + 1}</span>
-                    <Braces size={24} strokeWidth={1.3} aria-hidden="true" />
-                  </div>
-                  <h3 className="text-[22px] font-semibold tracking-[-0.04em] min-[600px]:text-lg min-[1100px]:text-xl">
-                    {group.title}
-                  </h3>
-                  <p className="mt-3.25 text-[13px] leading-[1.8] text-muted min-[600px]:col-start-1 min-[600px]:text-xs">
-                    {group.description}
-                  </p>
-                  <ul className="my-5.5 flex flex-wrap gap-1.75 min-[600px]:col-start-2 min-[600px]:row-[2/4] min-[600px]:m-0 min-[600px]:content-start min-[820px]:mt-6 min-[820px]:mb-8.75">
-                    {group.skills.map(skill => (
-                      <li
-                        className="rounded-[3px] border border-line bg-paper px-2.25 py-1.75 text-[10px]"
-                        key={skill}
-                      >
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={projectPath(locale, group.project)}
-                    className="flex items-center justify-between gap-3 border-t border-line pt-4 text-[11px] leading-[1.7] text-accent min-[600px]:col-span-full min-[600px]:mt-5.5 min-[820px]:mt-auto"
-                  >
-                    {group.example}
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
-                </article>
+                  <article className="flex h-full flex-col rounded border border-line bg-soft p-6 min-[600px]:grid min-[600px]:grid-cols-[1fr_1.2fr] min-[600px]:gap-x-8.75 min-[600px]:p-5.75 min-[820px]:flex min-[1100px]:p-7">
+                    <div className="mb-6.25 flex items-center justify-between text-accent min-[600px]:col-span-full min-[600px]:mb-5 min-[820px]:mb-8.75">
+                      <span className={eyebrow}>0{index + 1}</span>
+                      <Braces size={24} strokeWidth={1.3} aria-hidden="true" />
+                    </div>
+                    <h3 className="text-[22px] font-semibold tracking-[-0.04em] min-[600px]:text-lg min-[1100px]:text-xl">
+                      {group.title}
+                    </h3>
+                    <p className="mt-3.25 text-[13px] leading-[1.8] text-muted min-[600px]:col-start-1 min-[600px]:text-xs">
+                      {group.description}
+                    </p>
+                    <ul className="my-5.5 flex flex-wrap gap-1.75 min-[600px]:col-start-2 min-[600px]:row-[2/4] min-[600px]:m-0 min-[600px]:content-start min-[820px]:mt-6 min-[820px]:mb-8.75">
+                      {group.skills.map(skill => (
+                        <li
+                          className="rounded-[3px] border border-line bg-paper px-2.25 py-1.75 text-[10px]"
+                          key={skill}
+                        >
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={projectPath(locale, group.project)}
+                      className="flex items-center justify-between gap-3 border-t border-line pt-4 text-[11px] leading-[1.7] text-accent min-[600px]:col-span-full min-[600px]:mt-5.5 min-[820px]:mt-auto"
+                    >
+                      {group.example}
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    </Link>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -384,12 +391,13 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
               </div>
             </Reveal>
             <div className="mt-8.75 min-[600px]:mt-0">
-              {t.interests.items.map((item, i) => {
-                const Icon = [Dumbbell, MoveUpRight, Mountain][i]
+              {t.interests.items.map((item, index) => {
+                const Icon = [Dumbbell, MoveUpRight, Mountain][index]
                 return (
-                  <div
+                  <Reveal
                     className="flex items-center gap-3.75 border-b border-line py-6.25 first:pt-0 min-[820px]:gap-5.5"
                     key={item.title}
+                    delay={index * 0.1}
                   >
                     <span className="flex h-15 w-13.5 shrink-0 items-center justify-center rounded bg-soft text-accent">
                       <Icon size={30} strokeWidth={1.25} aria-hidden="true" />
@@ -406,9 +414,9 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
                       className="ml-auto font-mono text-[9px] text-muted min-[600px]:hidden min-[820px]:block"
                       aria-hidden="true"
                     >
-                      0{i + 1}
+                      0{index + 1}
                     </span>
-                  </div>
+                  </Reveal>
                 )
               })}
             </div>
