@@ -1,3 +1,19 @@
+## [1.3.0](https://github.com/henchoznoe/Portfolio/compare/v1.2.0...v1.3.0) (2026-10-13)
+
+### Features
+
+* new portfolio ([56343d9](https://github.com/henchoznoe/Portfolio/commit/56343d9896ddca14eab908a089866f2559a60475))
+
+### Refactoring
+
+* clean code and CI ([95bfbcc](https://github.com/henchoznoe/Portfolio/commit/95bfbcc7c3822390d7cb060b375d35f241153afc))
+* update reveal animation ([580e563](https://github.com/henchoznoe/Portfolio/commit/580e563c6680f28237ced3f71fe95d3da026ee0d))
+
+### Maintenance
+
+* merge branch 'develop' ([0f3a613](https://github.com/henchoznoe/Portfolio/commit/0f3a6135c97644a1ac4bbd35300ea1364879f25c))
+* merge branch 'main' into develop ([859a19f](https://github.com/henchoznoe/Portfolio/commit/859a19f1125b8b6f07c9fbe2c237ac5bc5746d2c))
+
 # [1.2.0](https://github.com/henchoznoe/Portfolio/compare/v1.1.0...v1.2.0) (2026-08-20)
 
 
