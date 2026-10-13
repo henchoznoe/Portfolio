@@ -19,10 +19,7 @@ const getLocalIp = () => {
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: [getLocalIp()],
-  // Inline Vercel env vars at build time so client components can access them
-  env: {
-    NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA: process.env.VERCEL_GIT_COMMIT_SHA ?? '',
-  },
+  experimental: { globalNotFound: true },
 }
 
 export default nextConfig

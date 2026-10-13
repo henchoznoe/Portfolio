@@ -1,91 +1,49 @@
-<div align="center">
+# Portfolio — Noé Henchoz
 
-<img src="public/img/me-ia-cartoon.png" alt="Logo" width="auto" height="200">
+Portfolio bilingue français / anglais, destiné aux recruteurs et contacts professionnels. Next.js, TypeScript, Tailwind CSS et Framer Motion. Thème clair, police Manrope auto-hébergée et contenus rendus côté serveur.
 
-[![CI](https://github.com/henchoznoe/Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/henchoznoe/Portfolio/actions/workflows/ci.yml)
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fhenchoznoe.ch&label=Website)](https://henchoznoe.ch)
+## Développement
 
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat&logo=next.js)](https://nextjs.org/)
-[![Biome](https://img.shields.io/badge/formatter|linter-biome-39B420?style=flat&logo=biome)](https://biomejs.dev/)
+Node.js 22.22.2 (LTS) ou 24.15+ et pnpm 11+.
 
-## Portfolio
-
-Personal developer portfolio built with Next.js, Tailwind CSS, GSAP, and Framer Motion.
-
-</div>
-
-## Tech Stack
-
-| Layer | Technology |
-| --- | --- |
-| Framework | Next.js 16 |
-| UI | React 19, TailwindCSS v4, shadcn/ui |
-| Animation | GSAP, Framer Motion |
-| Language | TypeScript (strict) |
-| Quality | Biome, knip, Husky, lint-staged |
-| Hosting | Vercel |
-
-## Project Structure
-
-```bash
-.
-├── app/                  # Next.js App Router (layouts, pages, global styles)
-├── components/
-│   ├── sections/         # Page sections (hero, about, projects, skills)
-│   └── ui/               # Reusable UI components
-├── lib/
-│   └── utils/            # Utility functions (cn, app-version, commit-hash)
-├── public/
-│   ├── img/              # Profile images
-│   └── projects/         # Project logos
-└── .github/workflows/    # CI, release, dependency review, PR title validation
-```
-
-## Quick Start
-
-### Prerequisites
-
-- Node.js 22+
-- pnpm 11+
-
-### Installation
-
-```bash
+```sh
 pnpm install
 pnpm dev
+pnpm check:com
 ```
 
-The app runs on `http://localhost:3000`.
+`pnpm check:com` exécute Biome, knip, TypeScript et le build de production. `pnpm build` puis `pnpm start` permettent de vérifier la version de production localement.
 
-## Development Commands
+## Structure
 
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Start the Next.js dev server |
-| `pnpm build` | Build Next.js |
-| `pnpm start` | Start the production server |
-| `pnpm check` | Run Biome and write fixes |
-| `pnpm check:com` | Full validation (Biome + knip + tsc + build) |
-| `pnpm knip` | Dead code / unused dependency detection |
+- `app/[locale]` : accueil `/fr` et `/en`, fiches `/fr/projets/[slug]` et `/en/projects/[slug]`.
+- `components/portfolio` : contenu serveur, navigation interactive et apparitions légères.
+- `lib/config/portfolio.ts` : profil, parcours, compétences, intérêts et traductions.
+- `lib/config/projects.ts` : quatre études de cas et index secondaire.
+- `lib/config/seo.ts` : métadonnées et données structurées.
+- `lib/styles.ts` : compositions réutilisables de classes utilitaires Tailwind.
+- `app/og/[locale]` : images de partage générées statiquement.
+- `public/work/captures` : captures publiques des projets.
+- `docs/content-sources.md` : provenance et limites des contenus.
 
-## Quality Workflow
+La racine choisit `/fr` ou `/en` selon le choix manuel mémorisé, puis l’en-tête `Accept-Language` du navigateur (français par défaut). Le changement de langue conserve le projet ou la section courante. Toutes les pages éditoriales sont générées à la compilation, sans appel à GitHub ou LinkedIn pendant la visite. Les locales, chemins et projets inconnus affichent une page 404. La page 404 globale utilise l’option Next.js `experimental.globalNotFound`, nécessaire avec le layout racine dynamique par langue.
 
-CI runs the following checks in order ([`ci.yml`](.github/workflows/ci.yml), reused by [`release.yml`](.github/workflows/release.yml) via `workflow_call`):
+## Styles
 
-```bash
-pnpm exec tsc --noEmit              # Type-check
-pnpm exec biome check .             # Lint & format
-pnpm exec knip                      # Dead code analysis
-pnpm audit --audit-level=high       # Security audit
-```
+Tailwind CSS est utilisé en priorité dans les composants TSX, y compris pour les variantes responsive, les survols, les focus et les pseudo-éléments. Les compositions partagées se trouvent dans `lib/styles.ts` et les titres de sections dans `components/portfolio/section-heading.tsx`. `app/globals.css` contient uniquement le thème, les styles de base et les règles globales nécessaires à la hauteur de navigation et à la réduction des animations. Utiliser du CSS natif seulement lorsqu’un utilitaire ne suffit pas.
 
-Additional CI workflows:
+## Contenus et médias
 
-- [`dependency-review.yml`](.github/workflows/dependency-review.yml) — blocks PRs introducing high-severity vulnerable dependencies.
-- [`pr-title.yml`](.github/workflows/pr-title.yml) — enforces Conventional Commits format on PR titles (required for semantic-release).
+Les traductions partagent les mêmes projets, liens et technologies. Une fiche décrit le contexte, la contribution, les décisions techniques, une difficulté et le résultat observable. Les schémas sont explicitement distingués des captures. Aucun CV n’est proposé sans document actuel.
 
-Pre-commit only runs Biome on staged `*.{ts,tsx,css}` files through `lint-staged`.
+Pour ajouter une réalisation, renseigner les deux langues et les médias locaux, puis vérifier les routes, les métadonnées et le changement de langue. Le sitemap et les données structurées dérivent des mêmes données.
 
-## License
+## Accessibilité et validation visuelle
 
-This project is licensed under the MIT License.
+Navigation native, lien d’évitement, focus visibles, menu mobile pilotable au clavier avec fermeture par Échap. Le contenu reste visible sans animation ; `prefers-reduced-motion` désactive les apparitions et transitions. Vérifier les deux langues à 360, 768 et 1440 px et contrôler les fiches directement, après actualisation et sur une URL inconnue.
+
+Les contrôles locaux ne constituent pas une publication. La livraison et les workflows GitHub existants restent une étape séparée.
+
+## Licence
+
+Code sous licence MIT. Manrope sous SIL Open Font License, incluse dans `app/fonts/Manrope-LICENSE.txt`. Les portraits et captures servent à présenter les réalisations de leur auteur.
