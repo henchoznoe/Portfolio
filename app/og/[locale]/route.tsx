@@ -1,11 +1,17 @@
 import { ImageResponse } from 'next/og'
 import { isLocale, locales } from '@/lib/config/portfolio'
+
 export const dynamic = 'force-static'
 export const generateStaticParams = () => locales.map(locale => ({ locale }))
-export async function GET(
+
+interface OpenGraphContext {
+  params: Promise<{ locale: string }>
+}
+
+export const GET = async (
   _request: Request,
-  { params }: { params: Promise<{ locale: string }> },
-) {
+  { params }: Readonly<OpenGraphContext>,
+) => {
   const { locale } = await params
   if (!isLocale(locale)) return new Response('Not found', { status: 404 })
   return new ImageResponse(

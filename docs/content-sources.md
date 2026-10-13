@@ -1,20 +1,20 @@
-# Provenance des contenus
+# Content sources
 
-Vérification éditoriale : 12–13 octobre 2026. Les données sont stockées localement ; ces sources ne sont pas interrogées lors de la visite.
+Editorial review: October 12–13, 2026. Content is stored locally; these sources are not queried during a visit.
 
-| Contenu | Source | Limite retenue |
+| Content | Source | Boundaries |
 | --- | --- | --- |
-| Profil, expériences et études | [LinkedIn de Noé Henchoz](https://www.linkedin.com/in/henchoznoe/) | HEIA-FR : fin prévue en juin 2028. Migros inclut vente, caisse et mise en rayon. |
-| Portrait | Portrait actuel du même profil LinkedIn | Photo réelle, conservée en local dans `public/img/noe-henchoz.jpeg`. |
-| Arbeauté | [Dépôt](https://github.com/henchoznoe/Arbeaute), README et code, [site public](https://www.arbeaute-bulle.ch) | Réservations, disponibilités, administration et contrainte PostgreSQL anti-chevauchement. Aucun résultat chiffré inventé. |
-| Belouga Tournament | [Dépôt](https://github.com/henchoznoe/BelougaTournament), README et code, [site public](https://belougatournament.ch) | Équipes, Discord, Stripe et cycle des réservations. |
-| GitSetup | [Dépôt et documentation](https://github.com/henchoznoe/GitSetup) | Exemple réel `git-setup apply --dry-run`. Les briques Git/SSH/GPG sont un schéma, pas une sortie de terminal réelle. |
-| NetViewer | Description du projet LinkedIn | Janvier–mai 2024. Refonte React/TypeScript, contribution JAX-RS, MariaDB. Projet interne à l’EMF sans lien de démonstration ni capture privée. |
-| NexTemplate | [Dépôt](https://github.com/henchoznoe/NexTemplate) | Template web. |
-| Shifty | [Application publique](https://shifty-prod.vercel.app) | Planning. |
-| Bisous Bisous | [Site public](https://www.bisousbisous.ch) | Site événementiel. |
-| Typify | [Dépôt](https://github.com/henchoznoe/Typify) | Template Typst pour documents académiques. |
+| Profile, experience, and education | [Noé Henchoz on LinkedIn](https://www.linkedin.com/in/henchoznoe/) | HEIA-FR: expected completion in June 2028. Migros includes sales, checkout, and shelf stocking. |
+| Portrait | Current portrait from the same LinkedIn profile | Real photograph stored locally in `public/img/noe-henchoz.jpeg`. |
+| Arbeauté | [Repository](https://github.com/henchoznoe/Arbeaute), README and code, [public site](https://www.arbeaute-bulle.ch) | Bookings, availability, administration, and a PostgreSQL overlap constraint. No invented metrics. |
+| Belouga Tournament | [Repository](https://github.com/henchoznoe/BelougaTournament), README and code, [public site](https://belougatournament.ch) | Teams, Discord, Stripe, and the booking lifecycle. |
+| GitSetup | [Repository and documentation](https://github.com/henchoznoe/GitSetup) | Real `git-setup apply --dry-run` example. Git/SSH/GPG blocks are a diagram, not actual terminal output. |
+| NetViewer | LinkedIn project description | January–May 2024. React/TypeScript interface redesign, JAX-RS contribution, MariaDB. Internal EMF project without a demo link or private screenshots. |
+| NexTemplate | [Repository](https://github.com/henchoznoe/NexTemplate) | Web application template. |
+| Shifty | [Public application](https://shifty-prod.vercel.app) | Scheduling. |
+| Bisous Bisous | [Public site](https://www.bisousbisous.ch) | Event website. |
+| Typify | [Repository](https://github.com/henchoznoe/Typify) | Typst template for academic documents. |
 
-Les captures dans `public/work/captures` proviennent des pages publiques d’accueil et de réservation d’Arbeauté, et des pages d’accueil et de catalogue des tournois de Belouga. Aucune donnée d’administration n’est affichée. Les deux visuels de NetViewer sont des schémas explicatifs clairement légendés. Ceux de GitSetup présentent une commande documentée et les trois briques de configuration.
+Screenshots in `public/work/captures` come from Arbeauté's public home and booking pages and Belouga's public home and tournament catalogue. No administration data is shown. Both NetViewer visuals are clearly captioned explanatory diagrams. GitSetup visuals show a documented command and three configuration building blocks.
 
-La sélection principale et secondaire est unique, partagée entre les traductions et les métadonnées. Les compétences décrivent les technologies utilisées, sans score de maîtrise. Les centres d’intérêt restent un court passage personnel.
+The main and secondary project selections are shared by translations and metadata. Skills describe technologies used without proficiency scores. Interests remain a short personal section.

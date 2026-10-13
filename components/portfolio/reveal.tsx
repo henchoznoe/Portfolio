@@ -4,13 +4,12 @@ import { domAnimation, LazyMotion, m, useReducedMotion } from 'framer-motion'
 import type { ReactNode } from 'react'
 import { cn } from '@/lib/utils/cn'
 
-export const Reveal = ({
-  children,
-  className,
-}: {
+interface RevealProps {
   children: ReactNode
   className?: string
-}) => {
+}
+
+export const Reveal = ({ children, className }: Readonly<RevealProps>) => {
   const reduced = useReducedMotion()
   return (
     <LazyMotion features={domAnimation}>

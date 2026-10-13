@@ -22,19 +22,21 @@ const aspect = {
   detail: 'aspect-[1.2] rounded-[5px] min-[600px]:aspect-[1.9]',
 }
 
+interface ProjectVisualProps {
+  project: Project
+  locale: Locale
+  detail?: boolean
+  priority?: boolean
+  variant?: VisualVariant
+}
+
 export const ProjectVisual = ({
   project,
   locale,
   detail = false,
   priority = false,
   variant = 'card',
-}: {
-  project: Project
-  locale: Locale
-  detail?: boolean
-  priority?: boolean
-  variant?: VisualVariant
-}) => {
+}: Readonly<ProjectVisualProps>) => {
   const fr = locale === 'fr'
   const cover = variant === 'cover'
   const image = detail ? project.detailImage : project.cover
@@ -45,14 +47,14 @@ export const ProjectVisual = ({
   const label = cn(
     'absolute font-mono tracking-[0.08em] text-[#526784]',
     variant === 'card'
-      ? 'top-4 left-[18px] text-[8px] min-[600px]:text-[7px] min-[820px]:top-[22px] min-[820px]:left-7 min-[820px]:text-[8px]'
-      : 'top-[18px] left-[18px] text-[8px] min-[600px]:top-[30px] min-[600px]:left-[35px] min-[600px]:text-[11px]',
+      ? 'top-4 left-4.5 text-[8px] min-[600px]:text-[7px] min-[820px]:top-5.5 min-[820px]:left-7 min-[820px]:text-[8px]'
+      : 'top-4.5 left-4.5 text-[8px] min-[600px]:top-7.5 min-[600px]:left-8.75 min-[600px]:text-[11px]',
   )
   const note = cn(
     'absolute inset-x-3 text-center font-mono text-[#4f6380]',
     variant === 'card'
-      ? 'bottom-3 text-[7px] min-[600px]:text-[6px] min-[820px]:bottom-[18px] min-[820px]:text-[7px]'
-      : 'bottom-[17px] text-[7px] min-[600px]:bottom-6 min-[600px]:text-[10px]',
+      ? 'bottom-3 text-[7px] min-[600px]:text-[6px] min-[820px]:bottom-4.5 min-[820px]:text-[7px]'
+      : 'bottom-4.25 text-[7px] min-[600px]:bottom-6 min-[600px]:text-[10px]',
   )
   if (image)
     return (
@@ -61,8 +63,8 @@ export const ProjectVisual = ({
           frame,
           project.slug === 'arbeaute' ? 'bg-[#e5e0d6]' : 'bg-[#dce1ee]',
           variant === 'card'
-            ? 'p-[23px] min-[600px]:p-[18px] min-[820px]:p-6 min-[1100px]:p-9'
-            : 'p-5 min-[600px]:p-10 min-[820px]:px-[90px] min-[820px]:py-[50px]',
+            ? 'p-5.75 min-[600px]:p-4.5 min-[820px]:p-6 min-[1100px]:p-9'
+            : 'p-5 min-[600px]:p-10 min-[820px]:px-22.5 min-[820px]:py-12.5',
         )}
       >
         <div className="w-full overflow-hidden rounded-[5px] shadow-[0_12px_30px_rgb(20_30_25/13%)] transition-transform duration-400 group-hover/project:-translate-y-1">
@@ -109,21 +111,21 @@ export const ProjectVisual = ({
           frame,
           'bg-[#dce7f9]',
           cover
-            ? 'p-[23px] min-[600px]:p-[35px]'
-            : 'p-[23px] min-[600px]:p-[18px] min-[820px]:p-6 min-[1100px]:p-[35px]',
+            ? 'p-5.75 min-[600px]:p-8.75'
+            : 'p-5.75 min-[600px]:p-4.5 min-[820px]:p-6 min-[1100px]:p-8.75',
         )}
       >
         <div
           className={cn(
             'w-full rounded-md bg-[#1f2b42] font-mono text-[#f0f5ff] shadow-[0_12px_30px_rgb(20_30_25/12%)]',
-            cover && 'max-w-[650px]',
+            cover && 'max-w-162.5',
           )}
         >
           <div
             className={cn(
               'flex items-center justify-between border-b border-[#3b4b68] text-[#bed0ee]',
               cover
-                ? 'p-3 text-[9px] min-[600px]:px-[22px] min-[600px]:py-4 min-[600px]:text-xs'
+                ? 'p-3 text-[9px] min-[600px]:px-5.5 min-[600px]:py-4 min-[600px]:text-xs'
                 : 'px-4 py-3 text-[9px]',
             )}
           >
@@ -139,13 +141,13 @@ export const ProjectVisual = ({
             className={cn(
               'leading-[1.9]',
               cover
-                ? 'p-4 text-[10px] min-[600px]:p-[30px] min-[600px]:text-[17px]'
-                : 'p-[18px] text-[9px] min-[600px]:p-[13px] min-[600px]:text-[8px] min-[820px]:p-4 min-[820px]:text-[9px] min-[1100px]:p-5 min-[1100px]:text-[10px]',
+                ? 'p-4 text-[10px] min-[600px]:p-7.5 min-[600px]:text-[17px]'
+                : 'p-4.5 text-[9px] min-[600px]:p-3.25 min-[600px]:text-[8px] min-[820px]:p-4 min-[820px]:text-[9px] min-[1100px]:p-5 min-[1100px]:text-[10px]',
             )}
           >
             <p
               className={cn(
-                'mb-[7px] text-[#adc3e6]',
+                'mb-1.75 text-[#adc3e6]',
                 cover
                   ? 'text-[9px] min-[600px]:text-sm'
                   : 'text-[9px] min-[600px]:text-[8px] min-[820px]:text-[9px] min-[1100px]:text-[10px]',
@@ -157,10 +159,10 @@ export const ProjectVisual = ({
                 : 'Your environment, your identities.'}
             </p>
             <p>
-              <span className="mr-[7px] text-[#bed4ff]">❯</span> git-setup apply
+              <span className="mr-1.75 text-[#bed4ff]">❯</span> git-setup apply
               --dry-run
             </p>
-            <div className="my-3 h-px bg-[#3b4b68] min-[1100px]:my-[17px]" />
+            <div className="my-3 h-px bg-[#3b4b68] min-[1100px]:my-4.25" />
             <p
               className={cn(
                 'mb-2.5 tracking-[0.08em] text-[#adc3e6]',
@@ -245,14 +247,14 @@ export const ProjectVisual = ({
           : `NETVIEWER / ${detail ? (fr ? 'USAGE' : 'WORKFLOW') : fr ? 'REFONTE' : 'REDESIGN'}`}
       </span>
       {diagram ? (
-        <div className="flex w-full max-w-[820px] justify-center gap-[18px] min-[600px]:gap-10">
+        <div className="flex w-full max-w-205 justify-center gap-4.5 min-[600px]:gap-10">
           {steps.map(({ Icon, title, text }, i) => (
             <div
-              className="relative flex w-[31%] flex-col items-center gap-3 rounded-[5px] border border-[#bccce2] bg-[#f7faff] px-1 py-[22px] text-center min-[600px]:w-[28%] min-[600px]:gap-4 min-[600px]:px-[15px] min-[600px]:py-[55px]"
+              className="relative flex w-[31%] flex-col items-center gap-3 rounded-[5px] border border-[#bccce2] bg-[#f7faff] px-1 py-5.5 text-center min-[600px]:w-[28%] min-[600px]:gap-4 min-[600px]:px-3.75 min-[600px]:py-13.75"
               key={title}
             >
               <Icon size={26} strokeWidth={1.3} aria-hidden="true" />
-              <strong className="text-[10px] font-[550] min-[600px]:text-[23px]">
+              <strong className="text-[10px] font-550 min-[600px]:text-[23px]">
                 {title}
               </strong>
               <span className="text-[8px] text-[#536b90] min-[600px]:text-[13px]">
@@ -260,7 +262,7 @@ export const ProjectVisual = ({
               </span>
               {i < 2 ? (
                 <ArrowRight
-                  className="absolute top-[calc(50%-9px)] -right-[18px] w-4 min-[600px]:-right-[31px] min-[600px]:w-[18px]"
+                  className="absolute top-[calc(50%-9px)] -right-4.5 w-4 min-[600px]:-right-7.75 min-[600px]:w-4.5"
                   size={18}
                   aria-hidden="true"
                 />
@@ -273,16 +275,16 @@ export const ProjectVisual = ({
           className={cn(
             'flex flex-col items-center pt-3',
             cover
-              ? 'w-[90%] gap-2.5 min-[600px]:w-[70%] min-[600px]:gap-[15px] min-[820px]:w-[55%]'
-              : 'w-[85%] gap-[7px] min-[600px]:w-[90%] min-[820px]:gap-[9px] min-[1100px]:w-[74%]',
+              ? 'w-[90%] gap-2.5 min-[600px]:w-[70%] min-[600px]:gap-3.75 min-[820px]:w-[55%]'
+              : 'w-[85%] gap-1.75 min-[600px]:w-[90%] min-[820px]:gap-2.25 min-[1100px]:w-[74%]',
           )}
         >
           <div
             className={cn(
               'flex w-full items-center justify-between gap-2.5 rounded border border-dashed border-[#92a4bf] text-[#4f6180] min-[1100px]:gap-5',
               cover
-                ? 'p-3 text-[11px] min-[600px]:p-[22px] min-[600px]:text-[17px]'
-                : 'p-[9px] text-[10px] min-[820px]:px-4 min-[820px]:py-3 min-[820px]:text-xs',
+                ? 'p-3 text-[11px] min-[600px]:p-5.5 min-[600px]:text-[17px]'
+                : 'p-2.25 text-[10px] min-[820px]:px-4 min-[820px]:py-3 min-[820px]:text-xs',
             )}
           >
             <span>Java EE</span>
@@ -293,8 +295,8 @@ export const ProjectVisual = ({
             className={cn(
               'flex w-full items-center justify-between gap-2.5 rounded border border-[#a8bfe2] bg-[#f7faff] font-semibold min-[1100px]:gap-5',
               cover
-                ? 'px-3 py-[18px] text-[13px] min-[600px]:px-[22px] min-[600px]:py-[30px] min-[600px]:text-xl min-[820px]:text-[27px]'
-                : 'px-2.5 py-4 text-xs min-[600px]:px-[9px] min-[600px]:py-3.5 min-[600px]:text-[11px] min-[820px]:p-[13px] min-[820px]:text-[13px] min-[1100px]:px-4 min-[1100px]:py-[19px] min-[1100px]:text-base',
+                ? 'px-3 py-4.5 text-[13px] min-[600px]:px-5.5 min-[600px]:py-7.5 min-[600px]:text-xl min-[820px]:text-[27px]'
+                : 'px-2.5 py-4 text-xs min-[600px]:px-2.25 min-[600px]:py-3.5 min-[600px]:text-[11px] min-[820px]:p-3.25 min-[820px]:text-[13px] min-[1100px]:px-4 min-[1100px]:py-4.75 min-[1100px]:text-base',
             )}
           >
             <span>
@@ -304,13 +306,13 @@ export const ProjectVisual = ({
               {fr ? 'Nouvelle interface' : 'New interface'}
             </small>
           </div>
-          <div className="-my-[9px] h-[17px] w-px bg-[#8ca6cc]" />
+          <div className="-my-2.25 h-4.25 w-px bg-[#8ca6cc]" />
           <div
             className={cn(
-              'flex w-full items-center justify-center gap-[9px] rounded border border-[#bccce2]',
+              'flex w-full items-center justify-center gap-2.25 rounded border border-[#bccce2]',
               cover
-                ? 'p-3 text-[11px] min-[600px]:p-[22px] min-[600px]:text-[17px]'
-                : 'p-[9px] text-[8px] min-[820px]:p-3 min-[820px]:text-[10px]',
+                ? 'p-3 text-[11px] min-[600px]:p-5.5 min-[600px]:text-[17px]'
+                : 'p-2.25 text-[8px] min-[820px]:p-3 min-[820px]:text-[10px]',
             )}
           >
             <Server size={16} aria-hidden="true" />

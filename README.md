@@ -1,49 +1,64 @@
 # Portfolio — Noé Henchoz
 
-Portfolio bilingue français / anglais, destiné aux recruteurs et contacts professionnels. Next.js, TypeScript, Tailwind CSS et Framer Motion. Thème clair, police Manrope auto-hébergée et contenus rendus côté serveur.
+A bilingual French/English developer portfolio for recruiters and professional contacts. Built with Next.js App Router, strict TypeScript, Tailwind CSS, and Framer Motion. Editorial pages are generated at build time, with a light theme and locally hosted Manrope font.
 
-## Développement
+## Development
 
-Node.js 22.22.2 (LTS) ou 24.15+ et pnpm 11+.
+Use **Node.js 24.21.0** from `.node-version` and **pnpm 12.11.2** from `package.json`. Node 24 is the supported production major; Vercel manages its minor and patch updates.
 
 ```sh
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
-pnpm check:com
 ```
 
-`pnpm check:com` exécute Biome, knip, TypeScript et le build de production. `pnpm build` puis `pnpm start` permettent de vérifier la version de production localement.
+The application needs no database or application secrets. Docker would add maintenance without helping the current Vercel deployment, so it is intentionally omitted.
 
-## Structure
+## Quality checks
 
-- `app/[locale]` : accueil `/fr` et `/en`, fiches `/fr/projets/[slug]` et `/en/projects/[slug]`.
-- `components/portfolio` : contenu serveur, navigation interactive et apparitions légères.
-- `lib/config/portfolio.ts` : profil, parcours, compétences, intérêts et traductions.
-- `lib/config/projects.ts` : quatre études de cas et index secondaire.
-- `lib/config/seo.ts` : métadonnées et données structurées.
-- `lib/styles.ts` : compositions réutilisables de classes utilitaires Tailwind.
-- `app/og/[locale]` : images de partage générées statiquement.
-- `public/work/captures` : captures publiques des projets.
-- `docs/content-sources.md` : provenance et limites des contenus.
+```sh
+pnpm check:com       # Read-only Biome checks, knip, TypeScript, production build
+pnpm test:release    # Release rules and configuration; never publishes
+pnpm check:fix       # Explicit Biome formatting and safe fixes
+pnpm build
+pnpm start           # Production server on localhost:3000
+```
 
-La racine choisit `/fr` ou `/en` selon le choix manuel mémorisé, puis l’en-tête `Accept-Language` du navigateur (français par défaut). Le changement de langue conserve le projet ou la section courante. Toutes les pages éditoriales sont générées à la compilation, sans appel à GitHub ou LinkedIn pendant la visite. Les locales, chemins et projets inconnus affichent une page 404. La page 404 globale utilise l’option Next.js `experimental.globalNotFound`, nécessaire avec le layout racine dynamique par langue.
+The pre-commit hook applies Biome fixes to supported staged files. Check production routes and responsive layouts locally with `pnpm build` and `pnpm start`.
 
-## Styles
+Direct dependencies and security overrides use exact versions. `savePrefix: ''` keeps future additions exact; use `pnpm add --save-exact` explicitly. `pmOnFail: ignore` preserves a single-document lockfile while [GitHub's pnpm 12 dependency-graph issue](https://github.com/dependabot/dependabot-core/issues/15904) remains open. Because that setting disables pnpm's own package-manager selection, `engines.pnpm` and an explicit CI version check enforce the exact version. CI reads it from `packageManager` instead of duplicating it in workflows.
 
-Tailwind CSS est utilisé en priorité dans les composants TSX, y compris pour les variantes responsive, les survols, les focus et les pseudo-éléments. Les compositions partagées se trouvent dans `lib/styles.ts` et les titres de sections dans `components/portfolio/section-heading.tsx`. `app/globals.css` contient uniquement le thème, les styles de base et les règles globales nécessaires à la hauteur de navigation et à la réduction des animations. Utiliser du CSS natif seulement lorsqu’un utilitaire ne suffit pas.
+## Structure and conventions
 
-## Contenus et médias
+- `app/[locale]`: `/fr` and `/en`, with `/fr/projets/[slug]` and `/en/projects/[slug]` case studies.
+- `components/portfolio`: server-rendered content, interactive navigation, and progressive reveal effects.
+- `lib/config/portfolio.ts` and `lib/config/projects.ts`: typed profile, translations, and project content.
+- `lib/config/seo.ts`: shared metadata and structured data.
+- `lib/styles.ts`: reusable Tailwind compositions; `app/globals.css`: theme, base styles, and necessary global fallbacks.
+- `scripts/release.test.mjs`: fast release-rule and changelog tests without publication.
+- `docs/content-sources.md`: editorial sources and their limits.
 
-Les traductions partagent les mêmes projets, liens et technologies. Une fiche décrit le contexte, la contribution, les décisions techniques, une difficulté et le résultat observable. Les schémas sont explicitement distingués des captures. Aucun CV n’est proposé sans document actuel.
+Components and helpers use named arrow functions. Every component accepting props declares `interface ComponentProps` before its implementation and uses `Readonly<ComponentProps>`. Required default exports appear on the final line. Prefer canonical Tailwind v4 utilities over equivalent arbitrary values without approximating the design. Keep custom breakpoints, colors, calculations, and grid definitions when necessary.
 
-Pour ajouter une réalisation, renseigner les deux langues et les médias locaux, puis vérifier les routes, les métadonnées et le changement de langue. Le sitemap et les données structurées dérivent des mêmes données.
+Documentation, comments, identifiers, and tooling messages are written in English. Visitor-facing copy remains bilingual. [AGENTS.md](AGENTS.md) is the shared coding-agent guide; `CLAUDE.md` is a relative symlink to it.
 
-## Accessibilité et validation visuelle
+## Content and accessibility
 
-Navigation native, lien d’évitement, focus visibles, menu mobile pilotable au clavier avec fermeture par Échap. Le contenu reste visible sans animation ; `prefers-reduced-motion` désactive les apparitions et transitions. Vérifier les deux langues à 360, 768 et 1440 px et contrôler les fiches directement, après actualisation et sur une URL inconnue.
+The root route selects a locale from the saved choice, then `Accept-Language`, with French as fallback. Switching languages preserves the project or current section. Editorial pages make no GitHub or LinkedIn requests during a visit. Unknown locales, projects, and incorrectly localized paths return 404. The global 404 uses Next.js `experimental.globalNotFound` for the dynamic locale root layout.
 
-Les contrôles locaux ne constituent pas une publication. La livraison et les workflows GitHub existants restent une étape séparée.
+Maintain equivalent information in both languages and derive metadata from the same content. Do not invent experience, outcomes, proficiency scores, links, or screenshots. Add a CV only when a current document is available.
 
-## Licence
+Use native scrolling, visible keyboard focus, a skip link, and a mobile menu that closes with Escape and restores focus. Content remains visible with animations disabled. Check both languages at 360, 768, and 1440 px, including direct case-study access, refresh, and invalid URLs.
 
-Code sous licence MIT. Manrope sous SIL Open Font License, incluse dans `app/fonts/Manrope-LICENSE.txt`. Les portraits et captures servent à présenter les réalisations de leur auteur.
+## Releases and production
+
+Develop on `develop`; ordinary Dependabot PRs target `develop`. Merge `develop` into `main` with a merge commit. GitHub checks the project and semantic-release updates the version and changelog, commits release assets, creates the tag, and publishes a GitHub Release. Vercel's existing Git integration deploys `main` independently. Finally, merge `main` back into `develop` with a merge commit to synchronize release assets.
+
+`feat` creates a minor release; breaking changes create a major release; fixes, dependency updates, refactors, CI, build, tests, and other maintenance create a patch. Documentation-only and generated release commits create no new release. Vercel may still build these commits.
+
+See [docs/releasing.md](docs/releasing.md) for the workflow, GitHub/Vercel settings, security hotfix exception, and recovery. No Vercel CLI, deployment secrets, or custom deployment pipeline is needed.
+
+See [docs/verification.md](docs/verification.md) for observed local results and remote verification limits.
+
+## License
+
+Code is licensed under MIT. Manrope uses the SIL Open Font License included in `app/fonts/Manrope-LICENSE.txt`. Portraits and screenshots illustrate their author's work.

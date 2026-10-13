@@ -1,17 +1,129 @@
 {
   "branches": ["main"],
   "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "releaseRules": [
+          {
+            "breaking": true,
+            "release": "major"
+          },
+          {
+            "type": "chore",
+            "scope": "release",
+            "release": false
+          },
+          {
+            "type": "chore",
+            "scope": null,
+            "release": "patch"
+          },
+          {
+            "type": "chore",
+            "scope": "!release",
+            "release": "patch"
+          },
+          {
+            "type": "refactor",
+            "release": "patch"
+          },
+          {
+            "type": "ci",
+            "release": "patch"
+          },
+          {
+            "type": "build",
+            "release": "patch"
+          },
+          {
+            "type": "test",
+            "release": "patch"
+          },
+          {
+            "type": "revert",
+            "release": "patch"
+          }
+        ],
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "feat",
+              "section": "Features",
+              "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": "Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "perf",
+              "section": "Performance",
+              "hidden": false
+            },
+            {
+              "type": "refactor",
+              "section": "Refactoring",
+              "hidden": false
+            },
+            {
+              "type": "chore",
+              "section": "Maintenance",
+              "hidden": false
+            },
+            {
+              "type": "ci",
+              "section": "Continuous Integration",
+              "hidden": false
+            },
+            {
+              "type": "build",
+              "section": "Build System",
+              "hidden": false
+            },
+            {
+              "type": "test",
+              "section": "Tests",
+              "hidden": false
+            },
+            {
+              "type": "revert",
+              "section": "Reverts",
+              "hidden": false
+            }
+          ]
+        }
+      }
+    ],
     "@semantic-release/changelog",
-    ["@semantic-release/npm", { "npmPublish": false }],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
     [
       "@semantic-release/git",
       {
         "assets": ["package.json", "pnpm-lock.yaml", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]"
+        "message": "chore(release): ${nextRelease.version}"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failComment": false,
+        "failTitle": false
+      }
+    ]
   ]
 }

@@ -1,40 +1,74 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-      timezone: "Europe/Zurich"
-    target-branch: "main"
-    rebase-strategy: "auto"
+      interval: weekly
+      day: monday
+      time: '04:00'
+      timezone: Europe/Zurich
+    target-branch: develop
+    versioning-strategy: increase
+    open-pull-requests-limit: 10
+    rebase-strategy: auto
     commit-message:
-      prefix: "chore"
-      prefix-development: "chore"
-      include: "scope"
+      prefix: chore
+      include: scope
     cooldown:
-      default-days: 2
+      default-days: 7
+      semver-patch-days: 3
+      semver-minor-days: 7
+      semver-major-days: 14
+    ignore:
+      # Node.js stays on 24. pnpm's major is pinned independently in package.json.
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
+      - dependency-name: pnpm
+        update-types: [version-update:semver-major]
     groups:
-      npm-dependencies:
-        patterns:
-          - "*"
+      next-react:
+        patterns: [next, react, react-dom, '@types/react', '@types/react-dom', framer-motion]
+        update-types: [minor, patch]
+      next-react-major:
+        patterns: [next, react, react-dom, '@types/react', '@types/react-dom', framer-motion]
+        update-types: [major]
+      tailwind:
+        patterns: [tailwindcss, '@tailwindcss/*', postcss, tailwind-merge]
+        update-types: [minor, patch]
+      tailwind-major:
+        patterns: [tailwindcss, '@tailwindcss/*', postcss, tailwind-merge]
+        update-types: [major]
+      semantic-release:
+        patterns: [semantic-release, '@semantic-release/*', conventional-changelog-conventionalcommits]
+        update-types: [minor, patch]
+      semantic-release-major:
+        patterns: [semantic-release, '@semantic-release/*', conventional-changelog-conventionalcommits]
+        update-types: [major]
+      application:
+        dependency-type: production
+        patterns: ['*']
+        update-types: [minor, patch]
+      tooling:
+        dependency-type: development
+        patterns: ['*']
+        update-types: [minor, patch]
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-      timezone: "Europe/Zurich"
-    target-branch: "main"
-    rebase-strategy: "auto"
+      interval: weekly
+      day: monday
+      time: '04:00'
+      timezone: Europe/Zurich
+    target-branch: develop
+    open-pull-requests-limit: 5
+    rebase-strategy: auto
     commit-message:
-      prefix: "ci"
-      include: "scope"
+      prefix: ci
+      include: scope
     cooldown:
       default-days: 7
     groups:
-      actions-dependencies:
-        patterns:
-          - "*"
+      actions:
+        patterns: ['*']
+        update-types: [minor, patch]

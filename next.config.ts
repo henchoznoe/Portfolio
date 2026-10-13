@@ -9,6 +9,7 @@
 import os from 'node:os'
 import type { NextConfig } from 'next'
 
+/** Gets the local IP address of the machine */
 const getLocalIp = () => {
   const interfaces = os.networkInterfaces()
   for (const name of Object.keys(interfaces))

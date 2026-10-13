@@ -42,13 +42,13 @@ export const projects: Project[] = [
       fr: {
         category: 'Application web · Réservation',
         summary:
-          'De la découverte d’un soin à la réservation d’un rendez-vous.',
-        role: 'Développement de l’application web',
+          "De la découverte d'un soin à la réservation d'un rendez-vous.",
+        role: "Développement de l'application web",
         scope: 'Institut de soins esthétiques · Bulle',
         context:
           'Arbeauté est un institut indépendant à Bulle. Le site doit présenter les prestations et permettre à la clientèle de réserver, tout en donnant à la praticienne un outil pour organiser ses journées.',
         contribution:
-          'J’ai développé le site public et le système de réservation, ainsi que la console d’administration : agenda, rendez-vous, prestations et disponibilités. Les deux parties partagent les mêmes données.',
+          "J'ai développé le site public et le système de réservation, ainsi que la console d'administration : agenda, rendez-vous, prestations et disponibilités. Les deux parties partagent les mêmes données.",
         decisions: [
           {
             title: 'Un parcours sans compte à créer',
@@ -60,14 +60,14 @@ export const projects: Project[] = [
           },
           {
             title: 'Une base commune',
-            text: 'Next.js relie l’interface publique et l’administration. Prisma et PostgreSQL structurent les prestations, les horaires et les réservations.',
+            text: "Next.js relie l'interface publique et l'administration. Prisma et PostgreSQL structurent les prestations, les horaires et les réservations.",
           },
         ],
         challenge:
-          'Deux personnes peuvent choisir le même créneau au même moment. Le contrôle dans l’interface ne suffit pas : une contrainte d’exclusion dans PostgreSQL empêche l’enregistrement de rendez-vous qui se chevauchent.',
+          "Deux personnes peuvent choisir le même créneau au même moment. Le contrôle dans l'interface ne suffit pas : une contrainte d'exclusion dans PostgreSQL empêche l'enregistrement de rendez-vous qui se chevauchent.",
         result:
-          'Le site public propose les prestations et la réservation en ligne. La console permet de gérer les rendez-vous et les exceptions d’ouverture depuis le même outil.',
-        coverCaption: 'L’accueil du site public Arbeauté.',
+          "Le site public propose les prestations et la réservation en ligne. La console permet de gérer les rendez-vous et les exceptions d'ouverture depuis le même outil.",
+        coverCaption: "L'accueil du site public Arbeauté.",
         detailCaption:
           'Le début du parcours de réservation, accessible sans compte.',
       },
@@ -122,28 +122,28 @@ export const projects: Project[] = [
         role: 'Développement de la plateforme',
         scope: 'Organisation de tournois e-sport',
         context:
-          'Un tournoi demande plus qu’une page d’inscription : il faut gérer les équipes, les places, les paiements et les informations utiles aux joueurs. Belouga Tournament rassemble ces fonctions autour d’une même plateforme.',
+          "Un tournoi demande plus qu'une page d'inscription : il faut gérer les équipes, les places, les paiements et les informations utiles aux joueurs. Belouga Tournament rassemble ces fonctions autour d'une même plateforme.",
         contribution:
-          'J’ai développé l’expérience publique et les outils d’administration. Le projet relie les comptes Discord, les inscriptions individuelles ou en équipe, les paiements Stripe et la gestion des tournois.',
+          "J'ai développé l'expérience publique et les outils d'administration. Le projet relie les comptes Discord, les inscriptions individuelles ou en équipe, les paiements Stripe et la gestion des tournois.",
         decisions: [
           {
             title: 'Se connecter avec Discord',
-            text: 'L’authentification repose sur Discord OAuth avec Better Auth, en cohérence avec les habitudes de la communauté.',
+            text: "L'authentification repose sur Discord OAuth avec Better Auth, en cohérence avec les habitudes de la communauté.",
           },
           {
             title: 'Suivre le paiement côté serveur',
-            text: 'Stripe Checkout et les webhooks relient le paiement à l’état de l’inscription. Les places réservées, les expirations et les remboursements ont leur propre traitement.',
+            text: "Stripe Checkout et les webhooks relient le paiement à l'état de l'inscription. Les places réservées, les expirations et les remboursements ont leur propre traitement.",
           },
           {
-            title: 'Centraliser l’organisation',
+            title: "Centraliser l'organisation",
             text: 'Une administration réunit les tournois, les équipes, les inscriptions et les sponsors. Toornament et Twitch complètent la gestion des phases et la diffusion.',
           },
         ],
         challenge:
-          'Une inscription payante peut être commencée puis abandonnée. La plateforme doit distinguer une place temporairement réservée d’une inscription confirmée, et réagir aux notifications de paiement sans compter deux fois la même opération.',
+          "Une inscription payante peut être commencée puis abandonnée. La plateforme doit distinguer une place temporairement réservée d'une inscription confirmée, et réagir aux notifications de paiement sans compter deux fois la même opération.",
         result:
-          'La plateforme propose un catalogue de tournois et des parcours d’inscription en solo ou en équipe. Les organisateurs disposent d’un back-office pour suivre les inscriptions et les paiements.',
-        coverCaption: 'L’accueil public de Belouga Tournament.',
+          "La plateforme propose un catalogue de tournois et des parcours d'inscription en solo ou en équipe. Les organisateurs disposent d'un back-office pour suivre les inscriptions et les paiements.",
+        coverCaption: "L'accueil public de Belouga Tournament.",
         detailCaption: 'Le catalogue de tournois et ses filtres.',
       },
       en: {
@@ -158,7 +158,7 @@ export const projects: Project[] = [
         decisions: [
           {
             title: 'Sign in with Discord',
-            text: 'Authentication uses Discord OAuth with Better Auth, matching the community’s existing habits.',
+            text: "Authentication uses Discord OAuth with Better Auth, matching the community's existing habits.",
           },
           {
             title: 'Track payments on the server',
@@ -190,32 +190,32 @@ export const projects: Project[] = [
         category: 'Outil développeur · Open source',
         summary:
           'Un environnement Git prêt à travailler, identité par identité.',
-        role: 'Développement d’un outil CLI',
+        role: "Développement d'un outil CLI",
         scope: 'Configuration Git sur macOS',
         context:
           'Configurer Git sur un nouveau Mac peut impliquer plusieurs identités, des clés SSH, la signature GPG et des hooks. GitSetup regroupe ces étapes dans un assistant en ligne de commande.',
         contribution:
-          'J’ai développé un outil modulaire en TypeScript pour configurer cet environnement, soit avec un assistant interactif, soit à partir d’un fichier JSON. Les profils peuvent ensuite être ajoutés ou modifiés séparément.',
+          "J'ai développé un outil modulaire en TypeScript pour configurer cet environnement, soit avec un assistant interactif, soit à partir d'un fichier JSON. Les profils peuvent ensuite être ajoutés ou modifiés séparément.",
         decisions: [
           {
             title: 'Plusieurs identités',
-            text: 'Les profils regroupent les paramètres Git et SSH. Des hooks permettent de sélectionner l’identité en fonction de l’URL distante du dépôt.',
+            text: "Les profils regroupent les paramètres Git et SSH. Des hooks permettent de sélectionner l'identité en fonction de l'URL distante du dépôt.",
           },
           {
-            title: 'Prévisualiser avant d’appliquer',
-            text: 'Le mode dry-run décrit les modifications prévues. Des sauvegardes et des marqueurs délimitent les éléments gérés par l’outil.',
+            title: "Prévisualiser avant d'appliquer",
+            text: "Le mode dry-run décrit les modifications prévues. Des sauvegardes et des marqueurs délimitent les éléments gérés par l'outil.",
           },
           {
             title: 'Distribuer simplement',
-            text: 'Une installation via Homebrew complète l’installation depuis les sources. La configuration JSON permet de reproduire un environnement.',
+            text: "Une installation via Homebrew complète l'installation depuis les sources. La configuration JSON permet de reproduire un environnement.",
           },
         ],
         challenge:
-          'L’outil intervient sur une configuration personnelle qui peut déjà exister. Il doit préserver les réglages indépendants, détecter les changements nécessaires et rester prévisible lorsqu’on l’exécute plusieurs fois.',
+          "L'outil intervient sur une configuration personnelle qui peut déjà exister. Il doit préserver les réglages indépendants, détecter les changements nécessaires et rester prévisible lorsqu'on l'exécute plusieurs fois.",
         result:
-          'GitSetup propose un assistant, une gestion des profils et une prévisualisation des changements. Son code et ses instructions d’installation sont disponibles sur GitHub.',
+          "GitSetup propose un assistant, une gestion des profils et une prévisualisation des changements. Son code et ses instructions d'installation sont disponibles sur GitHub.",
         coverCaption:
-          'Exemple de commande : prévisualiser la configuration sans l’appliquer.',
+          "Exemple de commande : prévisualiser la configuration sans l'appliquer.",
         detailCaption: 'Les trois éléments reliés par un profil GitSetup.',
       },
       en: {
@@ -230,7 +230,7 @@ export const projects: Project[] = [
         decisions: [
           {
             title: 'Multiple identities',
-            text: 'Profiles group Git and SSH settings. Hooks select the identity based on a repository’s remote URL.',
+            text: "Profiles group Git and SSH settings. Hooks select the identity based on a repository's remote URL.",
           },
           {
             title: 'Preview before applying',
@@ -260,13 +260,13 @@ export const projects: Project[] = [
     text: {
       fr: {
         category: 'Projet de formation · EMF',
-        summary: 'Moderniser l’interface d’un outil de configuration réseau.',
+        summary: "Moderniser l'interface d'un outil de configuration réseau.",
         role: 'Refonte frontend et contribution backend',
         scope: 'Projet interne EMF · Janv. — mai 2024',
         context:
-          'NetViewer permet aux enseignants de l’EMF de préparer et de déployer des configurations réseau dans les salles de classe. Ils peuvent notamment regrouper des élèves dans des VLANs ou gérer leur accès à Internet.',
+          "NetViewer permet aux enseignants de l'EMF de préparer et de déployer des configurations réseau dans les salles de classe. Ils peuvent notamment regrouper des élèves dans des VLANs ou gérer leur accès à Internet.",
         contribution:
-          'J’ai participé à la refonte technologique et visuelle de ce projet interne. Mon travail principal a été de remplacer le client Java EE, basé sur des Servlets et JSP, par une interface React et TypeScript. J’ai également contribué à améliorer le backend existant.',
+          "J'ai participé à la refonte technologique et visuelle de ce projet interne. Mon travail principal a été de remplacer le client Java EE, basé sur des Servlets et JSP, par une interface React et TypeScript. J'ai également contribué à améliorer le backend existant.",
         decisions: [
           {
             title: 'Moderniser le client',
@@ -274,21 +274,21 @@ export const projects: Project[] = [
           },
           {
             title: 'Conserver le backend',
-            text: 'L’API reste sur JAX-RS. La refonte du frontend s’inscrit ainsi dans l’architecture de l’application existante.',
+            text: "L'API reste sur JAX-RS. La refonte du frontend s'inscrit ainsi dans l'architecture de l'application existante.",
           },
           {
-            title: 'Garder l’usage au centre',
-            text: 'L’interface sert les opérations des enseignants : préparer des configurations et les appliquer aux postes des salles de classe.',
+            title: "Garder l'usage au centre",
+            text: "L'interface sert les opérations des enseignants : préparer des configurations et les appliquer aux postes des salles de classe.",
           },
         ],
         challenge:
-          'Faire évoluer les technologies et le design tout en conservant les fonctions d’un outil interne existant. Le nouveau client devait continuer à dialoguer avec l’API et représenter correctement les configurations réseau.',
+          "Faire évoluer les technologies et le design tout en conservant les fonctions d'un outil interne existant. Le nouveau client devait continuer à dialoguer avec l'API et représenter correctement les configurations réseau.",
         result:
-          'Une refonte du frontend en React et TypeScript, accompagnée de contributions au backend JAX-RS. Le projet étant interne à l’EMF, cette fiche en présente le contexte et l’architecture sans démo publique.',
+          "Une refonte du frontend en React et TypeScript, accompagnée de contributions au backend JAX-RS. Le projet étant interne à l'EMF, cette fiche en présente le contexte et l'architecture sans démo publique.",
         coverCaption:
           'Schéma de la refonte : une nouvelle interface, une API conservée.',
         detailCaption:
-          'Vue simplifiée de l’usage : enseignant, configuration et salle de classe.',
+          "Vue simplifiée de l'usage : enseignant, configuration et salle de classe.",
       },
       en: {
         category: 'Coursework · EMF',
@@ -310,7 +310,7 @@ export const projects: Project[] = [
           },
           {
             title: 'Focus on the actual workflow',
-            text: 'The interface supports teachers’ tasks: preparing configurations and applying them to classroom workstations.',
+            text: "The interface supports teachers' tasks: preparing configurations and applying them to classroom workstations.",
           },
         ],
         challenge:

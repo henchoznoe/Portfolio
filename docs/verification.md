@@ -1,50 +1,55 @@
-# Vérification locale — 13 octobre 2026
+# Local verification — October 13, 2026
 
-## Qualité du code
+## Final implementation
 
-- Biome : succès, sans avertissement.
-- knip : succès.
-- TypeScript : succès.
-- Build de production avec `pnpm check:com` / Turbopack : succès ; deux accueils, huit études de cas et deux images de partage générés statiquement.
-- `git diff --check` : succès.
+Node.js **24.21.0**, pnpm **12.11.2**, exact direct dependencies, and a single-document pnpm lockfile. The development environment's global Node installation was not replaced; validation used the pinned Node version from a temporary installation.
 
-La commande `pnpm check:com` passe entièrement avec Next.js 16.4.0 : Biome, knip, TypeScript et build Turbopack. Aucun déploiement distant n’a été exécuté.
+The delivery setup uses GitHub CI followed by semantic-release on `main`, alongside Vercel's existing automatic Git deployment. There is no Vercel CLI dependency, deployment script, custom staging/promotion flow, Docker setup, or additional Vercel secret requirement. Release and deployment are checked independently after publication.
 
-## Navigation et rendu
+## Code and workflow checks
 
-Les dix routes éditoriales répondent en HTTP 200 avec langue HTML, canonical, alternates et JSON-LD corrects. La racine renvoie une redirection temporaire 307 vers `/fr` ou `/en`, selon le choix manuel mémorisé puis l’en-tête `Accept-Language` (français par défaut). Cette réponse est privée, non mise en cache et varie selon la langue et le cookie. Les locales inconnues, projets inconnus et segments dans la mauvaise langue répondent en 404. Le sitemap comprend dix URLs et les deux images OG répondent en PNG.
+- Frozen dependency installation: passed under the pinned Node/pnpm versions.
+- `pnpm check:com`: passed (read-only Biome check, knip, TypeScript, production build).
+- `pnpm test:release`: 19 tests passed without publishing. Covers functional changes, maintenance, dependency updates, `!` shorthand, breaking-change footers, documentation-only changes, generated release commits, and useful English maintenance release notes.
+- actionlint 1.7.12: all four GitHub workflows passed static validation. Action references use verified commit SHAs.
+- Structural inspection: all 12 components accepting props declare the corresponding interface before their arrow function and use `Readonly<ComponentProps>`. Required default exports appear last.
+- `CLAUDE.md` resolves to `AGENTS.md`; the Next.js managed instruction block matches the installed version.
+- Tailwind cleanup converted 172 arbitrary spacing utilities to their exact numeric equivalents, plus canonical font-weight, letter-spacing, border-width, and radius utilities where equivalent. Custom breakpoints, colors, calculations, and grids remain explicit.
 
-Accueil contrôlé à 360, 768 et 1440 px. Fiches GitSetup, NetViewer et Belouga contrôlées sur mobile ; Arbeauté sur ordinateur. Aucun débordement horizontal détecté sur les vues contrôlées. Le chargement différé des captures secondaires est conservé.
+Static workflow checks do not execute GitHub jobs or publish a release. Required branch checks and bot push permissions still need remote configuration and confirmation.
 
-Contrôles interactifs réalisés : ouverture du menu par Entrée, fermeture par Échap avec retour du focus, accès aux projets, actualisation d’une fiche, changement de langue conservant le projet et la section, lien d’évitement donnant le focus au contenu principal. La préférence de réduction des animations laisse le contenu visible, sans transformation, avec les transitions désactivées. L’émulation de cette préférence a ensuite été réinitialisée.
+## Production build and HTTP checks
 
-## Lighthouse mobile
+The final build generates both home pages, eight case studies, metadata routes, icons, and both Open Graph images statically. Only the root language-selection route is dynamic.
 
-Audit du build de production local après la migration Tailwind et la mise à jour des dépendances, profil mobile par défaut de Lighthouse :
+One-off HTTP checks against the local production server verified:
 
-| Catégorie | Score |
-| --- | ---: |
-| Performance | 96 |
-| Accessibilité | 100 |
-| Bonnes pratiques | 100 |
-| SEO | 100 |
+- All 10 editorial routes return 200 with the expected HTML language, canonical URL, language alternates, and valid JSON-LD.
+- Eight invalid locale/path/project/image URLs return 404.
+- Seven language-selection cases return 307 with the expected destination, private/no-store caching, and language/cookie variation. Saved choices override browser language; invalid cookies fall back to negotiation.
+- The sitemap contains 10 editorial URLs.
+- `/og/fr`, `/og/en`, `/icon`, and `/apple-icon` return PNGs with valid signatures.
 
-L’audit des contrastes et celui des intitulés de liens passent. LCP : 2,9 s ; CLS : 0 ; temps de blocage total : 10 ms. Ces mesures locales peuvent varier selon l’appareil, le réseau et l’hébergement final. Elles ne remplacent pas un contrôle après publication.
+The HTTP verifier was used temporarily for this delivery and is not added to the project or CI. No permanent browser-test framework was added.
 
-## Correctifs de navigation et de présentation
+## Browser checks
 
-- Défilement natif fluide, y compris le retour en haut ; défilement immédiat si la réduction des animations est activée. Contrôle navigateur du départ progressif et de l’arrivée à `scrollY = 0`.
-- Logo N/H en majuscules dans la navigation, la page 404 et les images de partage.
-- Accueil sur au moins `100dvh` en incluant la navigation : début des projets à 900 px sur un écran de 900 px, à 1024 px sur un écran de 1024 px et à 800 px sur un mobile de 800 px. Sur mobile de 600 px, le contenu reste complet et l’accueil s’allonge. Aucun débordement horizontal sur ces vues.
-- Footer bleu-gris clair, texte anthracite et accent désaturé.
-- Tests HTTP de langue : dix combinaisons de préférences, poids, langues régionales, absence de langue prise en charge et cookies valides ou invalides. Accès directs `/fr` et `/en` respectés. Le choix manuel français a aussi été testé dans le navigateur puis conservé à une nouvelle visite de `/`.
+Both home pages were checked at **360, 768, and 1440 px** with no horizontal overflow. At a viewport height of 900 px, the introduction ends at 900 px in each checked layout. GitSetup's case study was checked at the same widths; switching from French to English preserves the project and supports a direct refresh.
 
-## Migration Tailwind et dépendances
+Keyboard checks confirmed menu opening with Enter, closing with Escape, focus returning to the menu button, and the skip link focusing `main-content`. Reduced-motion emulation leaves content visible without reveal transforms. No browser warnings or errors were captured in the checked views. Temporary viewport and media overrides are cleared after verification.
 
-Les styles de composants sont exprimés en utilitaires Tailwind dans les TSX, avec quelques compositions communes dans `lib/styles.ts`. `app/globals.css` est réduit de 1 942 à 72 lignes, limité au thème, à la base et aux règles globales de hauteur et d’accessibilité. Aucun sélecteur de composant n’y subsiste.
+The initial comparison build predated some existing working-tree edits, so it is not treated as a pixel-perfect baseline for the current source.
 
-Après cette migration, le build complet, les dix routes, les six routes invalides et les douze cas de sélection de langue ont été revérifiés. Contrôle visuel supplémentaire de l’accueil à 360 et 1440 px, de la fiche GitSetup à 768 px et du changement de langue depuis cette fiche. Aucun débordement horizontal sur ces vues ; les boutons de l’accueil restent sur une ligne à 360 px.
+## Dependency audit
 
-Toutes les dépendances directes ont été mises à jour par `pnpm up --latest` ; `pnpm outdated` ne renvoie aucune dépendance obsolète. Versions principales : Next.js 16.4.0, React 19.3.0, Tailwind 4.3.3, TypeScript 7.0.2, Framer Motion 14.1.0 et Biome 2.5.15. La configuration Biome a été migrée avec l’outil officiel. `tw-animate-css`, devenu inutilisé, a été retiré.
+The production dependency audit reports **zero vulnerabilities**. The full audit retains one high-severity development-tooling advisory in `braces` 3.0.3, with no patched version reported: [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm). No advisory is suppressed. Dependency review blocks newly introduced high/critical vulnerabilities; it is separate from the full-tree audit.
 
-La contrainte Undici de l’outillage GitHub a été corrigée vers une version 6 compatible et corrigée. L’audit pnpm conserve une vulnérabilité de sévérité élevée dans `braces` 3.0.3, dépendance transitive de l’outillage semantic-release, sans version corrigée publiée d’après l’audit : [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm). Le contrôle `pnpm audit --audit-level=high` de la CI échouera tant que cette alerte subsiste. Aucun filtre d’audit ni contrôle CI n’a été désactivé.
+The single-document lockfile workaround is documented in the README and release guide. GitHub's dependency graph and the first actual Dependabot run must still be checked after the configuration reaches `main`.
+
+## Earlier Lighthouse measurement
+
+The existing verification log recorded a local mobile Lighthouse audit before this cleanup: performance 96, accessibility 100, best practices 100, SEO 100; LCP 2.9 s, CLS 0, total blocking time 10 ms. These historical measurements are retained as context; Lighthouse was not rerun during this cleanup and scores are not promised for production.
+
+## Publication boundary
+
+Changes remain local on `develop`, staged for review, without a commit, push, tag, release, or deployment. GitHub and Vercel settings were not changed. Detailed Vercel project inspection returned HTTP 403 during planning. Follow [releasing.md](releasing.md) to confirm the remote settings and verify the first real release and deployment separately.

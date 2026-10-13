@@ -21,44 +21,53 @@
     "prepare": "husky",
     "lint": "biome lint .",
     "format": "biome format . --write",
-    "check": "biome check --write .",
-    "check:all": "biome check --write . && knip",
-    "check:com": "biome check --write . && knip && tsc --noEmit && next build",
-    "knip": "knip"
+    "check": "biome check .",
+    "check:all": "pnpm check && pnpm knip",
+    "check:com": "pnpm check:all && pnpm typecheck && pnpm build",
+    "knip": "knip",
+    "check:fix": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "test:release": "node --test scripts/release.test.mjs"
   },
   "lint-staged": {
-    "*.{ts,tsx,css}": [
-      "biome check --write"
+    "*.{ts,tsx,css,js,mjs,json}": [
+      "biome check --write --no-errors-on-unmatched"
     ]
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "framer-motion": "^14.1.0",
-    "lucide-react": "^1.55.0",
-    "next": "^16.4.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "tailwind-merge": "^3.7.0"
+    "clsx": "2.1.1",
+    "framer-motion": "14.1.0",
+    "lucide-react": "1.55.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwind-merge": "3.7.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
-    "@semantic-release/changelog": "^7.0.0",
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/git": "^11.0.1",
-    "@semantic-release/github": "^12.0.10",
-    "@semantic-release/npm": "^13.2.0",
-    "@semantic-release/release-notes-generator": "^14.1.1",
-    "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.6.5",
-    "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0",
-    "husky": "^9.1.7",
-    "knip": "^6.41.0",
-    "lint-staged": "^17.6.0",
-    "postcss": "^8.5.29",
-    "semantic-release": "^25.0.9",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2"
+    "@semantic-release/changelog": "7.0.0",
+    "@semantic-release/commit-analyzer": "13.0.1",
+    "@semantic-release/git": "11.0.1",
+    "@semantic-release/github": "12.0.10",
+    "@semantic-release/npm": "13.2.0",
+    "@semantic-release/release-notes-generator": "14.1.1",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "conventional-changelog-conventionalcommits": "9.3.1",
+    "husky": "9.1.7",
+    "knip": "6.41.0",
+    "lint-staged": "17.6.0",
+    "postcss": "8.5.29",
+    "semantic-release": "25.0.9",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
   },
-  "private": true
+  "private": true,
+  "packageManager": "pnpm@12.11.2",
+  "engines": {
+    "node": "24.x",
+    "pnpm": "12.11.2"
+  }
 }

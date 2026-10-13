@@ -2,19 +2,21 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { button, container, eyebrow, textLink, wordmark } from '@/lib/styles'
 import { cn } from '@/lib/utils/cn'
+
 export const metadata: Metadata = {
   title: '404 — Noé Henchoz',
   robots: { index: false, follow: false },
 }
-export default function NotFound() {
+
+const NotFound = () => {
   return (
     <html lang="fr">
       <body>
-        <main className={cn(container, 'pt-[50px] pb-20 min-[600px]:pt-20')}>
+        <main className={cn(container, 'pt-12.5 pb-20 min-[600px]:pt-20')}>
           <a className={wordmark} href="/fr">
             N<span>/</span>H
           </a>
-          <p className={cn(eyebrow, 'mt-[100px] mb-5 text-accent')}>404</p>
+          <p className={cn(eyebrow, 'mt-25 mb-5 text-accent')}>404</p>
           <h1 className="text-[clamp(36px,5vw,70px)] leading-[1.2] tracking-[-0.04em]">
             Cette page a pris
             <br />
@@ -23,7 +25,7 @@ export default function NotFound() {
           <p className="mt-5 text-muted" lang="en">
             This page could not be found.
           </p>
-          <div className="mt-[30px] flex flex-wrap items-center gap-7">
+          <div className="mt-7.5 flex flex-wrap items-center gap-7">
             <a className={button} href="/fr">
               Accueil en français
             </a>
@@ -36,3 +38,5 @@ export default function NotFound() {
     </html>
   )
 }
+
+export default NotFound
