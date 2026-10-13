@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/henchoznoe/Portfolio/compare/v1.3.0...v1.3.1) (2026-10-13)
+
+### Maintenance
+
+* update deps ([#19](https://github.com/henchoznoe/Portfolio/issues/19)) ([b98cce5](https://github.com/henchoznoe/Portfolio/commit/b98cce588b2456f0cc768ec31d69a021f4a99ab7))
+
 ## [1.3.0](https://github.com/henchoznoe/Portfolio/compare/v1.2.0...v1.3.0) (2026-10-13)
 
 ### Features
