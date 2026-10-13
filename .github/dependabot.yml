@@ -20,6 +20,10 @@ updates:
       semver-minor-days: 7
       semver-major-days: 14
     ignore:
+      # Preset 10 requires writer 9, only available in release-notes-generator 15 beta.
+      # Remove this constraint when a stable compatible generator is adopted.
+      - dependency-name: conventional-changelog-conventionalcommits
+        versions: ['10.x']
       # Node.js stays on 24. pnpm's major is pinned independently in package.json.
       - dependency-name: '@types/node'
         update-types: [version-update:semver-major]

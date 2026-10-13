@@ -21,7 +21,7 @@ Do not squash or rebase merges between the two long-lived branches: preserving a
 | `fix`, `perf`, `refactor`, `chore`, `ci`, `build`, `test`, `revert` | Patch |
 | `docs` alone or generated `chore(release)` | None |
 
-The highest applicable change since the previous tag wins. Documentation-only merges can still trigger a Vercel build. The Conventional Commits preset is pinned to **9.3.1**, compatible with the existing generator; it handles `!` correctly and includes maintenance changes in release notes. `pnpm test:release` checks version rules and generated notes without publishing.
+The highest applicable change since the previous tag wins. Documentation-only merges can still trigger a Vercel build. The Conventional Commits preset is pinned to **9.3.1**, compatible with the existing generator; it handles `!` correctly and includes maintenance changes in release notes. Dependabot ignores preset **10.x** because it requires `conventional-changelog-writer` 9, while the stable `@semantic-release/release-notes-generator` 14.1.1 uses writer 8. Remove this constraint when adopting a compatible stable generator; writer 9 support is currently in the [generator's 15 beta releases](https://github.com/semantic-release/release-notes-generator/releases). `pnpm test:release` checks version rules and generated notes without publishing.
 
 The release workflow loads full Git history and tags, runs after the shared CI checks, and prevents concurrent release jobs. Generated release commits omit `[skip ci]`, allowing synchronization PR checks to run; their scope is excluded from release analysis and the workflow skips release creation for them.
 
