@@ -5,8 +5,7 @@ import {
   Braces,
   Dumbbell,
   MapPin,
-  Mountain,
-  MoveUpRight,
+  Utensils,
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -392,10 +391,10 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
             </Reveal>
             <div className="mt-8.75 min-[600px]:mt-0">
               {t.interests.items.map((item, index) => {
-                const Icon = [Dumbbell, MoveUpRight, Mountain][index]
+                const Icon = [Dumbbell, Utensils][index]
                 return (
                   <Reveal
-                    className="flex items-center gap-3.75 border-b border-line py-6.25 first:pt-0 min-[820px]:gap-5.5"
+                    className="flex items-start gap-3.75 border-b border-line py-6.25 first:pt-0 min-[820px]:gap-5.5"
                     key={item.title}
                     delay={index * 0.1}
                   >
@@ -406,7 +405,7 @@ export const Home = ({ locale }: Readonly<HomeProps>) => {
                       <h3 className="text-lg font-550 tracking-[-0.03em]">
                         {item.title}
                       </h3>
-                      <p className="mt-1.5 text-xs leading-[1.7] text-muted min-[600px]:text-[11px]">
+                      <p className="mt-2.5 text-[13px] leading-[1.8] text-muted">
                         {item.description}
                       </p>
                     </div>

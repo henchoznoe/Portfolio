@@ -224,8 +224,11 @@ export const copy: Localized<PortfolioCopy> = {
           description:
             'Relier une interface aux données et donner forme à la logique métier.',
           skills: [
+            'Java',
             'Node.js',
+            'Express',
             'NestJS',
+            'SQL',
             'PostgreSQL',
             'Prisma',
             'PHP',
@@ -241,10 +244,13 @@ export const copy: Localized<PortfolioCopy> = {
             'Versionner, tester et déployer les projets, puis les faire évoluer.',
           skills: [
             'Git',
+            'GitLab',
+            'GitLab CI/CD',
             'GitHub Actions',
             'Docker',
+            'Kubernetes (bases)',
             'Vercel',
-            'Tests automatisés',
+            'Biome',
           ],
           example: 'En pratique : les outils et tests de GitSetup.',
           project: 'gitsetup',
@@ -253,21 +259,19 @@ export const copy: Localized<PortfolioCopy> = {
     },
     interests: {
       label: '04 — En dehors du code',
-      title: 'Bouger.\nChanger de perspective.',
+      title: 'Se dépenser.\nProgresser.',
       intro:
-        'Le sport occupe une vraie place dans mon quotidien. Une séance de fitness, une voie à grimper ou une journée sur les pistes : j’aime varier les terrains.',
+        'Le sport occupe une vraie place dans mon quotidien. J’aime l’intensité de l’effort, me dépasser et observer ma progression.',
       items: [
         {
-          title: 'Fitness',
-          description: 'Un rendez-vous régulier pour progresser.',
+          title: 'Musculation',
+          description:
+            'J’aime pousser mes limites et voir les résultats au fil du temps. La musculation me correspond particulièrement : un sport individuel dans lequel je peux avancer à mon rythme et mesurer ma progression.',
         },
         {
-          title: 'Escalade',
-          description: 'Trouver le mouvement, essayer une autre voie.',
-        },
-        {
-          title: 'Ski',
-          description: 'Profiter de l’hiver et prendre un peu de hauteur.',
+          title: 'Alimentation',
+          description:
+            'Je porte aussi une attention particulière à ce que je mange. Je me suis beaucoup renseigné sur la nutrition pour mieux comprendre mon alimentation et faire des choix adaptés à ma pratique sportive.',
         },
       ],
     },
@@ -403,8 +407,11 @@ export const copy: Localized<PortfolioCopy> = {
           description:
             'Connecting interfaces to data and implementing business logic.',
           skills: [
+            'Java',
             'Node.js',
+            'Express',
             'NestJS',
+            'SQL',
             'PostgreSQL',
             'Prisma',
             'PHP',
@@ -420,10 +427,13 @@ export const copy: Localized<PortfolioCopy> = {
             'Versioning, testing and deploying projects, then maintaining them.',
           skills: [
             'Git',
+            'GitLab',
+            'GitLab CI/CD',
             'GitHub Actions',
             'Docker',
+            'Kubernetes (basics)',
             'Vercel',
-            'Automated tests',
+            'Biome',
           ],
           example: 'In practice: GitSetup’s tooling and tests.',
           project: 'gitsetup',
@@ -432,21 +442,19 @@ export const copy: Localized<PortfolioCopy> = {
     },
     interests: {
       label: '04 — Beyond the keyboard',
-      title: 'Keep moving.\nFind a new perspective.',
+      title: 'Stay active.\nMake progress.',
       intro:
-        'Sport is a real part of my everyday life. A workout, a climbing route or a day on the slopes: I enjoy a change of scenery.',
+        'Sport is a real part of my everyday life. I enjoy the intensity of physical effort, pushing myself and seeing my progress.',
       items: [
         {
-          title: 'Fitness',
-          description: 'A regular routine to keep making progress.',
+          title: 'Strength training',
+          description:
+            'I enjoy pushing my limits and seeing results over time. Strength training suits me particularly well: an individual sport where I can move at my own pace and measure my progress.',
         },
         {
-          title: 'Climbing',
-          description: 'Find the movement, try another route.',
-        },
-        {
-          title: 'Skiing',
-          description: 'Make the most of winter and head for the mountains.',
+          title: 'Nutrition',
+          description:
+            'I also pay close attention to what I eat. I have spent time learning about nutrition to better understand my diet and make choices that support my training.',
         },
       ],
     },
