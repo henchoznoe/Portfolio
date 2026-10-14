@@ -224,8 +224,11 @@ export const copy: Localized<PortfolioCopy> = {
           description:
             'Relier une interface aux données et donner forme à la logique métier.',
           skills: [
+            'Java',
             'Node.js',
+            'Express',
             'NestJS',
+            'SQL',
             'PostgreSQL',
             'Prisma',
             'PHP',
@@ -241,10 +244,13 @@ export const copy: Localized<PortfolioCopy> = {
             'Versionner, tester et déployer les projets, puis les faire évoluer.',
           skills: [
             'Git',
+            'GitLab',
+            'GitLab CI/CD',
             'GitHub Actions',
             'Docker',
+            'Kubernetes (bases)',
             'Vercel',
-            'Tests automatisés',
+            'Biome',
           ],
           example: 'En pratique : les outils et tests de GitSetup.',
           project: 'gitsetup',
@@ -403,8 +409,11 @@ export const copy: Localized<PortfolioCopy> = {
           description:
             'Connecting interfaces to data and implementing business logic.',
           skills: [
+            'Java',
             'Node.js',
+            'Express',
             'NestJS',
+            'SQL',
             'PostgreSQL',
             'Prisma',
             'PHP',
@@ -420,10 +429,13 @@ export const copy: Localized<PortfolioCopy> = {
             'Versioning, testing and deploying projects, then maintaining them.',
           skills: [
             'Git',
+            'GitLab',
+            'GitLab CI/CD',
             'GitHub Actions',
             'Docker',
+            'Kubernetes (basics)',
             'Vercel',
-            'Automated tests',
+            'Biome',
           ],
           example: 'In practice: GitSetup’s tooling and tests.',
           project: 'gitsetup',
