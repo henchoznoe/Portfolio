@@ -1,3 +1,26 @@
+## [1.4.0](https://github.com/henchoznoe/Portfolio/compare/v1.3.1...v1.4.0) (2026-10-14)
+
+### Features
+
+* **portfolio:** expand technical skills ([e98f186](https://github.com/henchoznoe/Portfolio/commit/e98f1867f8f9a71173579d6aed2d405a07951fb8))
+* **portfolio:** refresh personal interests section ([e7a83d6](https://github.com/henchoznoe/Portfolio/commit/e7a83d6dccfd51fe57f60784f552e011e0f16c87))
+
+### Bug Fixes
+
+* **deps:** preserve stable changelog compatibility ([2cc3595](https://github.com/henchoznoe/Portfolio/commit/2cc35955c240678f7cf2300083ddf6d244e0007a))
+
+### Maintenance
+
+* merge branch 'develop' ([0170368](https://github.com/henchoznoe/Portfolio/commit/01703685f1aafd643a2e9768da929f30c4de329e))
+* merge branch 'main' into develop ([a202811](https://github.com/henchoznoe/Portfolio/commit/a202811fa664ed63b7fb40d4fd08e2dec908a3b7))
+* merge branch 'main' into develop ([67c97da](https://github.com/henchoznoe/Portfolio/commit/67c97da2d7361752b6a1ab1e541b2898c7ba641c))
+
+### Continuous Integration
+
+* **deps:** bump actions/checkout from 6.1.0 to 7.0.1 ([2673146](https://github.com/henchoznoe/Portfolio/commit/26731465ef836e4bf7122b9dfa81a762c6a08b1b))
+* **deps:** bump actions/setup-node from 6.5.0 to 7.0.0 ([f2573a8](https://github.com/henchoznoe/Portfolio/commit/f2573a852d2404efef7e8500cd5187b10f794408))
+* **deps:** bump pnpm/action-setup from 5.0.0 to 6.1.0 ([9771a72](https://github.com/henchoznoe/Portfolio/commit/9771a7260ea98351806083a1775d528fc82013e6))
+
 ## [1.3.1](https://github.com/henchoznoe/Portfolio/compare/v1.3.0...v1.3.1) (2026-10-13)
 
 ### Maintenance
