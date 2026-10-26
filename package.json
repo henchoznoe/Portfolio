@@ -57,7 +57,7 @@
     "@types/react-dom": "19.3.0",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "husky": "9.1.7",
-    "knip": "6.41.0",
+    "knip": "6.42.0",
     "lint-staged": "17.6.0",
     "postcss": "8.5.29",
     "semantic-release": "25.0.9",
