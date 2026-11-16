@@ -1,3 +1,14 @@
+## [1.5.0](https://github.com/henchoznoe/Portfolio/compare/v1.4.0...v1.5.0) (2026-11-16)
+
+### Features
+
+* **portfolio:** add Le Caramel Artisanal case study ([01157c8](https://github.com/henchoznoe/Portfolio/commit/01157c8de70e8635deda66d4e5b302498d5cecea))
+
+### Maintenance
+
+* merge branch 'develop' ([98c7a54](https://github.com/henchoznoe/Portfolio/commit/98c7a540b55394b90c9ae939f4c0df655feae29b))
+* merge branch 'main' into develop ([14403c3](https://github.com/henchoznoe/Portfolio/commit/14403c3bef08a8fc36e53ceb4f4effbe808a7073))
+
 ## [1.4.0](https://github.com/henchoznoe/Portfolio/compare/v1.3.1...v1.4.0) (2026-10-14)
 
 ### Features
