@@ -180,7 +180,7 @@ export const CaseStudy = ({ project, locale }: Readonly<CaseStudyProps>) => {
                   </a>
                 ) : (
                   <span className="bg-soft px-3.75 py-2.5 font-mono text-[11px]">
-                    {t.internal}
+                    {project.kind === 'internal' ? t.internal : t.privateSource}
                   </span>
                 )}
               </div>

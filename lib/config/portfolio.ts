@@ -114,6 +114,7 @@ interface PortfolioCopy {
     visit: string
     code: string
     internal: string
+    privateSource: string
     next: string
     diagram: string
   }
@@ -299,6 +300,7 @@ export const copy: Localized<PortfolioCopy> = {
       visit: 'Voir le site',
       code: 'Explorer le code',
       internal: 'Projet interne à l’EMF',
+      privateSource: 'Code source privé',
       next: 'Projet suivant',
       diagram: 'Schéma explicatif',
     },
@@ -482,6 +484,7 @@ export const copy: Localized<PortfolioCopy> = {
       visit: 'Visit the website',
       code: 'Explore the code',
       internal: 'Internal EMF project',
+      privateSource: 'Private source code',
       next: 'Next project',
       diagram: 'Explanatory diagram',
     },
