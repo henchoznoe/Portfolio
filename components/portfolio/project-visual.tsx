@@ -6,6 +6,7 @@ import {
   KeyRound,
   Monitor,
   Network,
+  PackageCheck,
   Server,
   ShieldCheck,
   Terminal,
@@ -204,30 +205,53 @@ export const ProjectVisual = ({
       </div>
     )
   const cli = project.kind === 'cli'
+  const caramel = project.slug === 'le-caramel-artisanal'
   const diagram = cli || detail
-  const steps = cli
+  const steps = caramel
     ? [
-        { Icon: GitBranch, title: 'Git', text: fr ? 'Identité' : 'Identity' },
-        { Icon: KeyRound, title: 'SSH', text: fr ? 'Connexion' : 'Connection' },
-        { Icon: ShieldCheck, title: 'GPG', text: fr ? 'Signature' : 'Signing' },
+        {
+          Icon: GitBranch,
+          title: 'GitHub Actions',
+          text: fr ? 'Contrôles' : 'Checks',
+        },
+        {
+          Icon: PackageCheck,
+          title: fr ? 'Artefact' : 'Artifact',
+          text: 'React + PHP',
+        },
+        { Icon: Server, title: 'Hostinger', text: 'SSH / rsync' },
       ]
-    : [
-        {
-          Icon: Monitor,
-          title: fr ? 'Enseignant' : 'Teacher',
-          text: fr ? 'Préparer' : 'Prepare',
-        },
-        {
-          Icon: Server,
-          title: 'Configuration',
-          text: fr ? 'Déployer' : 'Deploy',
-        },
-        {
-          Icon: Network,
-          title: fr ? 'Salle de classe' : 'Classroom',
-          text: 'VLANs',
-        },
-      ]
+    : cli
+      ? [
+          { Icon: GitBranch, title: 'Git', text: fr ? 'Identité' : 'Identity' },
+          {
+            Icon: KeyRound,
+            title: 'SSH',
+            text: fr ? 'Connexion' : 'Connection',
+          },
+          {
+            Icon: ShieldCheck,
+            title: 'GPG',
+            text: fr ? 'Signature' : 'Signing',
+          },
+        ]
+      : [
+          {
+            Icon: Monitor,
+            title: fr ? 'Enseignant' : 'Teacher',
+            text: fr ? 'Préparer' : 'Prepare',
+          },
+          {
+            Icon: Server,
+            title: 'Configuration',
+            text: fr ? 'Déployer' : 'Deploy',
+          },
+          {
+            Icon: Network,
+            title: fr ? 'Salle de classe' : 'Classroom',
+            text: 'VLANs',
+          },
+        ]
   const small = cover
     ? 'font-mono text-[7px] min-[600px]:text-[9px] min-[820px]:text-xs'
     : 'font-mono text-[7px] min-[600px]:text-[6px] min-[820px]:text-[8px]'
@@ -242,9 +266,11 @@ export const ProjectVisual = ({
       )}
     >
       <span className={label}>
-        {cli
-          ? `GITSETUP / ${fr ? 'UN PROFIL' : 'ONE PROFILE'}`
-          : `NETVIEWER / ${detail ? (fr ? 'USAGE' : 'WORKFLOW') : fr ? 'REFONTE' : 'REDESIGN'}`}
+        {caramel
+          ? 'LE CARAMEL ARTISANAL / CI/CD'
+          : cli
+            ? `GITSETUP / ${fr ? 'UN PROFIL' : 'ONE PROFILE'}`
+            : `NETVIEWER / ${detail ? (fr ? 'USAGE' : 'WORKFLOW') : fr ? 'REFONTE' : 'REDESIGN'}`}
       </span>
       {diagram ? (
         <div className="flex w-full max-w-205 justify-center gap-4.5 min-[600px]:gap-10">
@@ -324,13 +350,17 @@ export const ProjectVisual = ({
         </div>
       )}
       <p className={note}>
-        {cli
+        {caramel
           ? fr
-            ? 'Prévisualiser → appliquer → faire évoluer'
-            : 'Preview → apply → maintain'
-          : fr
-            ? 'Schéma explicatif · projet interne EMF'
-            : 'Explanatory diagram · internal EMF project'}
+            ? 'Schéma explicatif · main → contrôles → artefact → Hostinger'
+            : 'Explanatory diagram · main → checks → artifact → Hostinger'
+          : cli
+            ? fr
+              ? 'Prévisualiser → appliquer → faire évoluer'
+              : 'Preview → apply → maintain'
+            : fr
+              ? 'Schéma explicatif · projet interne EMF'
+              : 'Explanatory diagram · internal EMF project'}
       </p>
     </div>
   )

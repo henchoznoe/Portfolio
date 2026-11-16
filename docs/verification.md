@@ -1,4 +1,16 @@
-# Local verification — October 13, 2026
+# Local verification
+
+## Le Caramel Artisanal — November 16, 2026
+
+- Reviewed the private source repository at `6c5816e136fcca4489c372c513268a3d17900d76`, including its GitHub Actions workflow and SSH/rsync deployment scripts. The existing `quality` and `deploy` jobs on that commit both succeeded. This delivery did not run or modify the production pipeline.
+- Added the fifth selected project with French and English case studies, a capture of the public homepage and an explanatory delivery diagram. The private repository is not linked from the visitor pages.
+- Used Node **24.21.0** and pnpm **12.11.2** from temporary installations. Biome, knip and TypeScript passed. The initial build stopped after generating pages to report a security advisory; `pnpm build` succeeded on retry with the warning still present. A subsequent `pnpm check:com` stopped again at that security advisory, so the full command is not reported as passing.
+- Local HTTP checks passed for both new case studies and their homepage links, canonical URLs, language alternates, JSON-LD, private-source labels and optimized cover image. The sitemap now contains **12 editorial URLs**; an unknown project returns 404.
+- Checked both homepages and both new case studies at **360, 768 and 1440 px**: no horizontal overflow or broken loaded images. The homepage card, language switch and next-project link from NetViewer navigate to the expected case study.
+- A separate production dependency audit reports **two critical and one high** advisory in the existing Next.js **16.4.0** installation: [GHSA-2464-fhr4-w9xw](https://github.com/advisories/GHSA-2464-fhr4-w9xw), [GHSA-673q-mjm6-r5xr](https://github.com/advisories/GHSA-673q-mjm6-r5xr) and [GHSA-p3m5-59mp-jv5r](https://github.com/advisories/GHSA-p3m5-59mp-jv5r). All list **16.4.1** as patched. Dependencies were not changed for this content addition; a security update is recommended before publication. No exploitability claim or attack testing is included.
+- Changes remain local on `develop`, staged for review without a commit, push, release or deployment.
+
+The sections below preserve the October 13, 2026 verification record. Their dependency audit and route counts are historical and do not describe the current state.
 
 ## Final implementation
 

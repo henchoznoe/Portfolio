@@ -323,6 +323,81 @@ export const projects: Project[] = [
       },
     },
   },
+  {
+    slug: 'le-caramel-artisanal',
+    name: 'Le Caramel Artisanal',
+    number: '05',
+    kind: 'website',
+    tags: ['React Router', 'TypeScript', 'PHP', 'GitHub Actions', 'Hostinger'],
+    website: 'https://lecaramelartisanal.ch/',
+    cover: '/work/captures/le-caramel-artisanal-home.jpg',
+    text: {
+      fr: {
+        category: 'Site vitrine · Artisanat',
+        summary:
+          'Un site vitrine artisanal, du développement au déploiement automatisé sur Hostinger.',
+        role: 'Refonte du site et automatisation de la livraison',
+        scope: 'Entreprise familiale · Rougemont',
+        context:
+          'Le Caramel Artisanal présente les douceurs de la famille Yersin-Hoffer, à Rougemont. Le site met en valeur les produits, leur origine et l’histoire familiale, puis permet de prendre contact pour une demande. Il reste un site vitrine, sans vente en ligne.',
+        contribution:
+          'J’ai repensé le site en React et TypeScript avec React Router, des photographies adaptées aux écrans et des pages produits pré-rendues. Une API PHP traite les demandes de contact. J’ai aussi mis en place la CI et le déploiement vers Hostinger avec GitHub Actions.',
+        decisions: [
+          {
+            title: 'Pré-rendre les pages',
+            text: 'React Router génère le HTML de chaque page pendant le build. Les produits disposent de leurs propres URLs et métadonnées. En production, Hostinger sert les fichiers statiques et l’API PHP, sans serveur Node.js.',
+          },
+          {
+            title: 'Contrôler avant de livrer',
+            text: 'GitHub Actions vérifie le formatage, les types, les tests et le build. Un environnement Docker avec Apache, PHP et Mailpit contrôle les routes et les e-mails de test. Une simulation isolée vérifie aussi les scripts de déploiement et de retour arrière.',
+          },
+          {
+            title: 'Déployer le même artefact',
+            text: 'Après validation, la CI regroupe les fichiers statiques et les dépendances PHP de production dans une archive. Sur main, un job dépendant de ces contrôles récupère cet artefact et le transfère vers Hostinger par SSH/rsync. Les PR et develop exécutent les contrôles sans publier.',
+          },
+        ],
+        challenge:
+          'Moderniser le site tout en conservant un hébergement mutualisé React/PHP. La livraison doit préserver la configuration SMTP, les données de limitation des requêtes et les fichiers indépendants. Les scripts vérifient les fichiers avant publication, sauvegardent le site existant et conservent les anciennes ressources pour les onglets déjà ouverts.',
+        result:
+          'Le site est en ligne avec un catalogue de produits, une présentation de l’histoire familiale et un formulaire de contact. La pipeline relie les contrôles au déploiement sur Hostinger, puis vérifie les pages principales, la vraie réponse 404 et l’API, sans envoyer le formulaire de production.',
+        coverCaption: 'L’accueil public du site Le Caramel Artisanal.',
+        detailCaption:
+          'Schéma de livraison : contrôles GitHub Actions, artefact React/PHP et transfert SSH/rsync vers Hostinger.',
+      },
+      en: {
+        category: 'Showcase website · Artisan business',
+        summary:
+          'An artisan showcase website, from development to automated deployment on Hostinger.',
+        role: 'Website redesign and delivery automation',
+        scope: 'Family business · Rougemont',
+        context:
+          'Le Caramel Artisanal showcases the sweets made by the Yersin-Hoffer family in Rougemont. The website presents the products, their origins and the family’s story, then lets visitors get in touch with an enquiry. It remains a showcase website, with no online shop.',
+        contribution:
+          'I redesigned the website in React and TypeScript with React Router, responsive photographs and pre-rendered product pages. A PHP API handles contact enquiries. I also set up CI and deployment to Hostinger through GitHub Actions.',
+        decisions: [
+          {
+            title: 'Pre-render the pages',
+            text: 'React Router generates each page’s HTML at build time. Products have their own URLs and metadata. In production, Hostinger serves static files and the PHP API, with no Node.js server.',
+          },
+          {
+            title: 'Check before delivering',
+            text: 'GitHub Actions checks formatting, types, tests and the build. A Docker environment with Apache, PHP and Mailpit verifies routes and test emails. An isolated fixture also checks deployment and rollback scripts.',
+          },
+          {
+            title: 'Deploy the same artifact',
+            text: 'After validation, CI packages the static files and production PHP dependencies into an archive. On main, a job gated by those checks downloads that artifact and transfers it to Hostinger over SSH/rsync. Pull requests and develop run the checks without publishing.',
+          },
+        ],
+        challenge:
+          'Modernising the website while retaining shared React/PHP hosting. Delivery must preserve SMTP configuration, rate-limit data and unrelated files. The scripts verify files before publication, back up the existing site and retain previous assets for tabs that are already open.',
+        result:
+          'The website is live with a product catalogue, the family’s story and a contact form. The pipeline connects checks to deployment on Hostinger, then verifies key pages, a genuine 404 response and the API without submitting the production form.',
+        coverCaption: 'The public Le Caramel Artisanal homepage.',
+        detailCaption:
+          'Delivery diagram: GitHub Actions checks, a React/PHP artifact and SSH/rsync transfer to Hostinger.',
+      },
+    },
+  },
 ]
 
 export const additionalProjects = [
