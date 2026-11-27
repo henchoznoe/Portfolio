@@ -1,3 +1,13 @@
+## [1.5.1](https://github.com/henchoznoe/Portfolio/compare/v1.5.0...v1.5.1) (2026-11-27)
+
+### Bug Fixes
+
+* update the Aparté project reference ([20491ae](https://github.com/henchoznoe/Portfolio/commit/20491ae1992d52c7b37dbdb30fbec316eef82d56))
+
+### Maintenance
+
+* merge branch 'main' into develop ([74e6f84](https://github.com/henchoznoe/Portfolio/commit/74e6f8498e270b862d0ec4b7b82e816f8dc04051))
+
 ## [1.5.0](https://github.com/henchoznoe/Portfolio/compare/v1.4.0...v1.5.0) (2026-11-16)
 
 ### Features
