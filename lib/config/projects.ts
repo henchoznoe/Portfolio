@@ -418,8 +418,8 @@ export const additionalProjects = [
     },
   },
   {
-    name: 'Bisous Bisous',
-    href: 'https://www.bisousbisous.ch',
+    name: 'Aparté',
+    href: 'https://aparte-events.ch',
     type: {
       fr: 'Site bilingue · Musique & événements',
       en: 'Bilingual website · Music & events',
